@@ -16,14 +16,13 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
  <div id="corpo">
-     <h1> Pagina Inicial </h1>
+     <h1> Loja </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
 
 
      <?php  include_once "footer.php"; ?>
-
-    
 </body>
+<?php echo voltar(); ?>
 
 </html>
