@@ -26,12 +26,12 @@ if(is_null($u) or is_null($s)){
     require 'user_login_form.php';
 }else{
 
-    $q = "select usuario,rm,tipo, from usuarios where nome='$u' limit 1";
+    $q = "select usuario,rm,tipo,senha from usuarios where usuario='$u' limit 1";
 
     $busca = $banco->query($q);
 
     if(!$busca){
-        echo erro('Falha ao acessar o banco de dados');
+        echo erro('me odeio');
     }
     else{
 if($busca->num_rows>0){
@@ -39,8 +39,8 @@ if($busca->num_rows>0){
     if(testarhash(enigma($s),$reg->senha)){
         echo sucesso('parabéns :D');
         $_SESSION['user']= $reg->usuario;
-        $_SESSION['nome']= $reg->nome;
         $_SESSION['tipo']= $reg->tipo;
+
     }else{
 echo erro('senha inválida >:(');
     }

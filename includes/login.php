@@ -67,7 +67,7 @@ function testarhash($senha,$hash){
 function enigma($senha){
     $c=null;
     for($pos=0; $pos < strlen($senha);$pos++){
-           $letra=ord($senha[$pos])+23.7;
+           $letra=ord($senha[$pos])+2;
            $c.=chr($letra);
     }
     return $c;
