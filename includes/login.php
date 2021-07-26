@@ -35,6 +35,7 @@ function enigma($senha){
     return $c;
 }
 /* OLWAGOWAGAWGAWGAW MARCY */
+/* Salve Salve Curitiba */
 
 
 
