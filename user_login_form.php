@@ -12,13 +12,13 @@
 <body>    
    
 <h1> Login yay </h1>
-<forms action='login_usuario.php' method='post'>
+<form action='login_usuario.php' method='post'>
 <table>
    <tr><td>Usuário:<td><input type='text' name='usuario' id='usuario' maxlength=10 size=12 >
    <tr><td>Senha:<td><input type='password' name='senha' id='senha' size=12  maxlength=12>
    <tr><td><input type='submit' value='enviar'>
    </table>
-   </forms>
+   </form>
    </body>
    </html>
 
