@@ -6,7 +6,7 @@ $banco = new mysqli(host,usuario,senha,banco)
 
 require_once "includes/funcao.php";
 
-$banco = new mysqli("localhost","root","","gincanabacana");
+$banco = new mysqli("localhost","root","","GB");
 
 if($banco->connect_errno){
     echo erro ("<p> Tem coisa muito errada :-( $banco->errno --> $banco->connect_error </p>");
