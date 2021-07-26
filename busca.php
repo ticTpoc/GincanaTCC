@@ -2,7 +2,7 @@
 
 /* busca */
 
-$busca = $banco->query("SELECT * FROM FILMES");
+$busca = $banco->query("SELECT * FROM USUARIOS");
 
 if(!$busca){
     echo "<p> pani no cistema: $banco->error </p>";

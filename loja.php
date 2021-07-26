@@ -19,7 +19,11 @@ require_once "includes/login.php";
      <h1> Loja </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
+<?php
 
+
+
+?>
 
      <?php  include_once "footer.php"; ?>
 </body>

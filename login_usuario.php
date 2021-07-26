@@ -26,7 +26,7 @@ if(is_null($u) or is_null($s)){
     require 'user_login_form.php';
 }else{
 
-    $q = "select usuario,nome,senha,tipo from usuarios where nome='$u' limit 1";
+    $q = "select usuario,rm,tipo, from usuarios where nome='$u' limit 1";
 
     $busca = $banco->query($q);
 
