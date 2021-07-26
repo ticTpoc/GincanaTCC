@@ -15,6 +15,44 @@ function logout(){
     unset($_SESSION['tipo']);
     
 }
+function logado(){
+    if(empty($_SESSION[''])){
+
+        return false;
+    }else{
+        return true;
+    }
+
+}
+
+function admin(){
+    $t = $_SESSION['tipo'] ?? null;
+    if(is_null($t)){
+        return false;
+    }
+    else{
+        if($t=='admin'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+function editor(){
+    $t = $_SESSION['tipo'] ?? null;
+    if(is_null($t)){
+        return false;
+    }
+    else{
+        if($t=='editor'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
 
 function gerarhash($senha){
 
@@ -35,6 +73,7 @@ function enigma($senha){
     return $c;
 }
 /* OLWAGOWAGAWGAWGAW MARCY */
+/* Salve Salve Curitiba */
 
 
 
