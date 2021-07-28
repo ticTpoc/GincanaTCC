@@ -39,13 +39,13 @@ function admin(){
     }
 }
 
-function editor(){
+function jogador(){
     $t = $_SESSION['tipo'] ?? null;
     if(is_null($t)){
         return false;
     }
     else{
-        if($t=='editor'){
+        if($t=='jogador'){
             return true;
         }else{
             return false;

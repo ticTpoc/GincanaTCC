@@ -16,14 +16,14 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
  <div id="corpo">
-     <h1> Loja </h1>
+     <h1> usuarios </h1>
      <h2></h2>   
      
 
      <?php include_once "header.php" ?>
      <table class="loja">
 <?php
-$q="select nome,img,preco from skins";
+$q="select usuario, rm, senha, tipo, coin, highscore from usuarios";
 $busca = $banco->query($q);
 if(!$busca){
     echo erro('a busca não deu certo :(');
@@ -33,9 +33,12 @@ if(!$busca){
     }else{
         while ($reg = $busca->fetch_object()){
            
-            echo  "<tr class ='loja'><td class ='loja'><p style='color:black;' id='secundario'>$reg->nome</p>";
-            echo  "<td class ='loja'><p style='color:black;' id='secundario'>$reg->img</p>";
-            echo  "<td class ='loja'><p style='color:black;' id='secundario'>$reg->preco</p>";
+            echo  "<tr class ='lista'><td class ='lista'><p style='color:black;' id='secundario'>$reg->usuario</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->rm</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->senha</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
            
             
             

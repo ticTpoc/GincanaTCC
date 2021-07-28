@@ -31,21 +31,21 @@ require_once "includes/login.php";
        }
        else{
            $usuario = $_POST['usuario'] ?? null;
-           $nome = $_POST['nome'] ?? null;
+           $rm = $_POST['rm'] ?? null;
            $tipo = $_POST['tipo'] ?? null;
            $senha1 = $_POST['senha1'] ?? null;
            $senha2 = $_POST['senha2'] ?? null;
 
            if($senha1 === $senha2){
               
-               if( empty($usuario) || empty($nome) || empty($tipo) || empty($senha1) || empty($senha2)){
+               if( empty($usuario) || empty($tipo) || empty($senha1) || empty($senha2)){
                  echo erro("preencha todos os campos");   
                }
                else{
                  $senha= gerarhash($senha1);
 
-                 $q="INSERT INTO USUARIOS(USUARIO,NOME,SENHA,TIPO) VALUES 
-                 ('$usuario','$nome','$senha','$tipo');";
+                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO) VALUES 
+                 ('$usuario','$rm','$senha','$tipo');";
                  if($banco->query($q)){
 
                     echo sucesso(" Usuário $usuario cadastrado com êxito");

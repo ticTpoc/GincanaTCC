@@ -18,11 +18,3 @@
    <tr><td>Senha:<td><input type='password' name='senha' id='senha' size=12  maxlength=12>
    <tr><td><input type='submit' value='enviar'>
 
-</table>
-
-
-</form>
-    
-</body>
-
-</html>
