@@ -38,10 +38,9 @@ require_once "includes/login.php";
 
            if($senha1 === $senha2){
               
-               if( empty($usuario) || empty($tipo) || empty($senha1) || empty($senha2)){
+               if( empty($usuario) || empty ($rm) || empty($tipo) || empty($senha1) || empty($senha2) ){
                  echo erro("preencha todos os campos");   
-               }
-               else{
+               }else{
                  $senha= gerarhash($senha1);
 
                  $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO) VALUES 

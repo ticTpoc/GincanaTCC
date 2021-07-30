@@ -15,6 +15,7 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
+
  <div id="corpo">
      <h1> Loja </h1>
      <h2></h2>   
