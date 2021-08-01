@@ -1,7 +1,4 @@
-
-<pre>
-
-</pre>
+<div class="cabeca">
 <?php
 
 echo "<header>";
@@ -17,11 +14,16 @@ if(empty($_SESSION['user'])){
     echo " <a href ='loja.php' > Loja </a>|";
     if(admin()){
      
+        echo "<a href='usuarios.php'> usuarios </a> |";
+        
         echo "<a href='novo_usuario.php'> novo usuário </a> |";
-        echo "<a href='novo_filme.php'> novo filme</a> |";
+        
+        echo "<a href='novo_form_skin.php'> add skin </a> |";
+      
     }
-    echo " <br><a href='logout_usuario.php'  style='text-align:left;'> Sair </a> ";
+    echo " <br><br><a href='logout_usuario.php'  style='text-align:left;'> Sair </a> ";
 }
 echo "</header>";
 
 ?>
+</div>

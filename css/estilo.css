@@ -10,3 +10,41 @@ div#corpo{
     background-color:rgb(171, 197, 178);
     box-shadow: 0px 12px 24px 0px;
 }
+table.loja{
+    width:100%;
+    text-align:left;
+    border-collapse:collapse;
+}
+
+tr.loja{
+    height:50px;
+
+}
+td.loja{
+    border: 1px solid rgb(73, 110, 72);
+    padding: 20px;
+  
+}
+td.lista{
+    border: 2px solid black;
+    padding: 15px;
+    background-color: blanchedalmond;
+}
+
+/*tr.loja:nth-child(even){
+    background-color: #69bb66;
+}
+*/
+td.loja:nth-child(1){
+    width:50px;
+}
+td.loja:nth-child(2){
+    text-align: center;
+}
+td.loja:nth-child(3){
+    width: 90px;
+}
+
+div.cabeca{
+    background-color: rgb(161, 250, 253);
+}
