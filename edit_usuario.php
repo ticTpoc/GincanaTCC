@@ -46,9 +46,9 @@ require_once "includes/login.php";
                 $novasenha=gerarhash($senha1);
     
                 $q="
-                UPDATE usuarios
-SET senha = '$novasenha'
-WHERE rm = '$rm';
+update usuarios
+set senha='$novasenha'
+where rm='$rm';
                 ";
                 $banco->query($q);
 
