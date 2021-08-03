@@ -33,7 +33,16 @@ td.lista{
 
 /*tr.loja:nth-child(even){
     background-color: #69bb66;
+
+
 }
+
+img.goblin:hover{
+
+    width:700px;
+    height:700px;
+}
+
 */
 td.loja:nth-child(1){
     width:50px;
@@ -48,3 +57,4 @@ td.loja:nth-child(3){
 div.cabeca{
     background-color: rgb(161, 250, 253);
 }
+

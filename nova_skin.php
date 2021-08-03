@@ -28,10 +28,12 @@ require_once "includes/login.php";
 
                if( empty($nome) || empty ($preco) || empty($img)){
                  echo erro("preencha todos os campos");   
+
                }elseif($preco>9999){
 echo erro("valor de preço alto demais");
 
                }else{
+                   
                  $q="INSERT INTO SKINS(NOME,PRECO,IMG) VALUES 
                  ('$nome','$preco','$img');";
                  if($banco->query($q)){
