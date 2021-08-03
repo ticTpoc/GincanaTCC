@@ -40,6 +40,7 @@ if($busca->num_rows>0){
         echo sucesso('parabéns :D');
         $_SESSION['user']= $reg->usuario;
         $_SESSION['tipo']= $reg->tipo;
+        $_SESSION['rm']= $reg->rm;
 
     }else{
 echo erro('senha inválida >:(');

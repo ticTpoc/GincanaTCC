@@ -12,9 +12,12 @@ if(empty($_SESSION['user'])){
 
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
     echo " <a href ='loja.php' > Loja </a>|";
+    echo " <a href ='inventario.php' > Inventário </a>|";
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
+
+        echo "<a href='skins.php'> skins </a> |";
         
         echo "<a href='novo_usuario.php'> novo usuário </a> |";
         
