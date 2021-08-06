@@ -32,7 +32,7 @@ $busca = $banco->query($q);
           $k="
           update usuarios
           set coin='$newcoin'
-          where rm='$rm';";
+          where rm='$rm'";
           $banco->query($k);
      
      

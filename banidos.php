@@ -17,14 +17,14 @@ require_once "includes/login.php";
 ?>  
 
  <div id="corpo">
-     <h1> usuarios </h1>
+     <h1> usuarios BANIDOS </h1>
      <h2></h2>   
      
 
      <?php include_once "header.php" ?>
      <table class="loja">
 <?php
-$q="select usuario, rm, senha, tipo, coin, estado, highscore from usuarios where estado='ativo' ";
+$q="select usuario, rm, senha, tipo, coin, estado, highscore from usuarios where estado='banido' ";
 $busca = $banco->query($q);
 if(!$busca){
     echo erro('a busca não deu certo :(');
@@ -49,7 +49,7 @@ if(!$busca){
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->estado</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'><a href='banir.php?rm=$reg->rm'><i class='material-icons'>delete_outline</i></a></p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'><a href='desbanir.php?rm=$reg->rm'><i class='material-icons'>keyboard_return</i></a></p>";
           
             
            

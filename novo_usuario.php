@@ -43,8 +43,8 @@ require_once "includes/login.php";
                }else{
                  $senha= gerarhash($senha1);
 
-                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN) VALUES 
-                 ('$usuario','$rm','$senha','$tipo',0);";
+                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO) VALUES 
+                 ('$usuario','$rm','$senha','$tipo',0,'ativo');";
                  if($banco->query($q)){
 
                     echo sucesso(" Usuário $usuario cadastrado com êxito");

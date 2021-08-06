@@ -16,12 +16,16 @@ if(empty($_SESSION['user'])){
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
+        
+        echo "<a href='banidos.php'> banidos </a> |";
 
         echo "<a href='skins.php'> skins </a> |";
         
         echo "<a href='novo_usuario.php'> novo usuário </a> |";
         
         echo "<a href='novo_form_skin.php'> add skin </a> |";
+
+       
       
     }
     echo " <br><br><a href='logout_usuario.php'  style='text-align:left;'> Sair </a> ";
