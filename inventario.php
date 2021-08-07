@@ -15,12 +15,7 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
-<?php
-     $rm = $_SESSION['rm'] ?? 0;
-$q="  select skins.id, skins.nome, skins.img,compras.usuarios_rm, usuarios.rm, usuarios.usuario from skins join compras on skins.id=compras.skins_id
-join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm";
-$busca = $banco->query($q); 
-  ?> 
+
 
 
 
@@ -30,6 +25,12 @@ $busca = $banco->query($q);
      <?php include_once "header.php" ?>
      <table>
      <?php
+
+$rm = $_SESSION['rm'] ?? 0;
+$q="select skins.id, skins.nome, skins.img,compras.usuarios_rm, usuarios.rm, usuarios.usuario from skins join compras on skins.id=compras.skins_id
+join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;";
+
+$busca = $banco->query($q); 
 
 if(!($busca)){
     echo erro('a busca não deu certo :(');
@@ -41,12 +42,12 @@ if(!($busca)){
         echo "<td class='lista'>imagem";
         
         while ($reg = $busca->fetch_object()){
+            
             $t=thumb($reg->img);
            
+          
             echo  "<tr class ='lista'><td class ='lista'><p style='color:black;' id='secundario'>$reg->nome</p>";
             echo  "<td class ='lista'><img src='$t' width='200px' height='200px'>";
-
-          
             
            
             

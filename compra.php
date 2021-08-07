@@ -14,16 +14,13 @@
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+require_once "includes/rm.php";
 ?>  
  <div id="corpo">
      <h1> Compra </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
-     <?php
-     $rm = $_SESSION['rm'] ?? 0;
-$q="select * from usuarios where $rm=rm";
-$busca = $banco->query($q); 
-?>
+     
   <?php
   $q="select rm,usuario,senha,coin from usuarios where $rm=rm";
   $busca=$banco->query($q);

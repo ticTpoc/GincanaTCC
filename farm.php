@@ -14,60 +14,64 @@
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+require_once "includes/rm.php";
 ?>  
-<?php 
-$rm = $_SESSION['rm'] ?? 0;
-$q="select * from usuarios where $rm=rm";
-$busca = $banco->query($q); 
+<script type='text/javascript'>
 
-?>
-<?php
-     
-     $coin = $_GET['coin'] ?? 0;;
-     
-     $q= "select rm,usuario, coin, highscore from usuarios where $rm=rm ";
-     $busca=$banco->query($q);
-     
-          $newcoin = $coin + 1;
-          $k="
-          update usuarios
-          set coin='$newcoin'
-          where rm='$rm'";
-          $banco->query($k);
-     
-     
-     ?>
- <div id="corpo">
-     <h1> Dungeon </h1>
-     <?php include_once "header.php" ?>
-     <table class="loja">
 
-<?php
 
-if(!$busca){
-    echo erro('a busca não deu certo :(');
-}else{
-    if($busca->num_rows==0){
-        echo aviso('nenhum registro foi encontrado :/');
-    }else{
-        $reg = $busca->fetch_object();
-    echo "<tr><td><a href='farm.php?coin=$reg->coin'><img class='goblin' src='imagens/goblin.png'  height='100px' width='100px' ></a>";
-    echo "<tr><td>$reg->coin";
-/*echo"<td><p><a href='usuarios.php?rm=$reg->rm'><i class='material-icons'>delete_outline</i></a></p>";*/
-            
-        
-    }
-    
+var coin = 0;
+
+
+function goblin() {
+    coin =parseInt( Math.random() * (10 - 0) + 0);
+  console.log(coin);
+  document.getElementsByTagName("h3")[0].firstChild.data = "Moedas: " + coin;
+  document.getElementById("goblin").style.display = "none";
+  
 }
-echo "<td>"
+function orc() {
+    coin2 =parseInt( Math.random() * (15 - 4) + 4);
+  console.log(coin2);
+  document.getElementsByTagName("h4")[0].firstChild.data = "Moedas: " + coin2;
+  document.getElementById("orc").style.display = "none";
+  
+}
+function dragao() {
+    coin3 =parseInt( Math.random() * (30 - 10) + 10);
+  console.log(coin3);
+  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin3;
+  document.getElementById("dragao").style.display = "none";
+ 
+}
+function loot(){
+var loot = coin + coin2 + coin3;
+    window.location.href="loot.php?coin=" + loot;
+}
+</script>
+ <div id="corpo">
+     <h1> Dungeon </h1><br><br>
+     <h3>moedas</h3>
+     <h4>moedas</h4>
+     <h5>moedas</h5>
+     <table class="loja">
+     <tr><td><a onclick="goblin()"><img  height='200px' width='200px' src='imagens/goblin.png' id='goblin' ></a><br><br>
+     <td><a onclick="orc()"><img height='200px' width='200px' src='imagens/orc.png' id='orc' ></a><br><br>
+     <tr><td><a onclick="dragao()"><img height='200px' width='200px' src='imagens/dragao.png' id='dragao' ></a><br><br>
+     <tr><td><button onclick="loot()" ><p>loot</p></button>
 
-?>
+
+
+      
+       
+
+
 </table>
 
 
      <?php  include_once "footer.php"; ?>
 
-<?php echo voltar(); ?>
+
 </div>
 </body>
 
