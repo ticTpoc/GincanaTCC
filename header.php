@@ -1,6 +1,7 @@
 <div class="cabeca">
 <?php
 
+
 echo "<header>";
 if(empty($_SESSION['user'])){
 
@@ -9,10 +10,18 @@ if(empty($_SESSION['user'])){
 
 }else{
     echo 'olá '. $_SESSION['nome'];
-
+    require_once "includes/bd.php";
+    require_once "includes/funcao.php";
+    require_once "includes/login.php";
+    
+    $rm = $_SESSION['rm'] ?? 0;
+    $q="select rm,usuario,coin from usuarios where $rm=rm";
+      $busca=$banco->query($q);
+    $reg = $busca->fetch_object();
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
+    echo "<a href='farm.php?coin=$reg->coin'> Dungeon uuu |</a><br>";
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
