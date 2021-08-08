@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,16 +18,34 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
  <div id="corpo">
-     <h1> Pagina Inicial </h1>
-     <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']." " . $_SESSION['user'];
-         
-         } ?></h2>   
-     <?php include_once "header.php" ?>
+    
      
+
+<?php
+
+$q='select * from usuarios';
+$busca = $banco->query($q);
+$rm = $_GET['rm'] ?? 0;
+$reg = $busca->fetch_object();
+
+
+    $k="
+    update usuarios
+    set estado='banido'
+    where rm='$rm'";
+    $banco->query($k);
+
+
+
+ echo voltar();
+?>
      <?php  include_once "footer.php"; ?>
 
     
 </body>
 
 </html>
+
+
+
+

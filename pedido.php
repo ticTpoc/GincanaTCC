@@ -87,8 +87,7 @@ if($rm==null){
  }
 
 
-     
-echo voltar();
+
  
 
 
