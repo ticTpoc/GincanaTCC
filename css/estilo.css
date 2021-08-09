@@ -2,7 +2,6 @@ body{
     background-color: rgb(82, 82, 82);
     font-family: Tahoma;
 }
-
 div#corpo{
     width:1000px;
     margin:auto;
@@ -30,6 +29,7 @@ td.lista{
     padding: 15px;
     background-color: blanchedalmond;
 }
+
 
 /*tr.loja:nth-child(even){
     background-color: #69bb66;
@@ -59,6 +59,12 @@ div.cabeca{
 }
 
 
+
+
+
+
+
+
 /* Estilizando o carrosel da dungeon */
 
 .carousel{
@@ -75,7 +81,7 @@ div.cabeca{
 }
 
 .carousel__track-container{
-    background-color:rgb(99, 99, 129);
+    
     position:relative;
     height: 100%;
   overflow:hidden;
@@ -141,3 +147,14 @@ width:100%;
 }
 
 .is-hidden {display:none;}
+
+.actions__nav{
+    background-color: rgb(141, 41, 23);
+    display:flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.actions_buttons{
+
+}

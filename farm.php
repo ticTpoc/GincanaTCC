@@ -18,8 +18,12 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 require_once "includes/rm.php";
 ?>  
-<script type='text/javascript'>
-var coin = 0;
+
+
+ <div id="corpo">
+   <script type="text/javascript">
+
+/*
 function goblin() {
     coin =parseInt( Math.random() * (10 - 0) + 0);
   console.log(coin);
@@ -44,9 +48,121 @@ var loot = coin + coin2 + coin3;
     var slideIndex = 1;
 showSlides(slideIndex);
 }
-</script>
+*/
 
- <div id="corpo">
+var vida = 5;
+
+
+
+function fugir(){
+
+const currentSlide= track.querySelector('.current-slide');
+ const nextSlide= currentSlide.nextElementSibling;
+const currentDot = dotsNav.querySelector('.current-slide');
+const nextDot= currentDot.nextElementSibling;
+const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+var z = slides.findIndex(slide=>slide === currentSlide);
+var x = document.getElementsByClassName("carousel__images")[z].id;
+document.getElementById("vida").innerHTML = "vida: "+ vida;
+
+console.log(vida);
+if(vida === 0 ){
+  morreu("você morreu, se mata");
+}
+
+
+
+hideShowArrows(slides, prevButton, nextButton, nextIndex);
+
+var chance = parseInt( Math.random() * (100 - 0) + 0);
+
+if(chance>50){
+moveToSlide(track, currentSlide, nextSlide);
+ updateDots(currentDot, nextDot);
+ return;
+}else{
+   
+
+  vida--;
+  return vida;
+}
+
+}
+
+
+function atacar(){
+  const currentSlide= track.querySelector('.current-slide');
+   const nextSlide= currentSlide.nextElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const nextDot= currentDot.nextElementSibling;
+  const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+  var z = slides.findIndex(slide=>slide === currentSlide);
+  var x = document.getElementsByClassName("carousel__images")[z].id;
+ 
+  console.log(vida);
+  document.getElementById("vida").innerHTML = "vida: "+ vida;
+  hideShowArrows(slides, prevButton, nextButton, nextIndex);
+
+  var chance = parseInt( Math.random() * (100 - 0) + 0);
+
+  if(vida === 0 ){
+  morreu("você morreu, se mata");
+}
+
+
+  switch(x) {
+  case 'orc':
+   if(chance<70){
+     console.log(chance);
+    moveToSlide(track, currentSlide, nextSlide);
+   updateDots(currentDot, nextDot);
+
+   }else{
+    
+    vida--;
+    return vida;
+   }
+    break;
+  case 'goblin':
+    if(chance<90){
+      console.log(chance);
+    moveToSlide(track, currentSlide, nextSlide);
+   updateDots(currentDot, nextDot);
+   }else{
+    
+    vida--;
+    return vida;
+   }
+    break;
+    case 'dragao':
+      if(chance<20){
+        console.log(chance);
+    moveToSlide(track, currentSlide, nextSlide);
+   updateDots(currentDot, nextDot);
+   }else{
+    
+    vida--;
+    return vida;
+   }
+    break;  
+    default:
+    alert('erro');
+  
+  
+  
+}  
+}
+
+
+
+
+function morreu(mensagem){
+  window.location.href="morto.php?mensagem="+mensagem;
+}
+
+
+   </script>
+   <!--
    <div>
      <h1> Dungeon </h1><br><br>
      <h3>moedas</h3>
@@ -59,30 +175,34 @@ showSlides(slideIndex);
      <tr><td><a onclick="dragao()"><img height='200px' width='200px' src='imagens/dragao.png' id='dragao' ></a><br><br>
      <tr><td><button onclick="loot()" ><p>loot</p></button>
 </div>
+-->
 <br>
 <br>
-</table>
+<div id="vida">
+ <p id="vida"></p>
+</div>
 <div class='carousel'>
   <button class="carousel__button carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
-    <ul class="carousel__track">
-      <li class="carousel__slide current-slide">
-      <a><img class ='carousel__images ' src='imagens/goblin.png'></a>
+    <ul class="carousel__track" id="parente">
+    <li class="carousel__slide current-slide">
+      <a><img id='goblin' class ='carousel__images' src='imagens/goblin.png'></a>
       </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/orc.png'></a>
-      </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
-      </li>
+      
+
+     
+     
     </ul>
     </div>
   <button class="carousel__button carousel__button--right"><img src='imagens/right.png' alt=''></button>
-
-<div class="carousel__nav">
+<div class='actions__nav'>
+  <button class='actions__button' onclick="atacar()"><a >ATACAR</a></button>
+  <button class='actions__button' onclick="fugir()"><a><img src='imagens/fuga.png'></a></button>
+</div>
+<div class="carousel__nav" id='parente2'>
 <button class="carousel__indicator current-slide"></button>
-<button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
+
+
 </div>
 
 
@@ -93,7 +213,169 @@ showSlides(slideIndex);
 <?php  include_once "footer.php"; ?>
 </div>
 <script type="text/javascript" src='js/carousel.js'></script>
+<script type='text/javascript' >
+
+
+
+
+function strToElem(god,imagem){
+    var temp = '<li class="carousel__slide"><a><img id='+god+' class="carousel__images" src='+imagem+'></a></li>';
+    var a = document.createElement("p");
+    a.innerHTML = temp;
+    return a.childNodes[0];
+  }
+
+  function addLista(god,imagem){
+    var parent = document.getElementById('parente');
+  var elem = strToElem(god,'imagens/'+imagem);
+  parent.appendChild(elem);
+  }
+  
+  function strToElem2(){
+    var temp2 = '<button class="carousel__indicator"></button>';
+    var a2 = document.createElement("p");
+    a2.innerHTML = temp2;
+    return a2.childNodes[0];
+  }
+  function addButton(imagem){
+    var parent2 = document.getElementById('parente2');
+  var elem2 = strToElem2();
+  parent2.appendChild(elem2);
+  }
+
+
+function addGOD(){
+
+
+  var vezes = parseInt( Math.random() * (5 - 2) + 2)
+for (i=0; i <= vezes - 1; i++ ){
+  
+
+  var selecao = parseInt( Math.random() * (100 - 0) + 0);
+
+  if(selecao>=0 && selecao<=33){
+    addLista('goblin','goblin.png');
+
+  addButton();
+  }else if(selecao>=34 && selecao<=66){
+
+    addLista('orc','orc.png');
+  addButton();
+  }else{
+    
+    addLista('dragao','dragao.png');
+  addButton();
+  }
+
+}
+
+}
+addGOD();
+
+
+  
+
+
+const track = document.querySelector('.carousel__track');
+const slides = Array.from(track.children);
+const nextButton= document.querySelector('.carousel__button--right');
+const prevButton= document.querySelector('.carousel__button--left');
+const dotsNav = document.querySelector('.carousel__nav');
+const dots = Array.from(dotsNav.children);
+const slideSize = slides[0].getBoundingClientRect();
+const slideWidth = slideSize.width;
+
+const setSlidePosition = (slide, index) =>{
+    slide.style.left = slideWidth * index + 'px';
+}
+/* as bolinhas mostrarem a posição */
+const updateDots = (currentDot, targetDot) =>{
+    currentDot.classList.remove('current-slide');
+targetDot.classList.add('current-slide');
+
+
+
+}
+/* apagar as setas dos cantos */
+
+const hideShowArrows = (slides, prevButton, nextButton, targetIndex) =>{
+    if(targetIndex === 0){
+        prevButton.classList.add('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    
+    }else if (targetIndex === slides.length-1 ){
+        prevButton.classList.remove('id-hidden');
+        nextButton.classList.add('is-hidden');
+    } else{
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.remove('is-hidden')
+    }
+
+   
+}
+/* posição dos slides */
+slides.forEach(setSlidePosition);
+/* mover os slides*/
+const moveToSlide = (track, currentSlide, targetSlide) =>{
+    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+    
+   
+}
+
+
+
+/* mexer pra frente */
+nextButton.addEventListener('click', e =>{
+   const currentSlide= track.querySelector('.current-slide');
+   const nextSlide= currentSlide.nextElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const nextDot= currentDot.nextElementSibling;
+  const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+
+  moveToSlide(track, currentSlide, nextSlide);
+   updateDots(currentDot, nextDot);
+   hideShowArrows(slides, prevButton, nextButton, nextIndex);
+
+   
+
+})
+/* mexer pra trás */
+prevButton.addEventListener('click', e =>{
+    const currentSlide= track.querySelector('.current-slide');
+   const prevSlide= currentSlide.previousElementSibling;
+   const currentDot = dotsNav.querySelector('.current-slide');
+   const prevDot= currentDot.previousElementSibling;
+   const prevIndex = slides.findIndex(slide=>slide === prevSlide);
+
+   moveToSlide(track, currentSlide, prevSlide);
+   updateDots(currentDot, prevDot);
+   hideShowArrows(slides, prevButton, nextButton, prevIndex);
+})
+
+
+
+</script>
 </body>
 
+<!--
 
+
+      <li class="carousel__slide">
+      <a><img class ='carousel__images '  src='imagens/orc.png'></a>
+      </li>
+      <li class="carousel__slide">
+      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
+      </li>
+      <li class="carousel__slide">
+      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
+      </li>
+
+
+      <button class="carousel__indicator"></button>
+<button class="carousel__indicator"></button>
+<button class="carousel__indicator"></button>
+<button class="carousel__indicator"></button>
+ -->
 </html>
