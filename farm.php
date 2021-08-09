@@ -22,7 +22,7 @@ require_once "includes/rm.php";
 
  <div id="corpo">
    <script type="text/javascript">
-var coin = 0;
+
 /*
 function goblin() {
     coin =parseInt( Math.random() * (10 - 0) + 0);
@@ -50,9 +50,45 @@ showSlides(slideIndex);
 }
 */
 
+var vida = 5;
 
- 
-var vida = 0;
+
+
+function fugir(){
+
+const currentSlide= track.querySelector('.current-slide');
+ const nextSlide= currentSlide.nextElementSibling;
+const currentDot = dotsNav.querySelector('.current-slide');
+const nextDot= currentDot.nextElementSibling;
+const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+var z = slides.findIndex(slide=>slide === currentSlide);
+var x = document.getElementsByClassName("carousel__images")[z].id;
+document.getElementById("vida").innerHTML = "vida: "+ vida;
+
+console.log(vida);
+if(vida === 0 ){
+  morreu("você morreu, se mata");
+}
+
+
+
+hideShowArrows(slides, prevButton, nextButton, nextIndex);
+
+var chance = parseInt( Math.random() * (100 - 0) + 0);
+
+if(chance>50){
+moveToSlide(track, currentSlide, nextSlide);
+ updateDots(currentDot, nextDot);
+ return;
+}else{
+   
+
+  vida--;
+  return vida;
+}
+
+}
+
 
 function atacar(){
   const currentSlide= track.querySelector('.current-slide');
@@ -60,28 +96,32 @@ function atacar(){
   const currentDot = dotsNav.querySelector('.current-slide');
   const nextDot= currentDot.nextElementSibling;
   const nextIndex = slides.findIndex(slide=>slide === nextSlide);
-
   var z = slides.findIndex(slide=>slide === currentSlide);
   var x = document.getElementsByClassName("carousel__images")[z].id;
-
-console.log(x);
-console.log(z);
-
+ 
+  console.log(vida);
+  document.getElementById("vida").innerHTML = "vida: "+ vida;
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
 
   var chance = parseInt( Math.random() * (100 - 0) + 0);
 
+  if(vida === 0 ){
+  morreu("você morreu, se mata");
+}
+
+
   switch(x) {
   case 'orc':
-   if(chance<50){
+   if(chance<70){
      console.log(chance);
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
+
    }else{
-    window.location.href="morto.php?chance="+chance;
+    
+    vida--;
+    return vida;
    }
-
-
     break;
   case 'goblin':
     if(chance<90){
@@ -89,7 +129,9 @@ console.log(z);
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
    }else{
-    window.location.href="morto.php?chance="+chance;
+    
+    vida--;
+    return vida;
    }
     break;
     case 'dragao':
@@ -98,17 +140,27 @@ console.log(z);
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
    }else{
-    window.location.href="morto.php?chance="+chance;
+    
+    vida--;
+    return vida;
    }
     break;  
     default:
     alert('erro');
   
   
+  
+}  
 }
-   
-   
+
+
+
+
+function morreu(mensagem){
+  window.location.href="morto.php?mensagem="+mensagem;
 }
+
+
    </script>
    <!--
    <div>
@@ -126,7 +178,9 @@ console.log(z);
 -->
 <br>
 <br>
-</table>
+<div id="vida">
+ <p id="vida"></p>
+</div>
 <div class='carousel'>
   <button class="carousel__button carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
@@ -143,7 +197,7 @@ console.log(z);
   <button class="carousel__button carousel__button--right"><img src='imagens/right.png' alt=''></button>
 <div class='actions__nav'>
   <button class='actions__button' onclick="atacar()"><a >ATACAR</a></button>
-  <button class='actions__button'><a href='index.php'><img src='imagens/fuga.png'></a></button>
+  <button class='actions__button' onclick="fugir()"><a><img src='imagens/fuga.png'></a></button>
 </div>
 <div class="carousel__nav" id='parente2'>
 <button class="carousel__indicator current-slide"></button>
@@ -160,6 +214,9 @@ console.log(z);
 </div>
 <script type="text/javascript" src='js/carousel.js'></script>
 <script type='text/javascript' >
+
+
+
 
 function strToElem(god,imagem){
     var temp = '<li class="carousel__slide"><a><img id='+god+' class="carousel__images" src='+imagem+'></a></li>';
