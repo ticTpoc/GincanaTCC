@@ -141,3 +141,14 @@ width:100%;
 }
 
 .is-hidden {display:none;}
+
+.actions__nav{
+    background-color: rgb(141, 41, 23);
+    display:flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.actions_buttons{
+
+}
