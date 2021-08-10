@@ -1,6 +1,11 @@
+@font-face {
+    font-family: Pixelado;
+    src: url(poxel-font.ttf);
+  }
+
 body{
     background-color: rgb(82, 82, 82);
-    font-family: Tahoma;
+    font-family: 'Times New Roman', Times, serif;
 }
 div#corpo{
     width:1000px;

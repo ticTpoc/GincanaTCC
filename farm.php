@@ -21,6 +21,7 @@ require_once "includes/rm.php";
 
 
  <div id="corpo">
+
    <script type="text/javascript">
 
 /*
@@ -50,7 +51,15 @@ showSlides(slideIndex);
 }
 */
 
-var vida = 5;
+
+var vida = 35;
+var nivel = 1;
+var coin = 0;
+var cliques = 1;
+
+
+
+ 
 
 
 
@@ -65,7 +74,7 @@ var z = slides.findIndex(slide=>slide === currentSlide);
 var x = document.getElementsByClassName("carousel__images")[z].id;
 document.getElementById("vida").innerHTML = "vida: "+ vida;
 
-console.log(vida);
+
 if(vida === 0 ){
   morreu("você morreu, se mata");
 }
@@ -77,14 +86,14 @@ hideShowArrows(slides, prevButton, nextButton, nextIndex);
 var chance = parseInt( Math.random() * (100 - 0) + 0);
 
 if(chance>50){
+ 
 moveToSlide(track, currentSlide, nextSlide);
  updateDots(currentDot, nextDot);
+ cliques++;
  return;
 }else{
    
-
-  vida--;
-  return vida;
+  morreu("você morreu, se mata");
 }
 
 }
@@ -98,8 +107,10 @@ function atacar(){
   const nextIndex = slides.findIndex(slide=>slide === nextSlide);
   var z = slides.findIndex(slide=>slide === currentSlide);
   var x = document.getElementsByClassName("carousel__images")[z].id;
- 
-  console.log(vida);
+  
+  console.log(cliques);
+  console.log(i);
+
   document.getElementById("vida").innerHTML = "vida: "+ vida;
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
 
@@ -108,15 +119,19 @@ function atacar(){
   if(vida === 0 ){
   morreu("você morreu, se mata");
 }
+if(cliques==i){
+  ganhar();
+}
 
 
   switch(x) {
   case 'orc':
    if(chance<70){
-     console.log(chance);
+    
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
-
+   cliques++;
+ return;
    }else{
     
     vida--;
@@ -125,9 +140,12 @@ function atacar(){
     break;
   case 'goblin':
     if(chance<90){
-      console.log(chance);
+      
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
+
+   cliques++;
+ return;
    }else{
     
     vida--;
@@ -136,9 +154,11 @@ function atacar(){
     break;
     case 'dragao':
       if(chance<20){
-        console.log(chance);
+        
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
+   cliques++;
+ return;
    }else{
     
     vida--;
@@ -158,6 +178,9 @@ function atacar(){
 
 function morreu(mensagem){
   window.location.href="morto.php?mensagem="+mensagem;
+}
+function ganhar(){
+  window.location.href="farm.php?cliques="+cliques+i;
 }
 
 
@@ -182,7 +205,7 @@ function morreu(mensagem){
  <p id="vida"></p>
 </div>
 <div class='carousel'>
-  <button class="carousel__button carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
+  <button class=" carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
     <ul class="carousel__track" id="parente">
     <li class="carousel__slide current-slide">
@@ -194,7 +217,7 @@ function morreu(mensagem){
      
     </ul>
     </div>
-  <button class="carousel__button carousel__button--right"><img src='imagens/right.png' alt=''></button>
+  <button class=" carousel__button--right"><img src='imagens/right.png' alt=''></button>
 <div class='actions__nav'>
   <button class='actions__button' onclick="atacar()"><a >ATACAR</a></button>
   <button class='actions__button' onclick="fugir()"><a><img src='imagens/fuga.png'></a></button>
@@ -213,7 +236,11 @@ function morreu(mensagem){
 <?php  include_once "footer.php"; ?>
 </div>
 <script type="text/javascript" src='js/carousel.js'></script>
-<script type='text/javascript' >
+
+</body>
+<script>
+
+
 
 
 
@@ -243,11 +270,13 @@ function strToElem(god,imagem){
   parent2.appendChild(elem2);
   }
 
+  
 
 function addGOD(){
 
 
-  var vezes = parseInt( Math.random() * (5 - 2) + 2)
+  var vezes = parseInt( Math.random() * (5 - 2) + 2);
+  
 for (i=0; i <= vezes - 1; i++ ){
   
 
@@ -269,11 +298,14 @@ for (i=0; i <= vezes - 1; i++ ){
 
 }
 
+return i + 1;
 }
+
+
+
 addGOD();
-
-
   
+
 
 
 const track = document.querySelector('.carousel__track');
@@ -357,8 +389,6 @@ prevButton.addEventListener('click', e =>{
 
 
 </script>
-</body>
-
 <!--
 
 
