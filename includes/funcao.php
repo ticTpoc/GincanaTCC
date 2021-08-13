@@ -33,6 +33,52 @@ function erro($m){
     return $resp;
 }
 
+function algoritmo($rigor){
+
+    $qtdmobs = 9;
+    //itens raros sempre nos extremos do array
+    $mobs = Array('unicornio', 
+                    'dragao',
+                    'ogro',
+                    'anao',
+                    'goblin',
+                    'elfo',
+                    'orc',
+                    'poseidon',
+                    'marcella'
+                );
+                
+    //armazena a quantidade sorteada de cada item
+    $numeros = array();
+    //controla o rigor de sorteio. quanto maior o numero, mais raros se tornam os itens das extremidades
+    
+    //total de premios que serao sorteados
+    $totalmobs = 1;
+    //zera o vetor de quantidade para garantir que nao tenha nada.
+    for($i = 0; $i < $qtdmobs; $i++){
+        $numeros[$i] = 0;
+    }
+    //inicia o sorteio 
+    for($i = 0; $i < $totalmobs; $i++){
+        //variavel que armazenará qual premio será sorteado
+        $n = 0;
+        //estrutura de repeticao que fará o controle da raridade dos extremos do array de premios
+        for($j = 0; $j < $rigor; $j++){
+            $n += mt_rand(0 , ($qtdmobs-1) ) / $rigor;
+        }
+
+        $numeros[ $n ]++;
+    }
+
+    $key = array_search(1, $numeros); 
+    echo $key;
+    echo "<br>";
+    echo $mobs[$key];
+    echo "<br>";
+    echo "<br>";
+    
+}
+
 
 
 ?>

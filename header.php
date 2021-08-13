@@ -5,6 +5,7 @@
 echo "<header>";
 if(empty($_SESSION['user'])){
 
+    echo "<a href='novo_usuario.php'> Cadastro </a> ";
     echo "<a href='login_usuario.php' ><p style='font-size:20px;'> Login </p></a>";
     echo "<a href='loja.php'> loja </a>";
 
@@ -19,9 +20,11 @@ if(empty($_SESSION['user'])){
       $busca=$banco->query($q);
     $reg = $busca->fetch_object();
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
+    
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
     echo " <a href ='jogos.php' > Jogos </a>|";
+    
     
     if(admin()){
      
@@ -31,7 +34,7 @@ if(empty($_SESSION['user'])){
 
         echo "<a href='skins.php'> skins </a> |";
         
-        echo "<a href='novo_usuario.php'> novo usuário </a> |";
+       
         
         echo "<a href='novo_form_skin.php'> add skin </a> |";
 

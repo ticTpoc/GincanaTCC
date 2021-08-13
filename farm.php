@@ -22,37 +22,13 @@ require_once "includes/rm.php";
 
  <div id="corpo">
 
+
+
+<script type="text/javascript" src="js/funcao.js">
+</script>
    <script type="text/javascript">
 
-/*
-function goblin() {
-    coin =parseInt( Math.random() * (10 - 0) + 0);
-  console.log(coin);
-  document.getElementsByTagName("h3")[0].firstChild.data = "Moedas: " + coin;
-  document.getElementById("goblin").style.display = "none";
-}
-function orc() {
-    coin2 =parseInt( Math.random() * (15 - 4) + 4);
-  console.log(coin2);
-  document.getElementsByTagName("h4")[0].firstChild.data = "Moedas: " + coin2;
-  document.getElementById("orc").style.display = "none";
-}
-function dragao() {
-    coin3 =parseInt( Math.random() * (30 - 10) + 10);
-  console.log(coin3);
-  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin3;
-  document.getElementById("dragao").style.display = "none";
-}
-function loot(){
-var loot = coin + coin2 + coin3;
-    window.location.href="loot.php?coin=" + loot;
-    var slideIndex = 1;
-showSlides(slideIndex);
-}
-*/
-
-
-var vida = 35;
+var vida = 5;
 var nivel = 1;
 var coin = 0;
 var cliques = 1;
@@ -78,7 +54,10 @@ document.getElementById("vida").innerHTML = "vida: "+ vida;
 if(vida === 0 ){
   morreu("você morreu, se mata");
 }
-
+if(cliques==i+1){
+  ganhar();
+  return;
+          }
 
 
 hideShowArrows(slides, prevButton, nextButton, nextIndex);
@@ -108,8 +87,6 @@ function atacar(){
   var z = slides.findIndex(slide=>slide === currentSlide);
   var x = document.getElementsByClassName("carousel__images")[z].id;
   
-  console.log(cliques);
-  console.log(i);
 
   document.getElementById("vida").innerHTML = "vida: "+ vida;
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
@@ -117,20 +94,29 @@ function atacar(){
   var chance = parseInt( Math.random() * (100 - 0) + 0);
 
   if(vida === 0 ){
-  morreu("você morreu, se mata");
+  morreu("você morreu, se mata");s
 }
-if(cliques==i){
-  ganhar();
-}
+
 
 
   switch(x) {
   case 'orc':
    if(chance<70){
-    
+    if(cliques==i+1){
+  ganhar();
+  return;
+          }
+    console.log(chance);
+    coin =parseInt( Math.random() * (15 - 4) + 4) + coin;
+  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
+
+
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
+   
    cliques++;
+
+   
  return;
    }else{
     
@@ -140,10 +126,18 @@ if(cliques==i){
     break;
   case 'goblin':
     if(chance<90){
+      if(cliques==i+1){
+  ganhar();
+  return;
+          }
+      console.log(chance);
+      coin =parseInt( Math.random() * (5 - 0) + 0) + coin;
+  
+  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
       
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
-
+  
    cliques++;
  return;
    }else{
@@ -154,6 +148,14 @@ if(cliques==i){
     break;
     case 'dragao':
       if(chance<20){
+        if(cliques==i+1){
+  ganhar();
+  return;
+          }
+        console.log(chance);
+        coin =parseInt( Math.random() * (30 - 10) + 10) + coin;
+ 
+  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
         
     moveToSlide(track, currentSlide, nextSlide);
    updateDots(currentDot, nextDot);
@@ -171,39 +173,39 @@ if(cliques==i){
   
   
 }  
+
+
 }
 
-
+function loot(){
+  window.location.href="loot.php?coin="+coin;
+}
 
 
 function morreu(mensagem){
   window.location.href="morto.php?mensagem="+mensagem;
 }
 function ganhar(){
-  window.location.href="farm.php?cliques="+cliques+i;
+ 
+
+  const listItem = document.querySelector("button#atacar");
+  const newItem = document.createElement('button');
+newItem.innerHTML = '<button class="actions__button" id="atacar" onclick="loot()"><a >LOOT</a></button>';
+listItem.parentNode.replaceChild(newItem, listItem);
 }
 
 
    </script>
-   <!--
-   <div>
-     <h1> Dungeon </h1><br><br>
-     <h3>moedas</h3>
-    
-     <h4>moedas</h4>
-     <h5>moedas</h5>
-     <table class="loja">
-     <tr><td><a onclick="goblin()"><img  height='200px' width='200px' src='imagens/goblin.png' id='goblin' ></a><br><br>
-     <td><a onclick="orc()"><img height='200px' width='200px' src='imagens/orc.png' id='orc' ></a><br><br>
-     <tr><td><a onclick="dragao()"><img height='200px' width='200px' src='imagens/dragao.png' id='dragao' ></a><br><br>
-     <tr><td><button onclick="loot()" ><p>loot</p></button>
-</div>
--->
+  
 <br>
 <br>
 <div id="vida">
  <p id="vida"></p>
 </div>
+
+<h5>
+  moedas
+</h5>
 <div class='carousel'>
   <button class=" carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
@@ -219,7 +221,7 @@ function ganhar(){
     </div>
   <button class=" carousel__button--right"><img src='imagens/right.png' alt=''></button>
 <div class='actions__nav'>
-  <button class='actions__button' onclick="atacar()"><a >ATACAR</a></button>
+  <button class='actions__button' id="atacar" onclick="atacar()"><a >ATACAR</a></button>
   <button class='actions__button' onclick="fugir()"><a><img src='imagens/fuga.png'></a></button>
 </div>
 <div class="carousel__nav" id='parente2'>
@@ -297,8 +299,9 @@ for (i=0; i <= vezes - 1; i++ ){
   }
 
 }
-
+console.log(i+1);
 return i + 1;
+
 }
 
 
@@ -326,24 +329,25 @@ const updateDots = (currentDot, targetDot) =>{
 targetDot.classList.add('current-slide');
 
 
+const Dolly = null;
 
 }
 /* apagar as setas dos cantos */
 
 const hideShowArrows = (slides, prevButton, nextButton, targetIndex) =>{
     if(targetIndex === 0){
-        prevButton.classList.add('is-hidden');
+       
         nextButton.classList.remove('is-hidden');
     
     }else if (targetIndex === slides.length-1 ){
-        prevButton.classList.remove('id-hidden');
+       
         nextButton.classList.add('is-hidden');
     } else{
-        prevButton.classList.remove('is-hidden');
+       
         nextButton.classList.remove('is-hidden')
     }
 
-   
+    nextButton.classList.remove('is-hidden')
 }
 /* posição dos slides */
 slides.forEach(setSlidePosition);
@@ -389,23 +393,5 @@ prevButton.addEventListener('click', e =>{
 
 
 </script>
-<!--
 
-
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/orc.png'></a>
-      </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
-      </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
-      </li>
-
-
-      <button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
- -->
 </html>

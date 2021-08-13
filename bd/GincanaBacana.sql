@@ -3,6 +3,15 @@ USE GB;
 
 /* o comando sagrado: DROP DATABASE GB; *//* o comando sagrado: DROP DATABASE GB; */
 
+create table salas(
+id int(2) not null primary key auto_increment,
+apelido varchar(8),
+cor varchar(20) not null,
+corhex char(7) not null,
+corrgb char(17) not null,
+nome varchar(30) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table usuarios(
 usuario varchar(20) not null,
 rm int(5) not null primary key,
@@ -10,11 +19,13 @@ senha Varchar(70) not null,
 highscore int(10),
 tipo char(10) not null,
 estado char(10),
-coin int(5)
-
+coin int(5) not null,
+salas_id int(2) not null,
+nivel int not null,
+foreign key(salas_id) references salas(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-Create table skins(
+create table skins(
 nome varchar(30) not null,
 preco int(4) not null,
 img varchar(30) not null,
@@ -22,24 +33,38 @@ id Int(5) not null auto_increment primary key
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table produtos(
-cod int(10) not null primary key auto_increment,
-skin_id int(5) not null,
-foreign key(skin_id) references skins(id) 
+create table itens(
+id int(5) not null primary key auto_increment,
+jogo varchar(20) not null,
+nome varchar(30) not null,
+img varchar(45) not null,
+funcao text,
+valor int(3)
 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 /* drop table compras; */ 
 create table compras(
 skins_id int(5) not null,
 usuarios_rm int(6) not null,
+itens_id int(5) not null,
 foreign key(skins_id) references skins(id),
+foreign key(itens_id) references itens(id),
 foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado) values
-('3441','William','0','99','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo');
+insert into salas(nome,apelido, corhex, cor, corrgb) values
+('informática para internet','Infonet', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Mecatrônica','Meca', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Administração','Adm', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Desenvolvimento de sistemas','Ds', '#00BFFF', 'azul', 'rgb(0,191,255)');
+
+insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel) values
+('3441','William','0','99','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1);
 
 
 
@@ -48,7 +73,9 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado) values
 select * from usuarios;
 select * from skins;
 select * from compras;
-select * from produtos;
+select * from salas;
+select * from itens;
+
 
 
 

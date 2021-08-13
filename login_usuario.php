@@ -18,7 +18,7 @@ require_once "includes/login.php";
  <div id="corpo">
  <?php
  
- $u = $_POST['usuario'] ?? null;
+ $u = $_POST['rm'] ?? null;
 $s= $_POST['senha'] ?? null;
 
 if(is_null($u) or is_null($s)){
@@ -26,7 +26,7 @@ if(is_null($u) or is_null($s)){
     require 'user_login_form.php';
 }else{
 
-    $q = "select usuario,rm,tipo,senha from usuarios where usuario='$u' limit 1";
+    $q = "select usuario,rm,tipo,senha from usuarios where rm='$u' limit 1";
 
     $busca = $banco->query($q);
 
