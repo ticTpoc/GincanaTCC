@@ -23,7 +23,7 @@ require_once "includes/rm.php";
  <div id="corpo">
 
 
-
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/funcao.js">
 </script>
    <script type="text/javascript">
@@ -35,7 +35,85 @@ var cliques = 1;
 
 
 
- 
+function algoritmo(){
+
+/* quantidade de mobs, deve corresponder ao array mobs */
+var qtdmobs = 9;
+
+/* todos os mobs possiveis */
+var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+
+/* algoritmo que seleciona numeros aleatórios */
+var selecao = Math.round((parseInt((Math.random()*10))+parseInt((Math.random()*10)))/2);
+
+
+/* caso a seleção seja igual a quantidade de mobs, pois o array conta a partir do 0 */
+if(selecao===qtdmobs){
+    selecao=qtdmobs-1;
+}
+/* adiciona a seleção na viariavel mob, a partir de mobs */
+var mob = mobs[selecao];
+
+/* caso de erro */
+if(mob === null){
+    alert("erro no mob");
+}
+/*só pra mostrar + extras */
+return mob;
+}
+
+
+     function mobatacar(inimigo){
+
+        var mob = new FormData();
+        mob.append('mob', inimigo);
+
+        $.ajax({
+            url:'script.php',
+            method: 'post',
+            data: mob,
+            processData: false,
+            contentType:false,
+            success: function(resposta){
+
+                     var tmp = resposta.split(",");
+                     var mincoin = tmp[0];
+                     var maxcoin = tmp[1];
+                     var dano = tmp[2];
+                     var chance = tmp[3];
+                     var dado = parseInt( Math.random() * (100 - 0) + 0);
+                     console.log(dado);
+  const currentSlide= track.querySelector('.current-slide');
+   const nextSlide= currentSlide.nextElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const nextDot= currentDot.nextElementSibling;
+  const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+
+                     if(dado>chance){
+
+                        if(cliques==i+1){
+                         ganhar();
+                         return;
+                                   }
+                        
+                     coin =parseInt( Math.random() * (maxcoin - mincoin) + mincoin) + coin;
+                    document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
+
+                     moveToSlide(track, currentSlide, nextSlide);
+                      updateDots(currentDot, nextDot);
+                      
+                    cliques++;
+                     }else{
+                        vida--;
+                        return vida;
+                     }      
+                     
+                 }
+        })
+
+       
+     }
 
 
 
@@ -91,88 +169,14 @@ function atacar(){
   document.getElementById("vida").innerHTML = "vida: "+ vida;
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
 
-  var chance = parseInt( Math.random() * (100 - 0) + 0);
+ 
 
   if(vida === 0 ){
   morreu("você morreu, se mata");s
 }
 
 
-
-  switch(x) {
-  case 'orc':
-   if(chance<70){
-    if(cliques==i+1){
-  ganhar();
-  return;
-          }
-    console.log(chance);
-    coin =parseInt( Math.random() * (15 - 4) + 4) + coin;
-  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
-
-
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
-   
-   cliques++;
-
-   
- return;
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;
-  case 'goblin':
-    if(chance<90){
-      if(cliques==i+1){
-  ganhar();
-  return;
-          }
-      console.log(chance);
-      coin =parseInt( Math.random() * (5 - 0) + 0) + coin;
-  
-  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
-      
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
-  
-   cliques++;
- return;
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;
-    case 'dragao':
-      if(chance<20){
-        if(cliques==i+1){
-  ganhar();
-  return;
-          }
-        console.log(chance);
-        coin =parseInt( Math.random() * (30 - 10) + 10) + coin;
- 
-  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
-        
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
-   cliques++;
- return;
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;  
-    default:
-    alert('erro');
-  
-  
-  
-}  
+mobatacar(x);
 
 
 }
@@ -242,7 +246,33 @@ listItem.parentNode.replaceChild(newItem, listItem);
 </body>
 <script>
 
+function algoritmo(){
 
+/* quantidade de mobs, deve corresponder ao array mobs */
+var qtdmobs = 9;
+
+/* todos os mobs possiveis */
+var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+
+/* algoritmo que seleciona numeros aleatórios */
+var selecao = Math.round((parseInt((Math.random()*10))+parseInt((Math.random()*10)))/2);
+
+
+/* caso a seleção seja igual a quantidade de mobs, pois o array conta a partir do 0 */
+if(selecao===qtdmobs){
+    selecao=qtdmobs-1;
+}
+/* adiciona a seleção na viariavel mob, a partir de mobs */
+var mob = mobs[selecao];
+
+/* caso de erro */
+if(mob === null){
+    alert("erro no mob");
+}
+/*só pra mostrar + extras */
+return mob;
+}
 
 
 
@@ -256,7 +286,7 @@ function strToElem(god,imagem){
 
   function addLista(god,imagem){
     var parent = document.getElementById('parente');
-  var elem = strToElem(god,'imagens/'+imagem);
+  var elem = strToElem(god,'imagens/inimigos/'+imagem);
   parent.appendChild(elem);
   }
   
@@ -277,26 +307,13 @@ function strToElem(god,imagem){
 function addGOD(){
 
 
-  var vezes = parseInt( Math.random() * (5 - 2) + 2);
+  var vezes = parseInt( Math.random() * (10 - 2) + 2);
   
 for (i=0; i <= vezes - 1; i++ ){
   
-
-  var selecao = parseInt( Math.random() * (100 - 0) + 0);
-
-  if(selecao>=0 && selecao<=33){
-    addLista('goblin','goblin.png');
-
+var mob = algoritmo();
+  addLista(mob,mob+'.png');
   addButton();
-  }else if(selecao>=34 && selecao<=66){
-
-    addLista('orc','orc.png');
-  addButton();
-  }else{
-    
-    addLista('dragao','dragao.png');
-  addButton();
-  }
 
 }
 console.log(i+1);

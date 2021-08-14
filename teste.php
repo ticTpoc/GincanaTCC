@@ -11,118 +11,91 @@
 </head>
 
 <body>  
-    
+    <div id='corpo'>
+        
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <?php 
-require_once "includes/bd.php";
-require_once "includes/funcao.php";
-require_once "includes/login.php";
+     <script type="text/javascript">
+
+     function algoritmo(){
+
+/* quantidade de mobs, deve corresponder ao array mobs */
+var qtdmobs = 9;
+
+/* todos os mobs possiveis */
+var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
 
 
+/* algoritmo que seleciona numeros aleatórios */
+var selecao = Math.round((parseInt((Math.random()*10))+parseInt((Math.random()*10)))/2);
 
 
-function algoritmo($min,$max){
-$numero = null;
+/* caso a seleção seja igual a quantidade de mobs, pois o array conta a partir do 0 */
+if(selecao===qtdmobs){
+    selecao=qtdmobs-1;
+}
+/* adiciona a seleção na viariavel mob, a partir de mobs */
+var mob = mobs[selecao];
 
-$numero = random_int($min,$max/2) + random_int($min,$max/2);
-
-return $numero;
+/* caso de erro */
+if(mob === null){
+    alert("erro no mob");
+}
+/*só pra mostrar + extras */
+return mob;
 }
 
-function randommob($qtd){
 
-    $numero = random_int(1,$qtd);
+     function mobatacar(inimigo){
 
- switch ($numero) {
-    case 1:
-        return "goblin";
-        break;
-    case 2:
-        return "orc";
-        break;
-    case 3:
-        return "dragão";
-        break;
+        var mob = new FormData();
+        mob.append('mob', inimigo);
 
-        default:
-        return 'goblin';
-}
-}
+        $.ajax({
+            url:'script.php',
+            method: 'post',
+            data: mob,
+            processData: false,
+            contentType:false,
+            success: function(resposta){
+                     var tmp = resposta.split(",");
 
-function arrayalgoritmo($min,$max,$vezes,$qtd){
+                     var mincoin = tmp[0];
+                     var maxcoin = tmp[1];
+                     var dano = tmp[2];
+                     var chance = tmp[3];
 
-    $array = array();
+                     if(dado>chance){
+                        if(cliques==i+1){
+                         ganhar();
+                         return;
+                     }
 
-    for($cont=0; $cont<$vezes; $cont++){
+                     moveToSlide(track, currentSlide, nextSlide);
+                      pdateDots(currentDot, nextDot);
+                      coin =parseInt( Math.random() * (maxcoin - mincoin) + mincoin) + coin;
+                    document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
+                    cliques++;
+                     }else{
+                        vida--;
+                        return vida;
+                     }      
+                     
+                 }
+        })
 
        
-        for($i=0; $i<$qtd; $i++){
+     }
 
-            $miniarray=array("y" => algoritmo($min,$max), "label" => randommob($qtd) );
-            
-        }
-        $array[$cont] = $miniarray;
-        
-    }
+    mobatacar(algoritmo());
 
- return $array;   
-}
-
-
-$dataPoints =  array( 
-
-    array("y" => algoritmo(0,100), "label" => "Goblin" ),
-    array("y" => algoritmo(0,100), "label" => "Orc" ),
-    array("y" =>algoritmo(0,100), "label" =>  "Dragão" )
-);
-
-
-?>
-
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- <script type='text/javascript'>
- window.onload = function() {
-  
- var chart = new CanvasJS.Chart("chartContainer", {
-     animationEnabled: true,
-     theme: "light2",
-     title:{
-         text: "Gold Reserves"
-     },
-     axisY: {
-         title: "Gold Reserves (in tonnes)"
-     },
-     data: [{
-         type: "column",
-         yValueFormatString: "#,##0.## tonnes",
-         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-     }]
- });
- chart.render();
-  
- }
-
- </script>  
- <div id="corpo">
-     <h1> TESTE </h1>
-     <h2> TESTE </h2>   
-<?php
-
-
-
-print_r(arrayalgoritmo(0,10,5,3));
-echo "<br>";
-echo "<br>";
-print_r($dataPoints);
-
-
-
-
-
-
-?>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+     
+     </script>
+<h1 id="dano"></h1>
+<h1 id="chance"></h1>
+<h1 id="mincoin"></h1>
+<h1 id="maxcoin"></h1>
 
 
     
