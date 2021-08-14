@@ -2,6 +2,14 @@ CREATE DATABASE GB DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI;
 USE GB;
 
 /* o comando sagrado: DROP DATABASE GB; *//* o comando sagrado: DROP DATABASE GB; */
+create table inimigos(
+mob varchar(10) not null primary key,
+mincoin int not null,
+maxcoin int not null,
+chance int not null,
+dano int not null
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table usuarios(
 usuario varchar(20) not null,
@@ -38,8 +46,30 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< Updated upstream
 insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado) values
 ('3441','William','0','99','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo');
+=======
+
+insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
+('goblin', 1, 4, 1, 30),
+('anao', 0, 5, 1, 20),
+('dragao', 10, 30, 2, 70),
+('elfo', 5, 10, 1, 40),
+('marcella', 0, 1, 5, 88),
+('ogro', 0, 40, 1, 50),
+('orc', 30, 50, 2, 50),
+('poseidon', 100, 150, 3, 90),
+('unicornio',0,500,5,77);
+insert into salas(nome,apelido, corhex, cor, corrgb) values
+('informática para internet','Infonet', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Mecatrônica','Meca', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Administração','Adm', '#00BFFF', 'azul', 'rgb(0,191,255)'),
+('Desenvolvimento de sistemas','Ds', '#00BFFF', 'azul', 'rgb(0,191,255)');
+
+insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel) values
+('3441','William','0','99','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1);
+>>>>>>> Stashed changes
 
 
 
