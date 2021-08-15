@@ -17,6 +17,10 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 require_once "includes/rm.php";
+
+$reg = $busca->fetch_object();
+
+
 ?>  
 
 
@@ -42,6 +46,8 @@ var qtdmobs = 9;
 
 /* todos os mobs possiveis */
 var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+
 
 
 /* algoritmo que seleciona numeros aleatórios */
@@ -215,7 +221,7 @@ listItem.parentNode.replaceChild(newItem, listItem);
   <div class="carousel__track-container">
     <ul class="carousel__track" id="parente">
     <li class="carousel__slide current-slide">
-      <a><img id='goblin' class ='carousel__images' src='imagens/goblin.png'></a>
+      <a><img id='goblin' class ='carousel__images' src='imagens/inimigos/goblin.png'></a>
       </li>
       
 
@@ -238,7 +244,7 @@ listItem.parentNode.replaceChild(newItem, listItem);
 
 </div>
       
- 
+
 <?php  include_once "footer.php"; ?>
 </div>
 <script type="text/javascript" src='js/carousel.js'></script>
@@ -249,10 +255,12 @@ listItem.parentNode.replaceChild(newItem, listItem);
 function algoritmo(){
 
 /* quantidade de mobs, deve corresponder ao array mobs */
-var qtdmobs = 9;
+
 
 /* todos os mobs possiveis */
 var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+var qtdmobs = mobs.length;
 
 
 /* algoritmo que seleciona numeros aleatórios */
@@ -302,13 +310,24 @@ function strToElem(god,imagem){
   parent2.appendChild(elem2);
   }
 
-  
+  function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 function addGOD(){
 
+  const nivel = "<?php echo $reg->nivel ?>";
+   var max =  nivel * 2; 
+   var min =  nivel;
 
-  var vezes = parseInt( Math.random() * (10 - 2) + 2);
+   console.log(max);
+   console.log(min);
   
+  var vezes = getRandomInt(min,max);
+  console.log(vezes);
+
 for (i=0; i <= vezes - 1; i++ ){
   
 var mob = algoritmo();

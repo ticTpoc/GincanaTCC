@@ -21,8 +21,7 @@ $q="select * from usuarios where $rm=rm";
 $busca = $banco->query($q); 
 ?>
   <?php
-  $q="select * from usuarios where $rm=rm";
-  $busca=$banco->query($q);
+ 
   $id = $_GET['id'] ?? 0;
   $k="select * from skins where $id=id";
   $busca2=$banco->query($k);
@@ -43,8 +42,10 @@ if($rm==null){
     if(!($rm==$reg->rm)){
         echo aviso("RM incorreto, pare de sacanagem >:c");
     }else{
-        $novacoin=$reg->coin-$reg2->preco;
+        $novacoin= $reg->coin - $reg2->preco;
+        $novonivel= $reg->nivel + 1;
         echo "<br>";
+        echo $reg->nivel;
            
        
         if($novacoin<0){
@@ -53,31 +54,58 @@ if($rm==null){
             echo aviso ("vai trabalhar >:(");
 
         }else{
+            
+            if($id==1){
 
-            $q="INSERT INTO COMPRAS(usuarios_rm,skins_id) VALUES 
-            ('$rm','$id');";
-            if($banco->query($q)){
+                
+               
+                $q="
+                update usuarios
+                set coin='$novacoin'
+                where rm='$rm';
+                             ";
+                 $banco->query($q);
+
+                 $j="
+                    update usuarios
+                    set nivel='$novonivel'
+                    where rm='$rm';
+                                 ";
+                     $banco->query($j);
+                 
+
+               
+               
+            }else{
+                $q="INSERT INTO COMPRAS(usuarios_rm,skins_id) VALUES 
+                ('$rm','$id');";
+                if($banco->query($q)){
+        
+                   echo sucesso(" Compra feita com sucesso :D");
+                   echo '<br>';
+                   echo '<br>';
+                   echo "dinheiro seu $reg->coin";
+                   echo '<br>';
+                   echo "preço $reg2->preco";
+                   echo '<br>';
+                   echo '<br>';
     
-               echo sucesso(" Compra feita com sucesso :D");
-               echo '<br>';
-               echo '<br>';
-               echo "dinheiro seu $reg->coin";
-               echo '<br>';
-               echo "preço $reg2->preco";
-               echo '<br>';
-               echo '<br>';
-               $q="
-               update usuarios
-               set coin='$novacoin'
-               where rm='$rm';
-                            ";
-                $banco->query($q);
-              
+                   $q="
+                   update usuarios
+                   set coin='$novacoin'
+                   where rm='$rm';
+                                ";
+                    $banco->query($q);
+                    
+    
+                  
+                }
+                else{
+                     echo erro( " Falha na compra");
+                }
             }
-            else{
-                 echo erro( " Falha na compra");
-            }
-           
+
+            
         }
        
 

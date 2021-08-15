@@ -24,7 +24,7 @@ require_once "includes/login.php";
      <?php include_once "header.php" ?>
      <table class="loja">
 <?php
-$q="select usuario, rm, senha, tipo, coin, estado, highscore from usuarios where estado='ativo' ";
+$q="select usuario, rm,nivel, senha, tipo, coin, estado, highscore from usuarios where estado='ativo' ";
 $busca = $banco->query($q);
 if(!$busca){
     echo erro('a busca não deu certo :(');
@@ -37,6 +37,7 @@ if(!$busca){
         echo "<td class='lista'>tipo";
         echo "<td class='lista'>coin";
         echo "<td class='lista'>highscore";
+        echo "<td class='lista'>nivel";
         echo "<td class='lista'>ação";
         while ($reg = $busca->fetch_object()){
            
@@ -45,6 +46,7 @@ if(!$busca){
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->nivel</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'><a href='banir.php?rm=$reg->rm'><i class='material-icons'>delete_outline</i></a></p>";
           
             

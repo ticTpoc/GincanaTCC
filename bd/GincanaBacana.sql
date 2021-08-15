@@ -3,6 +3,14 @@ USE GB;
 
 /* o comando sagrado: DROP DATABASE GB; *//* o comando sagrado: DROP DATABASE GB; */
 
+create table inimigos(
+mob varchar(10) not null primary key,
+mincoin int not null,
+maxcoin int not null,
+chance int not null,
+dano int not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table salas(
 id int(2) not null primary key auto_increment,
 apelido varchar(8),
@@ -21,28 +29,22 @@ tipo char(10) not null,
 estado char(10),
 coin int(5) not null,
 salas_id int(2) not null,
-nivel int not null,
+nivel int(3) not null,
 foreign key(salas_id) references salas(id)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table skins(
 nome varchar(30) not null,
 preco int(4) not null,
 img varchar(30) not null,
-id Int(5) not null auto_increment primary key
+id Int(5) not null auto_increment primary key,
+jogo varchar(20),
+funcao text,
+valor int(3)
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table itens(
-id int(5) not null primary key auto_increment,
-jogo varchar(20) not null,
-nome varchar(30) not null,
-img varchar(45) not null,
-funcao text,
-valor int(3)
-
-
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -50,25 +52,45 @@ valor int(3)
 create table compras(
 skins_id int(5) not null,
 usuarios_rm int(6) not null,
-itens_id int(5) not null,
+
 foreign key(skins_id) references skins(id),
-foreign key(itens_id) references itens(id),
+
 foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into salas(nome,apelido, corhex, cor, corrgb) values
+insert into skins(id,jogo, nome, preco, img, funcao,valor) values
+(1,'dungeon','chave','100','chave.png','aumenta seu nivel na dungeon',1);
+
+
+ insert into salas(nome,apelido, corhex, cor, corrgb) values
 ('informática para internet','Infonet', '#00BFFF', 'azul', 'rgb(0,191,255)'),
 ('Mecatrônica','Meca', '#00BFFF', 'azul', 'rgb(0,191,255)'),
 ('Administração','Adm', '#00BFFF', 'azul', 'rgb(0,191,255)'),
 ('Desenvolvimento de sistemas','Ds', '#00BFFF', 'azul', 'rgb(0,191,255)');
 
+
+
+
+insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
+('goblin', 1, 4, 1, 30),
+('anao', 0, 5, 1, 20),
+('dragao', 10, 30, 2, 70),
+('elfo', 5, 10, 1, 40),
+('marcella', 0, 1, 5, 88),
+('ogro', 0, 40, 1, 50),
+('orc', 30, 50, 2, 50),
+('poseidon', 100, 150, 3, 90),
+('unicornio',0,500,5,77);
+
 insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel) values
-('3441','William','0','99','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1);
+('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1);
+
 
 
 
 /*
+
 
 select * from usuarios;
 select * from skins;

@@ -49,6 +49,7 @@ if(!$busca){
 </table>
 
 
+
      <?php  include_once "footer.php"; ?>
 
 <?php echo voltar(); ?>
