@@ -40,8 +40,8 @@ require_once "includes/login.php";
                }else{
                  $senha= gerarhash($senha1);
 
-                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO,SALAS_ID) VALUES 
-                 ('$usuario','$rm','$senha','jogador',0,'ativo','$sala');";
+                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO,SALAS_ID,NIVEL,vida) VALUES 
+                 ('$usuario','$rm','$senha','jogador',0,'ativo','$sala',1,5);";
                  if($banco->query($q)){
 
                     echo sucesso(" Usuário $usuario cadastrado com êxito");

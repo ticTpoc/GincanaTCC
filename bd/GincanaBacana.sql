@@ -29,6 +29,7 @@ tipo char(10) not null,
 estado char(10),
 coin int(5) not null,
 salas_id int(2) not null,
+vida int(3) not null,
 nivel int(3) not null,
 foreign key(salas_id) references salas(id)
 
@@ -40,6 +41,8 @@ preco int(4) not null,
 img varchar(30) not null,
 id Int(5) not null auto_increment primary key,
 jogo varchar(20),
+modelo char(10),
+qtd int(3),
 funcao text,
 valor int(3)
  
@@ -59,8 +62,10 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into skins(id,jogo, nome, preco, img, funcao,valor) values
-(1,'dungeon','chave','100','chave.png','aumenta seu nivel na dungeon',1);
+insert into skins(id,jogo, nome, preco, img, funcao,valor, qtd,modelo) values
+(1,'dungeon','chave','100','chave.png','aumenta seu nivel na dungeon',1,0,'item'),
+(2,'dungeon','armadura','50','armadura.png','aumenta sua vida na dungeon',1,0,'item');
+
 
 
  insert into salas(nome,apelido, corhex, cor, corrgb) values
@@ -73,18 +78,18 @@ insert into skins(id,jogo, nome, preco, img, funcao,valor) values
 
 
 insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
-('goblin', 1, 4, 1, 30),
-('anao', 0, 5, 1, 20),
+('goblin', 3, 6, 1, 30),
+('anao', 1, 7, 1, 20),
 ('dragao', 10, 30, 2, 70),
 ('elfo', 5, 10, 1, 40),
-('marcella', 0, 1, 5, 88),
-('ogro', 0, 40, 1, 50),
+('marcella', 1, 2, 5, 88),
+('ogro', 3, 40, 1, 50),
 ('orc', 30, 50, 2, 50),
 ('poseidon', 100, 150, 3, 90),
 ('unicornio',0,500,5,77);
 
-insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel) values
-('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1);
+insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel,vida) values
+('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
 
 
 

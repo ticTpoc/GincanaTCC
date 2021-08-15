@@ -32,7 +32,7 @@ $reg = $busca->fetch_object();
 </script>
    <script type="text/javascript">
 
-var vida = 5;
+var vida = "<?php echo $reg->vida?>";
 var nivel = 1;
 var coin = 0;
 var cliques = 1;
@@ -90,6 +90,8 @@ return mob;
                      var chance = tmp[3];
                      var dado = parseInt( Math.random() * (100 - 0) + 0);
                      console.log(dado);
+                     console.log('micoin'+mincoin);
+                     console.log('maxcoin'+maxcoin);
   const currentSlide= track.querySelector('.current-slide');
    const nextSlide= currentSlide.nextElementSibling;
   const currentDot = dotsNav.querySelector('.current-slide');
@@ -103,7 +105,7 @@ return mob;
                          return;
                                    }
                         
-                     coin =parseInt( Math.random() * (maxcoin - mincoin) + mincoin) + coin;
+                     coin = getRandomInt(mincoin,maxcoin) + coin;
                     document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
 
                      moveToSlide(track, currentSlide, nextSlide);
@@ -111,7 +113,7 @@ return mob;
                       
                     cliques++;
                      }else{
-                        vida--;
+                        vida = vida - getRandomInt(1,dano);
                         return vida;
                      }      
                      
@@ -216,6 +218,9 @@ listItem.parentNode.replaceChild(newItem, listItem);
 <h5>
   moedas
 </h5>
+<h6>
+  nivel
+  <h6>
 <div class='carousel'>
   <button class=" carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
@@ -251,6 +256,8 @@ listItem.parentNode.replaceChild(newItem, listItem);
 
 </body>
 <script>
+
+
 
 function algoritmo(){
 
@@ -318,12 +325,14 @@ function strToElem(god,imagem){
 
 function addGOD(){
 
-  const nivel = "<?php echo $reg->nivel ?>";
-   var max =  nivel * 2; 
+
+  const nivel = <?php echo $reg->nivel ?>;
+  document.getElementsByTagName("h6")[0].firstChild.data = "nivel: " + nivel;
+   var max =  Math.round(nivel+(nivel/4)); 
    var min =  nivel;
 
-   console.log(max);
-   console.log(min);
+   console.log("maximo:"+max);
+   console.log("minimo:"+min);
   
   var vezes = getRandomInt(min,max);
   console.log(vezes);

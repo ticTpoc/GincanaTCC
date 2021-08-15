@@ -37,8 +37,8 @@ echo erro("valor de preço alto demais");
 
                }else{
                    
-                 $q="INSERT INTO SKINS(NOME,PRECO,IMG,VALOR,FUNCAO,JOGO) VALUES 
-                 ('$nome','$preco','$img','$valor','$funcao','$jogo');";
+                 $q="INSERT INTO SKINS(NOME,PRECO,IMG,VALOR,FUNCAO,JOGO,ESTAGIO) VALUES 
+                 ('$nome','$preco','$img','$valor','$funcao','$jogo',1);";
                  if($banco->query($q)){
 
                     echo sucesso(" Skin $nome cadastrado com êxito");
