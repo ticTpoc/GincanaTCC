@@ -1,14 +1,21 @@
 body{
     background-color: rgb(10, 101, 110);
-    font-family: Tahoma;
+    font-family:Unispace;
+    
+
 }
+
 
 div#corpo{
     width:1000px;
-    margin:auto;
-    padding:30px;
+    margin:10% 10% 10% 20%;
+    padding:25px;
     background-color:rgb(255, 255, 255);
-    box-shadow: 0px 12px 24px 12px;
+    
+    text-align: center;
+    border-radius: 10%;
+    border-color: black;
+
 }
 table.loja{
     width:100%;
@@ -31,17 +38,6 @@ td.lista{
     background-color: blanchedalmond;
 }
 
-
-/*tr.loja:nth-child(even){
-    background-color: #69bb66;
-
-
-}
-
-img.goblin:hover{
-
-    width:700px;
-    height:700px;
 }
 
 */
@@ -56,7 +52,59 @@ td.loja:nth-child(3){
 }
 
 div.cabeca{
-    background-color: rgb(161, 250, 253);
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+#PI{
+    margin: 40px 0 40px 0;
+
+}
+
+ 
+
+
+
+
+#ln{
+    font-size:30px;
+    text-align: center;
+    color: rgb(10, 101, 110);
+    font-family:Unispace;
+    border:5px solid ;
+    border-width:5 ;
+    margin:10px 400px 10px 400px;
+    border-radius: 20%;
+
+
+
+
+
+}
+
+a:link{
+  text-decoration:none;
+
+
+
+
+
+}
+
+a:hover{
+  font-size: 20px;
+ 
+
+
+
+}
+
+div.pe{
+    font-size:small;
+
+
+
 }
 
 
@@ -65,7 +113,7 @@ div.cabeca{
 
 
 
-
+/* JS Estilo */
 /* Estilizando o carrosel da dungeon */
 
 .carousel{
