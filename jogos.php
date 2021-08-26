@@ -29,7 +29,7 @@ require_once "includes/login.php";
     
        echo "  <tr><td><a href='farm.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/dungeon.png'></a>";
          echo "<td> Dungeon<br>";
-         echo "  <tr><td><a href='quizz.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/quizz.png'></a>";
+         echo "  <tr><td><a href='quiz.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/quizz.png'></a>";
          echo "<td> Quizz<br>"; 
          echo "  <tr><td><a href='cassino.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
          echo "<td> Cassino<br>"; 

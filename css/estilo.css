@@ -1,8 +1,11 @@
+@font-face {
+    font-family: Pixelado;
+    src: url(poxel-font.ttf);
+  }
+
 body{
     background-color: rgb(10, 101, 110);
     font-family:Unispace;
-    
-
 }
 
 

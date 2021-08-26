@@ -1,4 +1,4 @@
-<pre><?php
+<?php
 
 /* banco precisa disso ai
 $banco = new mysqli(host,usuario,senha,banco)
@@ -26,4 +26,4 @@ $banco->query("SET character_set_results = utf8");
 
 
 
-?></pre>
+?>

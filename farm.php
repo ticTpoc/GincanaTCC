@@ -17,40 +17,109 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 require_once "includes/rm.php";
+
+$reg = $busca->fetch_object();
+
+
 ?>  
 
 
  <div id="corpo">
+
+
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/funcao.js">
+</script>
    <script type="text/javascript">
 
-/*
-function goblin() {
-    coin =parseInt( Math.random() * (10 - 0) + 0);
-  console.log(coin);
-  document.getElementsByTagName("h3")[0].firstChild.data = "Moedas: " + coin;
-  document.getElementById("goblin").style.display = "none";
-}
-function orc() {
-    coin2 =parseInt( Math.random() * (15 - 4) + 4);
-  console.log(coin2);
-  document.getElementsByTagName("h4")[0].firstChild.data = "Moedas: " + coin2;
-  document.getElementById("orc").style.display = "none";
-}
-function dragao() {
-    coin3 =parseInt( Math.random() * (30 - 10) + 10);
-  console.log(coin3);
-  document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin3;
-  document.getElementById("dragao").style.display = "none";
-}
-function loot(){
-var loot = coin + coin2 + coin3;
-    window.location.href="loot.php?coin=" + loot;
-    var slideIndex = 1;
-showSlides(slideIndex);
-}
-*/
+var vida = "<?php echo $reg->vida?>";
+var nivel = 1;
+var coin = 0;
+var cliques = 1;
 
-var vida = 5;
+
+
+function algoritmo(){
+
+/* quantidade de mobs, deve corresponder ao array mobs */
+var qtdmobs = 9;
+
+/* todos os mobs possiveis */
+var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+
+
+
+/* algoritmo que seleciona numeros aleatórios */
+var selecao = Math.round((parseInt((Math.random()*10))+parseInt((Math.random()*10)))/2);
+
+
+/* caso a seleção seja igual a quantidade de mobs, pois o array conta a partir do 0 */
+if(selecao===qtdmobs){
+    selecao=qtdmobs-1;
+}
+/* adiciona a seleção na viariavel mob, a partir de mobs */
+var mob = mobs[selecao];
+
+/* caso de erro */
+if(mob === null){
+    alert("erro no mob");
+}
+/*só pra mostrar + extras */
+return mob;
+}
+
+
+     function mobatacar(inimigo){
+
+        var mob = new FormData();
+        mob.append('mob', inimigo);
+
+        $.ajax({
+            url:'script.php',
+            method: 'post',
+            data: mob,
+            processData: false,
+            contentType:false,
+            success: function(resposta){
+
+                     var tmp = resposta.split(",");
+                     var mincoin = tmp[0];
+                     var maxcoin = tmp[1];
+                     var dano = tmp[2];
+                     var chance = tmp[3];
+                     var dado = parseInt( Math.random() * (100 - 0) + 0);
+                  
+  const currentSlide= track.querySelector('.current-slide');
+   const nextSlide= currentSlide.nextElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const nextDot= currentDot.nextElementSibling;
+  const nextIndex = slides.findIndex(slide=>slide === nextSlide);
+
+                     if(dado>chance){
+
+                        if(cliques==i+1){
+                         ganhar();
+                         return;
+                                   }
+                        
+                     coin = getRandomInt(mincoin,maxcoin) + coin;
+                    document.getElementsByTagName("h5")[0].firstChild.data = "Moedas: " + coin;
+
+                     moveToSlide(track, currentSlide, nextSlide);
+                      updateDots(currentDot, nextDot);
+                      
+                    cliques++;
+                     }else{
+                        vida = vida - getRandomInt(1,dano);
+                        return vida;
+                     }      
+                     
+                 }
+        })
+
+       
+     }
 
 
 
@@ -66,10 +135,13 @@ var x = document.getElementsByClassName("carousel__images")[z].id;
 document.getElementById("vida").innerHTML = "vida: "+ vida;
 
 console.log(vida);
-if(vida === 0 ){
+if(vida <= 0 ){
   morreu("você morreu, se mata");
 }
-
+if(cliques==i+1){
+  ganhar();
+  return;
+          }
 
 
 hideShowArrows(slides, prevButton, nextButton, nextIndex);
@@ -77,14 +149,14 @@ hideShowArrows(slides, prevButton, nextButton, nextIndex);
 var chance = parseInt( Math.random() * (100 - 0) + 0);
 
 if(chance>50){
+ 
 moveToSlide(track, currentSlide, nextSlide);
  updateDots(currentDot, nextDot);
+ cliques++;
  return;
 }else{
    
-
-  vida--;
-  return vida;
+  morreu("você morreu, se mata");
 }
 
 }
@@ -98,95 +170,60 @@ function atacar(){
   const nextIndex = slides.findIndex(slide=>slide === nextSlide);
   var z = slides.findIndex(slide=>slide === currentSlide);
   var x = document.getElementsByClassName("carousel__images")[z].id;
- 
-  console.log(vida);
+  
+
   document.getElementById("vida").innerHTML = "vida: "+ vida;
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
 
-  var chance = parseInt( Math.random() * (100 - 0) + 0);
-
-  if(vida === 0 ){
+ 
+  if(vida <= 0 ){
   morreu("você morreu, se mata");
 }
 
 
-  switch(x) {
-  case 'orc':
-   if(chance<70){
-     console.log(chance);
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
+mobatacar(x);
 
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;
-  case 'goblin':
-    if(chance<90){
-      console.log(chance);
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;
-    case 'dragao':
-      if(chance<20){
-        console.log(chance);
-    moveToSlide(track, currentSlide, nextSlide);
-   updateDots(currentDot, nextDot);
-   }else{
-    
-    vida--;
-    return vida;
-   }
-    break;  
-    default:
-    alert('erro');
-  
-  
-  
-}  
+
 }
 
-
+function loot(){
+  window.location.href="loot.php?coin="+coin;
+}
 
 
 function morreu(mensagem){
   window.location.href="morto.php?mensagem="+mensagem;
 }
+function ganhar(){
+ 
+
+  const listItem = document.querySelector("button#atacar");
+  const newItem = document.createElement('button');
+newItem.innerHTML = '<button class="actions__button" id="atacar" onclick="loot()"><a >LOOT</a></button>';
+listItem.parentNode.replaceChild(newItem, listItem);
+}
 
 
    </script>
-   <!--
-   <div>
-     <h1> Dungeon </h1><br><br>
-     <h3>moedas</h3>
-    
-     <h4>moedas</h4>
-     <h5>moedas</h5>
-     <table class="loja">
-     <tr><td><a onclick="goblin()"><img  height='200px' width='200px' src='imagens/goblin.png' id='goblin' ></a><br><br>
-     <td><a onclick="orc()"><img height='200px' width='200px' src='imagens/orc.png' id='orc' ></a><br><br>
-     <tr><td><a onclick="dragao()"><img height='200px' width='200px' src='imagens/dragao.png' id='dragao' ></a><br><br>
-     <tr><td><button onclick="loot()" ><p>loot</p></button>
-</div>
--->
+  
 <br>
 <br>
 <div id="vida">
  <p id="vida"></p>
 </div>
+
+<h5>
+  moedas
+</h5>
+<h6>
+  nivel
+  <h6>
 <div class='carousel'>
-  <button class="carousel__button carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
+  <button class=" carousel__button--left is-hidden"><img src='imagens/left.png' alt=''></button>
   <div class="carousel__track-container">
     <ul class="carousel__track" id="parente">
     <li class="carousel__slide current-slide">
-      <a><img id='goblin' class ='carousel__images' src='imagens/goblin.png'></a>
+      <a><img id='goblin' class ='carousel__images' src='imagens/inimigos/goblin.png'></a>
       </li>
       
 
@@ -194,9 +231,9 @@ function morreu(mensagem){
      
     </ul>
     </div>
-  <button class="carousel__button carousel__button--right"><img src='imagens/right.png' alt=''></button>
+  <button class=" carousel__button--right"><img src='imagens/right.png' alt=''></button>
 <div class='actions__nav'>
-  <button class='actions__button' onclick="atacar()"><a >ATACAR</a></button>
+  <button class='actions__button' id="atacar" onclick="atacar()"><a >ATACAR</a></button>
   <button class='actions__button' onclick="fugir()"><a><img src='imagens/fuga.png'></a></button>
 </div>
 <div class="carousel__nav" id='parente2'>
@@ -209,11 +246,45 @@ function morreu(mensagem){
 
 </div>
       
- 
+
 <?php  include_once "footer.php"; ?>
 </div>
 <script type="text/javascript" src='js/carousel.js'></script>
-<script type='text/javascript' >
+
+</body>
+<script>
+
+
+
+function algoritmo(){
+
+/* quantidade de mobs, deve corresponder ao array mobs */
+
+
+/* todos os mobs possiveis */
+var mobs= ['unicornio','dragao','ogro','anao','goblin','elfo','orc','poseidon','marcella'];
+
+var qtdmobs = mobs.length;
+
+
+/* algoritmo que seleciona numeros aleatórios */
+var selecao = Math.round((parseInt((Math.random()*10))+parseInt((Math.random()*10)))/2);
+
+
+/* caso a seleção seja igual a quantidade de mobs, pois o array conta a partir do 0 */
+if(selecao===qtdmobs){
+    selecao=qtdmobs-1;
+}
+/* adiciona a seleção na viariavel mob, a partir de mobs */
+var mob = mobs[selecao];
+
+/* caso de erro */
+if(mob === null){
+    alert("erro no mob");
+}
+/*só pra mostrar + extras */
+return mob;
+}
 
 
 
@@ -227,7 +298,7 @@ function strToElem(god,imagem){
 
   function addLista(god,imagem){
     var parent = document.getElementById('parente');
-  var elem = strToElem(god,'imagens/'+imagem);
+  var elem = strToElem(god,'imagens/inimigos/'+imagem);
   parent.appendChild(elem);
   }
   
@@ -243,37 +314,43 @@ function strToElem(god,imagem){
   parent2.appendChild(elem2);
   }
 
+  function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 function addGOD(){
 
 
-  var vezes = parseInt( Math.random() * (5 - 2) + 2)
+  const nivel = <?php echo $reg->nivel ?>;
+  document.getElementsByTagName("h6")[0].firstChild.data = "nivel: " + nivel;
+   var max =  Math.round(nivel+(nivel/4)); 
+   var min =  nivel;
+
+   console.log("maximo:"+max);
+   console.log("minimo:"+min);
+  
+  var vezes = getRandomInt(min,max);
+  console.log(vezes);
+
 for (i=0; i <= vezes - 1; i++ ){
   
-
-  var selecao = parseInt( Math.random() * (100 - 0) + 0);
-
-  if(selecao>=0 && selecao<=33){
-    addLista('goblin','goblin.png');
-
+var mob = algoritmo();
+  addLista(mob,mob+'.png');
   addButton();
-  }else if(selecao>=34 && selecao<=66){
 
-    addLista('orc','orc.png');
-  addButton();
-  }else{
-    
-    addLista('dragao','dragao.png');
-  addButton();
-  }
+}
+console.log(i+1);
+return i + 1;
 
 }
 
-}
+
+
 addGOD();
-
-
   
+
 
 
 const track = document.querySelector('.carousel__track');
@@ -294,24 +371,25 @@ const updateDots = (currentDot, targetDot) =>{
 targetDot.classList.add('current-slide');
 
 
+const Dolly = null;
 
 }
 /* apagar as setas dos cantos */
 
 const hideShowArrows = (slides, prevButton, nextButton, targetIndex) =>{
     if(targetIndex === 0){
-        prevButton.classList.add('is-hidden');
+       
         nextButton.classList.remove('is-hidden');
     
     }else if (targetIndex === slides.length-1 ){
-        prevButton.classList.remove('id-hidden');
+       
         nextButton.classList.add('is-hidden');
     } else{
-        prevButton.classList.remove('is-hidden');
+       
         nextButton.classList.remove('is-hidden')
     }
 
-   
+    nextButton.classList.remove('is-hidden')
 }
 /* posição dos slides */
 slides.forEach(setSlidePosition);
@@ -357,25 +435,5 @@ prevButton.addEventListener('click', e =>{
 
 
 </script>
-</body>
 
-<!--
-
-
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/orc.png'></a>
-      </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
-      </li>
-      <li class="carousel__slide">
-      <a><img class ='carousel__images '  src='imagens/dragao.png'></a>
-      </li>
-
-
-      <button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
-<button class="carousel__indicator"></button>
- -->
 </html>

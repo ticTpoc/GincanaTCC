@@ -17,14 +17,14 @@ require_once "includes/login.php";
 ?>  
 
  <div id="corpo">
-     <h1> usuarios </h1>
-     <h2></h2>   
-     
+
+     <br>
+<h1> usuarios ativos </h1>
 
      <?php include_once "header.php" ?>
      <table class="loja">
 <?php
-$q="select usuario, rm, senha, tipo, coin, estado, highscore from usuarios where estado='ativo' ";
+$q="select * from usuarios where estado='ativo' ";
 $busca = $banco->query($q);
 if(!$busca){
     echo erro('a busca não deu certo :(');
@@ -34,22 +34,26 @@ if(!$busca){
     }else{
         echo "<tr clas='lista'><td class='lista'>usuario";
         echo "<td class='lista'>rm";
-        echo "<td class='lista'>senha";
         echo "<td class='lista'>tipo";
         echo "<td class='lista'>coin";
         echo "<td class='lista'>highscore";
-        echo "<td class='lista'>estado";
+        echo "<td class='lista'>nivel";
         echo "<td class='lista'>ação";
         while ($reg = $busca->fetch_object()){
            
             echo  "<tr class ='lista'><td class ='lista'><p style='color:black;' id='secundario'>$reg->usuario</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->rm</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->senha</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->estado</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'><a href='banir.php?rm=$reg->rm'><i class='material-icons'>delete_outline</i></a></p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->nivel</p>";
+
+            if($reg->tipo=='admin'){
+                echo " <td class='lista'>ADM";
+            }else{
+                echo  "<td class ='lista'><p style='color:black;' id='secundario'><button onclick='banir($reg->rm)'>Banir</button></p>";
+
+            }
           
             
            
@@ -61,11 +65,76 @@ if(!$busca){
 }
 ?>
 </table>
+<br>
+<h1> usuarios banidos </h1>
+<table class="loja">
+<?php
+$q="select * from usuarios where estado='banido' ";
+$busca = $banco->query($q);
 
+if(!$busca){
+    echo erro('a busca não deu certo :(');
+}else{
+    if($busca->num_rows==0){
+        echo aviso('nenhum registro foi encontrado :/');
+    }else{
+        echo "<tr clas='lista'><td class='lista'>usuario";
+        echo "<td class='lista'>rm";
+        echo "<td class='lista'>tipo";
+        echo "<td class='lista'>coin";
+        echo "<td class='lista'>highscore";
+        echo "<td class='lista'>nivel";
+        echo "<td class='lista'>ação";
+        while ($reg = $busca->fetch_object()){
+           
+            echo  "<tr class ='lista'><td class ='lista'><p style='color:black;' id='secundario'>$reg->usuario</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->rm</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->nivel</p>";
+            echo  "<td class ='lista'><p style='color:black;' id='secundario'><button onclick='banir($reg->rm)'>Desbanir</button></p>";
+          
+            
+           
+            
+            
+        }
+    }
+    
+}
+?>
+</table>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+
+function banir(usuario){
+    
+    var banido = new FormData();
+        banido.append('banido', usuario);
+
+    $.ajax({
+            url:'banir.php',
+            method: 'post',
+            data: banido,
+            processData: false,
+            contentType:false,
+            success: function(resposta){
+                    
+            }
+
+});
+document.location.reload(true);
+}
+
+
+
+</script>
 
      <?php  include_once "footer.php"; ?>
 
-<?php echo voltar(); ?>
+
 </div>
 </body>
 
