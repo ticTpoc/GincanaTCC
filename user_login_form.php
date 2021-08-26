@@ -17,4 +17,8 @@
    <tr><td>RM:<td><input type='text' name='rm' id='rm' maxlength=5 size=6 >
    <tr><td>Senha:<td><input type='password' name='senha' id='senha' size=12  maxlength=12>
    <tr><td><input type='submit' value='enviar'>
+   </table>
+   </form>
+   </body>
+   </html>
 
