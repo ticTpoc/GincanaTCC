@@ -17,8 +17,9 @@ require_once "includes/login.php";
 ?>  
  <div id="corpo">
      <h1> Pagina Inicial </h1>
+     <!-- esse comando mostra o tipo e o nome do usuario que está logado, baseado na session -->
      <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']." " . $_SESSION['user'];
+         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
          
          } ?></h2>   
      <?php include_once "header.php" ?>

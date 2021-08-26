@@ -1,3 +1,29 @@
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+function sair() {
+
+    var logout= new FormData();
+    var vida = 1;
+        logout.append('logout', vida);   
+
+    $.ajax({
+            url:'logout_usuario.php',
+            method: 'post',
+            data: logout,
+            processData: false,
+            contentType:false,
+            success: function(resposta){
+                    alert("Adeus :D");
+            }
+    });
+    window.location.href="index.php";
+}
+ </script>
+
 <div class="cabeca">
 <?php
 
@@ -29,19 +55,14 @@ if(empty($_SESSION['user'])){
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
-        
-        echo "<a href='banidos.php'> banidos </a> |";
 
         echo "<a href='skins.php'> skins </a> |";
         
-       
-        
         echo "<a href='novo_form_skin.php'> add skin </a> |";
 
-       
       
     }
-    echo " <br><br><a href='logout_usuario.php'  style='text-align:left;'> Sair </a> ";
+    echo " <br><br><button id='sair' onclick='sair()'> Sair </button> ";
 }
 echo "</header>";
 

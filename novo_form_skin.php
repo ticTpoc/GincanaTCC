@@ -31,6 +31,9 @@ require_once "includes/login.php";
 <tr><td style="text-align:right; " id='filmeform'>  <label for="img" id="img" onclick="handleFiles()">Aparência:</label> <td>
  <input type="file" id="img" name="img" accept="image/*">
  <tr><td> Valor <td> <input type="number" name="valor" id="valor" size="3" maxlength="3">
+ <tr><td  id='modelo'> Modelo <td> <select name='modelo' id='modelo'>
+ <option value='item' selected> Item </option>
+ <option value='skin' selected> Skin </option>
 <tr><td> <input type="submit" value="Cadastrar">
 
 

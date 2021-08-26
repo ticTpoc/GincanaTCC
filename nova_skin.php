@@ -28,8 +28,9 @@ require_once "includes/login.php";
            $jogo = $_POST['jogo'] ?? null;
            $valor = $_POST['valor'] ?? null;
            $funcao = $_POST['funcao'] ?? null;
+           $modelo = $_POST['modelo'] ?? null;
 
-               if( empty($nome) || empty ($preco) || empty($img)){
+               if( empty($nome) || empty ($preco) || empty($img) || empty($modelo) || empty($valor) || empty($jogo)){
                  echo erro("preencha todos os campos");   
 
                }elseif($preco>9999){
@@ -37,8 +38,8 @@ echo erro("valor de preço alto demais");
 
                }else{
                    
-                 $q="INSERT INTO SKINS(NOME,PRECO,IMG,VALOR,FUNCAO,JOGO,ESTAGIO) VALUES 
-                 ('$nome','$preco','$img','$valor','$funcao','$jogo',1);";
+                 $q="INSERT INTO SKINS(NOME,PRECO,IMG,VALOR,FUNCAO,JOGO,QTD,MODELO) VALUES 
+                 ('$nome','$preco','$img','$valor','$funcao','$jogo',0,'$modelo');";
                  if($banco->query($q)){
 
                     echo sucesso(" Skin $nome cadastrado com êxito");

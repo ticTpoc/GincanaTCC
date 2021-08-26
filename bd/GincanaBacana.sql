@@ -103,7 +103,9 @@ select * from compras;
 select * from salas;
 select * from itens;
 
+select * from inimigos;
 
+select * from usuarios order by estado;
 
 
 select produtos.cod, skins.id, skins.nome, skins.img, skins.preco  from skins join produtos where skins.id=produtos.skin_id;

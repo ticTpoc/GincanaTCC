@@ -89,9 +89,7 @@ return mob;
                      var dano = tmp[2];
                      var chance = tmp[3];
                      var dado = parseInt( Math.random() * (100 - 0) + 0);
-                     console.log(dado);
-                     console.log('micoin'+mincoin);
-                     console.log('maxcoin'+maxcoin);
+                  
   const currentSlide= track.querySelector('.current-slide');
    const nextSlide= currentSlide.nextElementSibling;
   const currentDot = dotsNav.querySelector('.current-slide');
@@ -136,8 +134,8 @@ var z = slides.findIndex(slide=>slide === currentSlide);
 var x = document.getElementsByClassName("carousel__images")[z].id;
 document.getElementById("vida").innerHTML = "vida: "+ vida;
 
-
-if(vida === 0 ){
+console.log(vida);
+if(vida <= 0 ){
   morreu("você morreu, se mata");
 }
 if(cliques==i+1){
@@ -178,9 +176,8 @@ function atacar(){
   hideShowArrows(slides, prevButton, nextButton, nextIndex);
 
  
-
-  if(vida === 0 ){
-  morreu("você morreu, se mata");s
+  if(vida <= 0 ){
+  morreu("você morreu, se mata");
 }
 
 
