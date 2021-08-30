@@ -15,25 +15,21 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
+<?php
 
+$mensagem= $_GET['mensagem'];
 
- <div id="cabecalho">
-    
-     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
- <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
+?>
+ <div id="corpo">
+     <h1> <?php echo $_SESSION['user']; ?>  VOCÊ MORREU </h1>
+      <?php echo "<h2> $mensagem </h2>";?>
          
-         } ?></h2>   
-
-</div>   
-
-<div>
-    <?php include_once "header.php" ?>
-</div>
- 
-<div id="rodape">
+         
+     <?php include_once "header.php" ?>
+     
+     <img src='imagens/morto.png' height='500px' width='500px'>
      <?php  include_once "footer.php"; ?>
-</div>
+
     
 </body>
 

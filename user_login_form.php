@@ -15,14 +15,16 @@
 <body>    
    
 
-<form  class= "box-fora" action='login_usuario.php' method='post'>
+
+<form  class="box-fora" action='login_usuario.php' method='post'>
 
 <div class= "box">
 <h1 class ="login" id="login"> Login </h1>
-<input type="text" name="usuario"  id='usuario' maxlength=10 placeholder="usuario">
+<input type="text" name="rm"  id='rm' maxlength=5 placeholder="RM">
 <input type="password" name="senha"  id='senha' maxlength=10 placeholder="password">
 <input type="submit" name=""   >
 </div>
+
    </form>
    </body>
    </html>

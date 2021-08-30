@@ -18,11 +18,8 @@ require_once "includes/login.php";
  <div id="novo_usuario">
      
      <?php
-     if(!admin()){
-         echo erro(" sem permissão!");
-         echo erro(" para de zoar o esquema >:-(");
-     }
-     else{
+     
+     
        
 
        if(!isset($_POST['usuario'])){
@@ -32,19 +29,19 @@ require_once "includes/login.php";
        else{
            $usuario = $_POST['usuario'] ?? null;
            $rm = $_POST['rm'] ?? null;
-           $tipo = $_POST['tipo'] ?? null;
+           $sala = $_POST['sala'] ?? null;
            $senha1 = $_POST['senha1'] ?? null;
            $senha2 = $_POST['senha2'] ?? null;
 
            if($senha1 === $senha2){
               
-               if( empty($usuario) || empty ($rm) || empty($tipo) || empty($senha1) || empty($senha2) ){
+               if( empty($usuario) || empty ($rm) || empty($sala) || empty($senha1) || empty($senha2) ){
                  echo erro("preencha todos os campos");   
                }else{
                  $senha= gerarhash($senha1);
 
-                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN) VALUES 
-                 ('$usuario','$rm','$senha','$tipo',0);";
+                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO,SALAS_ID,NIVEL,vida) VALUES 
+                 ('$usuario','$rm','$senha','jogador',0,'ativo','$sala',1,5);";
                  if($banco->query($q)){
 
                     echo sucesso(" Usuário $usuario cadastrado com êxito");
@@ -64,7 +61,7 @@ require_once "includes/login.php";
        }
 
     
-     }
+     
 
 
    

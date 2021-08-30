@@ -20,7 +20,7 @@ require_once "includes/login.php";
      <h1> Loja </h1>
      <table class="loja">
 <?php
-$q="select id,nome,img,preco from skins";
+$q="select * from skins";
 $busca = $banco->query($q);
 if(!$busca){
     echo erro('a busca não deu certo :(');
@@ -33,6 +33,8 @@ if(!$busca){
         echo "<td class='loja'>Preço";
         while ($reg = $busca->fetch_object()){
             $t = thumb($reg->img);
+
+            
             echo  "<tr class ='loja'><td class ='loja'><p style='color:black;' id='secundario'>$reg->nome</p>";
             echo  "<td class ='loja'><img src='$t' width='200px' height='200px'>";
             echo  "<td class ='loja'><p style='color:black;' id='secundario'>$reg->preco coins</p>";
@@ -47,6 +49,10 @@ if(!$busca){
 ?>
 </table>
 
+
+
+
+     <?php  include_once "footer.php"; ?>
 
 
 <?php echo voltar(); ?>

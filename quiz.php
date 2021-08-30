@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-
+<html>
 <title></title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
@@ -15,26 +12,20 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
+ <div id="corpo">
+     <h1> JOGUINHO QUIZ</h1>
+     
+     <?php include_once "header.php" ?>
+<div id= "quiz">
 
 
- <div id="cabecalho">
-    
-     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
- <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
-         
-         } ?></h2>   
-
-</div>   
-
-<div>
-    <?php include_once "header.php" ?>
+<button id="submit"> </button>
 </div>
- 
-<div id="rodape">
+<div id="results"></div>
      <?php  include_once "footer.php"; ?>
+     <script type='text/javascript' src="js/quiz.js"></script>
+
 </div>
-    
 </body>
 
 </html>

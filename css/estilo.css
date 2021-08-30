@@ -1,4 +1,5 @@
 @font-face {
+
     font-family: Pixel;
     src: url(pixel.TTF);
   }
@@ -78,6 +79,27 @@ div#formulario{
 
     background-color: #153666; 
   color: white;
+    font-family: Pixelado;
+    src: url(poxel-font.ttf);
+  }
+
+body{
+    background-color: rgb(10, 101, 110);
+    font-family:Unispace;
+}
+
+
+div#corpo{
+    width:1000px;
+    margin:10% 10% 10% 20%;
+    padding:25px;
+    background-color:rgb(255, 255, 255);
+    
+    text-align: center;
+    border-radius: 10%;
+    border-color: black;
+
+
 }
 
 div.form-titulo{
@@ -110,6 +132,7 @@ td.lista{
     padding: 15px;
     background-color: blanchedalmond;
 }
+
 
 body{
     margin: 0;
@@ -211,9 +234,11 @@ img.goblin:hover{
 
     width:700px;
     height:700px;
+
+
 }
 
-/
+*/
 td.loja:nth-child(1){
     width:50px;
 }
@@ -225,7 +250,58 @@ td.loja:nth-child(3){
 }
 
 div.cabeca{
-    background-color: rgb(161, 250, 253);
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+#PI{
+    margin: 40px 0 40px 0;
+
+}
+
+ 
+
+
+
+#ln{
+    font-size:30px;
+    text-align: center;
+    color: rgb(10, 101, 110);
+    font-family:Unispace;
+    border:5px solid ;
+    border-width:5 ;
+    margin:10px 400px 10px 400px;
+    border-radius: 20%;
+
+
+
+
+
+}
+
+a:link{
+  text-decoration:none;
+
+
+
+
+
+}
+
+a:hover{
+  font-size: 20px;
+ 
+
+
+
+}
+
+
+
+div.pe{
+    font-size:small;
+
 }
 
 
@@ -234,9 +310,12 @@ div.cabeca{
 
 
 
+/* Estilizando o carrosel da dungeon */
 
 
-/ Estilizando o carrosel da dungeon */
+/* JS Estilo */
+/* Estilizando o carrosel da dungeon */
+
 
 .carousel{
     position:relative;
@@ -245,20 +324,26 @@ div.cabeca{
     margin: 0 auto;
 }
 
-.carouselimages{
+
+.carousel__images{
+
     width: 100%;
     height:100%;
     object-fit:cover;
 }
 
-.carouseltrack-container{
 
+.carousel__track-container{
+    
     position:relative;
     height: 100%;
   overflow:hidden;
 }
 
-.carouseltrack{
+
+
+.carousel__track{
+
 
     padding: 0;
     margin:0;
@@ -267,7 +352,9 @@ div.cabeca{
     height: 100%;
     transition: transform 300ms ease-in;
 }
-.carouselslide {
+
+.carousel__slide {
+
 position:absolute;
 top:0;
 bottom:0;
@@ -275,7 +362,9 @@ width:100%;
 
 }
 
-.carouselbutton{
+
+.carousel__button{
+
     position: absolute;
     top: 50%;
     transform: translate(-50%);
@@ -283,6 +372,7 @@ width:100%;
  border:0;
  cursor: pointer;
 }
+
 
 .carouselbutton--left{
     left:-45px;
@@ -296,13 +386,16 @@ width:100%;
 }
 
 .carouselnav {
+
     background-color: tomato;
     display:flex;
     justify-content: center;
     padding: 5px 0;
 }
 
-.carouselindicator {
+
+.carousel__indicator {
+
     border:0;
     border-radius:50%;
     width:15px;
@@ -312,14 +405,18 @@ width:100%;
     cursor: pointer;
 }
 
-.carouselindicator.current-slide{
+
+.carousel__indicator.current-slide{
+
     background-color:rgb(0,0,0,0.8);
 
 }
 
 .is-hidden {display:none;}
 
-.actionsnav{
+
+.actions__nav{
+
     background-color: rgb(141, 41, 23);
     display:flex;
     justify-content: center;
@@ -327,6 +424,7 @@ width:100%;
 }
 
 .actions_buttons{
+
 }
 
  a{ 
@@ -343,3 +441,5 @@ text-decoration: none;
    padding-bottom: 50%;
 
     }
+
+}

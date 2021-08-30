@@ -14,21 +14,18 @@
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+require_once "includes/rm.php";
 ?>  
  <div id="compra">
      <h1> Compra </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
-     <?php
-     $rm = $_SESSION['rm'] ?? 0;
-$q="select * from usuarios where $rm=rm";
-$busca = $banco->query($q); 
-?>
+     
   <?php
   $q="select rm,usuario,senha,coin from usuarios where $rm=rm";
   $busca=$banco->query($q);
   $id = $_GET['id'] ?? 0;
-  $k="select id,nome,img,preco from skins where $id=id";
+  $k="select * from skins where $id=id";
   $busca2=$banco->query($k);
   ?> 
   </div>
@@ -47,8 +44,8 @@ if((!$busca)||(!$busca2)){
         $reg2 = $busca2->fetch_object();
            $t=thumb($reg2->img);
             echo  "<tr class ='compra'><td class ='compra' rowspan= '2'><img src='$t'  height='400' width='400'></p>";
-             echo "<td class='compra'><p> Skin: $reg2->nome </p>";
-             echo "<tr><td class='compra'><p> Usuario:$reg->usuario </p>";
+             echo "<td class='compra'><p> Item: $reg2->nome </p>";
+             echo "<tr><td class='compra'><p> Usuario: $reg2->funcao </p>";
              echo "<tr><td class='compra'><p> preço: $reg2->preco coins </p>";
              echo "<td class='compra'><p> moedas: $reg->coin coins</p>";
              echo "<br>";
