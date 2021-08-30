@@ -11,7 +11,7 @@
 
 <body>    
   
- <div id="corpo">
+ <div id="CadSkin">
  <?php
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
@@ -45,7 +45,7 @@ require_once "includes/login.php";
 <?php echo voltar(); ?>
 
 </form> 
-
+</div>
 </body>
 
 </html>

@@ -26,7 +26,7 @@ $busca = $banco->query($q);
   $k="select * from skins where $id=id";
   $busca2=$banco->query($k);
   ?> 
- <div id="corpo"> 
+ <div id="pedido"> 
   <?php
 $reg = $busca->fetch_object();
 $reg2 = $busca2->fetch_object();
@@ -144,7 +144,7 @@ case'chave':
      
      <?php  include_once "footer.php"; ?>
 
-    
+</div>  
 </body>
 
 </html>

@@ -29,7 +29,11 @@ function sair() {
 
 
 echo "<header>";
+
+
 if(empty($_SESSION['user'])){
+echo "<div id='corpo-principal'>";
+
 
     echo "<a href='novo_usuario.php'> Cadastro </a> ";
     echo "<a href='login_usuario.php' ><p style='font-size:20px;'> Login </p></a>";
@@ -45,13 +49,17 @@ if(empty($_SESSION['user'])){
     $q="select rm,usuario,coin from usuarios where $rm=rm";
       $busca=$banco->query($q);
     $reg = $busca->fetch_object();
+
+  echo "<div id='corpo-princ-login>';
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
     
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
+
     echo " <a href ='jogos.php' > Jogos </a>|";
     
     
+
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
@@ -62,9 +70,15 @@ if(empty($_SESSION['user'])){
 
       
     }
+
     echo " <br><br><button id='sair' onclick='sair()'> Sair </button> ";
+echo "</div>";
+
 }
+
+
 echo "</header>";
+
 
 ?>
 </div>

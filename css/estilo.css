@@ -1,4 +1,84 @@
 @font-face {
+
+    font-family: Pixel;
+    src: url(pixel.TTF);
+  }
+
+  div#cabecalho{
+    
+    padding: 1px;
+    font-family: Pixel;
+    text-align: center;
+    background-color: rgb(92, 148, 221);
+}
+
+div#corpo-principal{
+   
+    font-family: Pixel;
+    font-size: 139%;
+    color:white;
+    text-align: center;
+    margin-top: 14%;
+    background-color: rgb(114, 158, 216);
+
+    width: 300px;
+    padding: 40px;
+    margin-top: -10px;
+    margin-left: -200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate (-50%,-50%);
+    background-color:rgb(211, 211, 211);
+    border-radius: 24px;
+    text-align: center;
+}
+
+div#corpo-princ-login{
+   
+    
+    color:white;
+    text-align: center;
+    margin-top: 14%;
+    background-color: rgb(114, 158, 216);
+
+   
+}
+
+div#formulario{
+    background-color: rgb(83, 115, 158);
+    border-radius: 5%;
+     padding: 1%;
+     width: 300px;
+     margin-top: -100px;
+     margin-left: -200px;
+     position: absolute;
+     display: flex;
+     top: 50%;
+     left: 50%;
+     transform: translate (-50%,-50%);
+     text-align: center;
+     
+}
+
+.form-butao{
+
+    width: 75px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;  
+    margin-left:100%;
+    margin-top:20%;
+    margin-bottom:1%;
+    cursor: pointer;
+    transition-duration: 0.4s;  
+}
+
+.form-butao:hover{
+
+    background-color: #153666; 
+  color: white;
     font-family: Pixelado;
     src: url(poxel-font.ttf);
   }
@@ -19,7 +99,19 @@ div#corpo{
     border-radius: 10%;
     border-color: black;
 
+
 }
+
+div.form-titulo{
+    padding-left:1%;
+    font-family: Vintage Avalanche;
+    src: url(VintageAvalanche.otf);
+}
+
+div#rodape{
+    margin-top: 50%;
+}
+
 table.loja{
     width:100%;
     text-align:left;
@@ -33,13 +125,116 @@ tr.loja{
 td.loja{
     border: 1px solid rgb(73, 110, 72);
     padding: 20px;
-  
+
 }
 td.lista{
     border: 2px solid black;
     padding: 15px;
     background-color: blanchedalmond;
 }
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: rgb(114, 158, 216);
+ 
+    
+    }
+    
+    .box{
+    width: 300px;
+    padding: 40px;
+    margin-top: -100px;
+    margin-left: -200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate (-50%,-50%);
+    background-color:rgb(211,211,211);
+    border-radius: 24px;
+    text-align: center;
+    
+    }
+    
+    .login{
+    
+    color: rgb(20, 89, 158);
+    text-transform: uppercase;
+    font-weight: 500;
+    
+    
+    }
+    
+    
+    .box input[type = "text" ],.box input[type = "password"]{
+    
+       border: 0;
+       background: none;
+       display: block;
+       margin: 20px auto;
+       text-align: center;
+       border: 2px solid #4682B4;
+       padding: 14px 10px;
+       width: 200px;
+       outline: none;
+       color: black;
+       border-radius: 24px;
+       transition: 0.25s;
+    
+    }
+    
+    .box input[type = "text" ]:focus,.box input[type = "password"]:focus{
+    
+    width: 280px;
+    border-color: #4169E1;
+    
+    }
+    
+    .box input[type = "submit"]{
+    
+       border: 0;
+       background: none;
+       display: block;
+       margin: 20px auto;
+       text-align: center;
+       border: 2px solid #4169E1;
+       padding: 14px 40px;
+       width: 200px;
+       outline: none;
+       color: black;
+       border-radius: 24px;
+       transition: 0.25s;
+       cursor:pointer;
+    
+    }
+    
+    .box input[type = "submit"]:hover{
+       background: #4169E1;
+    }
+/*
+div#corpo{
+    margin: 0;
+    padding: 0;
+    font-family: Pixel;
+    text-align: center;
+    background-color: rgb(157, 196, 211);
+}
+*/
+
+
+/*tr.loja:nth-child(even){
+    background-color: #69bb66;
+
+
+}
+
+img.goblin:hover{
+
+    width:700px;
+    height:700px;
+
 
 }
 
@@ -66,7 +261,6 @@ div.cabeca{
 }
 
  
-
 
 
 
@@ -103,10 +297,10 @@ a:hover{
 
 }
 
+
+
 div.pe{
     font-size:small;
-
-
 
 }
 
@@ -116,8 +310,12 @@ div.pe{
 
 
 
+/* Estilizando o carrosel da dungeon */
+
+
 /* JS Estilo */
 /* Estilizando o carrosel da dungeon */
+
 
 .carousel{
     position:relative;
@@ -126,11 +324,14 @@ div.pe{
     margin: 0 auto;
 }
 
+
 .carousel__images{
+
     width: 100%;
     height:100%;
     object-fit:cover;
 }
+
 
 .carousel__track-container{
     
@@ -139,7 +340,10 @@ div.pe{
   overflow:hidden;
 }
 
+
+
 .carousel__track{
+
 
     padding: 0;
     margin:0;
@@ -148,7 +352,9 @@ div.pe{
     height: 100%;
     transition: transform 300ms ease-in;
 }
+
 .carousel__slide {
+
 position:absolute;
 top:0;
 bottom:0;
@@ -156,7 +362,9 @@ width:100%;
 
 }
 
+
 .carousel__button{
+
     position: absolute;
     top: 50%;
     transform: translate(-50%);
@@ -165,25 +373,29 @@ width:100%;
  cursor: pointer;
 }
 
-.carousel__button--left{
+
+.carouselbutton--left{
     left:-45px;
 
 }
-.carousel__button--right{
+.carouselbutton--right{
     right:-45px;
 }
-.carousel__button img{
+.carouselbutton img{
  width: 12px;
 }
 
-.carousel__nav {
+.carouselnav {
+
     background-color: tomato;
     display:flex;
     justify-content: center;
     padding: 5px 0;
 }
 
+
 .carousel__indicator {
+
     border:0;
     border-radius:50%;
     width:15px;
@@ -193,14 +405,18 @@ width:100%;
     cursor: pointer;
 }
 
+
 .carousel__indicator.current-slide{
+
     background-color:rgb(0,0,0,0.8);
 
 }
 
 .is-hidden {display:none;}
 
+
 .actions__nav{
+
     background-color: rgb(141, 41, 23);
     display:flex;
     justify-content: center;
@@ -208,5 +424,22 @@ width:100%;
 }
 
 .actions_buttons{
+
+}
+
+ a{ 
+text-decoration: none;
+  }  
+     a:visited{
+        color:rgb(57, 105, 168) 
+     }     
+     #texto{
+        margin-left: 2%;
+    }
+    
+    #rodape{
+   padding-bottom: 50%;
+
+    }
 
 }

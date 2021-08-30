@@ -21,7 +21,7 @@ $q="delete from usuarios where $rm=rm";
 $busca = $banco->query($q); 
 
 ?>
- <div id="corpo">
+ <div id="skins">
      <h1> skins </h1>
      <h2></h2>   
      <?php 

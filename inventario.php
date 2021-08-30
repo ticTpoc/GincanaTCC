@@ -19,7 +19,7 @@ require_once "includes/login.php";
 
 
 
- <div id="corpo">
+ <div id="inventario">
      <h1> Meu inventário </h1>
 
      <?php include_once "header.php" ?>
@@ -58,7 +58,7 @@ if(!($busca)){
 }
 ?>
 </table>
-     
+</div>
      <?php  include_once "footer.php"; ?>
 
     

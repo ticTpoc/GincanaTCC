@@ -15,17 +15,25 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
-     <h1> Pagina Inicial </h1>
-     <!-- esse comando mostra o tipo e o nome do usuario que está logado, baseado na session -->
-     <h2><?php if(logado()){ 
+
+
+ <div id="cabecalho">
+    
+     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
+ <h2><?php if(logado()){ 
          echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
          
          } ?></h2>   
-     <?php include_once "header.php" ?>
-     
-     <?php  include_once "footer.php"; ?>
 
+</div>   
+
+<div>
+    <?php include_once "header.php" ?>
+</div>
+ 
+<div id="rodape">
+     <?php  include_once "footer.php"; ?>
+</div>
     
 </body>
 
