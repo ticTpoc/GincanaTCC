@@ -15,7 +15,7 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
+ <div id="corpo-segundo">
      <h1> Pagina Inicial </h1>
      
      <?php include_once "header.php";
@@ -64,7 +64,7 @@ where rm='$rm';
 ?>
 
 
-
+        </div>
      
      <?php  include_once "footer.php"; ?>
 

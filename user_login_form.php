@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<style>
 
+
+ </style>
 <title></title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="estilos/estilo.css">
+<link rel="stylesheet" href="css/estilo.css">
 
 
 </head>
 
 <body>    
    
-<h1> Login yay </h1>
-<form action='login_usuario.php' method='post'>
-<table>
-   <tr><td>Usuário:<td><input type='text' name='usuario' id='usuario' maxlength=10 size=12 >
-   <tr><td>Senha:<td><input type='password' name='senha' id='senha' size=12  maxlength=12>
-   <tr><td><input type='submit' value='enviar'>
-   </table>
+
+<form  class= "box-fora" action='login_usuario.php' method='post'>
+
+<div class= "box">
+<h1 class ="login" id="login"> Login </h1>
+<input type="text" name="usuario"  id='usuario' maxlength=10 placeholder="usuario">
+<input type="password" name="senha"  id='senha' maxlength=10 placeholder="password">
+<input type="submit" name=""   >
+</div>
    </form>
    </body>
    </html>

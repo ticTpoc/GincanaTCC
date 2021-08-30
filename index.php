@@ -15,18 +15,20 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
-     <h1> Pagina Inicial </h1>
-     <h2></h2>   
-     <?php include_once "header.php" ?>
+
+ <div id="cabecalho">
     
-<br>
-<br>
-<br>
+     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
 
-     
+</div>   
+
+<div>
+    <?php include_once "header.php" ?>
+</div>
+ 
+<div id="rodape">
      <?php  include_once "footer.php"; ?>
-
+</div>
     
 </body>
 

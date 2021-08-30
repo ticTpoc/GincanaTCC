@@ -49,7 +49,7 @@ echo erro("valor de preço alto demais");
            }
    
      ?>
-
+</div>
 </body>
 
 </html>

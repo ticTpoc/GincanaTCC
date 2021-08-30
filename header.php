@@ -2,17 +2,34 @@
 <?php
 
 echo "<header>";
-if(empty($_SESSION['user'])){
 
-    echo "<a href='login_usuario.php' ><p style='font-size:20px;'> Login </p></a>";
+
+if(empty($_SESSION['user'])){
+echo "<div id='corpo-principal'>";
+
+    echo "<a href='login_usuario.php' > Login </p></a>";
     echo "<a href='loja.php'> loja </a>";
 
-}else{
-    echo 'olá '. $_SESSION['nome'];
+echo "</div>";
+
+}
+
+
+else{ 
+    
+    $rm = $_SESSION['rm'] ?? 0;
+$q="select rm,usuario, coin from usuarios where $rm=rm";
+  $busca=$banco->query($q);
+  $reg = $busca->fetch_object();
+    echo ' '. $_SESSION['nome'];
+
+    echo "<div id ='corpo-princ-login'>";
 
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
+    echo " <a href='farm.php?coin=$reg->coin'> Dungeon </a><br>";
+
     if(admin()){
      
         echo "<a href='usuarios.php'> usuarios </a> |";
@@ -25,8 +42,12 @@ if(empty($_SESSION['user'])){
       
     }
     echo " <br><br><a href='logout_usuario.php'  style='text-align:left;'> Sair </a> ";
+    echo "</div>";
 }
+
+
 echo "</header>";
+
 
 ?>
 </div>

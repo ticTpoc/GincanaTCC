@@ -15,7 +15,7 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
+ <div id="novo_usuario">
      
      <?php
      if(!admin()){
@@ -69,7 +69,7 @@ require_once "includes/login.php";
 
    
      ?>
-
+</div>
 </body>
 
 </html>

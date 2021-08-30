@@ -15,7 +15,7 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
+ <div id="compra">
      <h1> Compra </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
@@ -31,6 +31,8 @@ $busca = $banco->query($q);
   $k="select id,nome,img,preco from skins where $id=id";
   $busca2=$banco->query($k);
   ?> 
+  </div>
+
   <div>
 <table class='compra'>
 <?php

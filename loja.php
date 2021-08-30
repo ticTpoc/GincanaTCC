@@ -16,9 +16,8 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
 
- <div id="corpo">
+ <div id="loja">
      <h1> Loja </h1>
-     <?php include_once "header.php" ?>
      <table class="loja">
 <?php
 $q="select id,nome,img,preco from skins";
@@ -49,7 +48,6 @@ if(!$busca){
 </table>
 
 
-     <?php  include_once "footer.php"; ?>
 
 <?php echo voltar(); ?>
 </div>
