@@ -11,6 +11,9 @@
     text-align: center;
     background-color: rgb(92, 148, 221);
 }
+div#corpo{
+    margin-left: 100px;
+}
 
 div#corpo-principal{
    
@@ -83,24 +86,7 @@ div#formulario{
     src: url(poxel-font.ttf);
   }
 
-body{
-    background-color: rgb(10, 101, 110);
-    font-family:Unispace;
-}
 
-
-div#corpo{
-    width:1000px;
-    margin:10% 10% 10% 20%;
-    padding:25px;
-    background-color:rgb(255, 255, 255);
-    
-    text-align: center;
-    border-radius: 10%;
-    border-color: black;
-
-
-}
 
 div.form-titulo{
     padding-left:1%;
@@ -423,9 +409,6 @@ width:100%;
     padding: 15px 0;
 }
 
-.actions_buttons{
-
-}
 
  a{ 
 text-decoration: none;
@@ -442,4 +425,3 @@ text-decoration: none;
 
     }
 
-}

@@ -17,24 +17,26 @@ require_once "includes/login.php";
 ?>  
 
 
- <div id="cabecalho">
+ 
     
      <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
  <h2><?php if(logado()){ 
          echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
          
          } ?></h2>   
-
-</div>   
+ 
 
 <div>
     <?php include_once "header.php" ?>
+
 </div>
+<div class="corpo">
  
 <div id="rodape">
      <?php  include_once "footer.php"; ?>
 </div>
     
+        </div>
 </body>
 
 </html>
