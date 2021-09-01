@@ -39,6 +39,17 @@ require_once "includes/login.php";
 <div id="results"></div>
 
      <script type='text/javascript'>
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
     
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
@@ -76,8 +87,11 @@ function setNextQuestion(){
 function showQuestion(question){
 
     questionElement.innerText = question.question;
+answers = question.answers.sort(() => Math.random() - 0.5);
     question.answers.forEach(answer =>{
         const button = document.createElement('button');
+
+        
         button.innerText=answer.text;
         button.classList.add('btn');
         if( answer.correct){
