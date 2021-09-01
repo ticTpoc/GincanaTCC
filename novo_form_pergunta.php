@@ -20,7 +20,7 @@ require_once "includes/login.php";
 
 <form action="nova_pergunta.php" method="post">
 <table>
-<tr><td> Pergunta <td> <input type="text" name="pergunta" id="pergunta" size="15" maxlength="30">
+<tr><td> Pergunta <td> <input type="text" name="pergunta" id="pergunta" size="20" maxlength="100">
 <tr><td> Resposta 1  <textarea  id="w3review" name="resposta1" id="resposta1" rows="4" cols="50"></textarea>
 <tr><td>  Resposta 2  <textarea  id="w3review" name="resposta2" id="resposta2" rows="4" cols="50"></textarea>
 <tr><td>  Resposta 3  <textarea  id="w3review" name="resposta3" id="resposta3" rows="4" cols="50"></textarea>
