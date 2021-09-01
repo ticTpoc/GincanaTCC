@@ -65,13 +65,15 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 /* quiz */
 create table quiz(
-question text(200) not null,
-R1 text (200) not null,
-R2 text(200) not null,
-R3 text(200) not null,
-RC text(200) not null,
-RN text (20),
-idq int(20) not null auto_increment primary key
+
+question text not null,
+R1 text not null,
+R2 text not null,
+R3 text not null,
+RC text not null,
+RN text,
+idq int(4) not null auto_increment primary key
+
 
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
@@ -120,7 +122,7 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nive
 
 /*
 
-
+select * from quiz;
 select * from usuarios;
 select * from skins;
 select * from compras;
