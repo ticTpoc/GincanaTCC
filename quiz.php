@@ -48,6 +48,9 @@ const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
+
+let shuffledAnswers
+
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () =>{
     currentQuestionIndex++;
@@ -66,6 +69,8 @@ function startGame(){
 function setNextQuestion(){
  resetState();
  showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+ console.log(shuffledQuestions);
 }
 
 function showQuestion(question){
@@ -119,36 +124,40 @@ function setStatusClass(element, correct){
 function clearStatusClass(element){
     element.classList.remove('correct');
     element.classList.remove('wrong');
-}
+} 
+
 
 const questions = [
+
+  <?php
+$q='select * from quiz';
+$busca = $banco->query($q);
+
+
+while($reg = $busca->fetch_object()){
+    echo "
     {
-        question: 'quanto é 2+2',
+        question: '$reg->question',
         answers: [
-            { text: '22', correct:false},
-            { text: '2', correct:false},
-            { text: '4', correct:true},
-            { text: '8', correct:false}
+            { text: '$reg->R1', correct:false},
+            { text: '$reg->R2', correct:false},
+            { text: '$reg->R3', correct:false},
+            { text: '$reg->RC', correct:true}
         ]
-    },
+    },";
+}
+  echo "
     {
-        question: 'William?',
+        question: 'Feliz?',
         answers: [
-            { text: 'Sim?', correct:true},
-            { text: 'Não?', correct:false},
-            { text: 'Talvez', correct:false},
-            { text: 'Nenhum', correct:false}
-        ]
-    },
-    {
-        question: 'Banana é: ',
-        answers: [
-            { text: 'amarela', correct:false},
-            { text: 'potássio', correct:true},
-            { text: 'gostosa', correct:false},
-            { text: 'milkshake', correct:false}
+            { text: 'SIM', correct:false},
+            { text: 'SIM', correct:false},
+            { text: 'NÃO', correct:true},
+            { text: 'SIM', correct:false}
         ]
     }
+    ";
+    ?>
 ]
 </script>
 

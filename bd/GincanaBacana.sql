@@ -62,6 +62,25 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/* quiz */
+create table quiz(
+question text not null,
+R1 text not null,
+R2 text not null,
+R3 text not null,
+RC text not null,
+RN text,
+idq int(4) not null auto_increment primary key
+
+) ENGINE=innoDB DEFAULT CHARSET=utf8;
+
+
+
+
+insert into quiz(question,R1,R2,R3,RC,RN) values
+('Oque Pesa mais? 100kg de Ferro ou 100kg de Algodão? ','100kg de Algodão', '100kg de Ferro','Não Sei Não :/','Ambos Tem o Mesmo Peso','Nenhuma Das Questões Anteriores');
+
+
 insert into skins(id,jogo, nome, preco, img, funcao,valor, qtd,modelo) values
 (1,'dungeon','chave','100','chave.png','aumenta seu nivel na dungeon',1,0,'item'),
 (2,'dungeon','armadura','50','armadura.png','aumenta sua vida na dungeon',1,0,'item');
@@ -96,7 +115,7 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nive
 
 /*
 
-
+select * from quiz;
 select * from usuarios;
 select * from skins;
 select * from compras;

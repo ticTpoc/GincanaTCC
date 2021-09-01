@@ -57,8 +57,12 @@ if(empty($_SESSION['user'])){
         echo "<a href='usuarios.php'> usuarios </a> |";
 
         echo "<a href='skins.php'> skins </a> |";
+
+        echo "<a href='perguntas.php'> perguntas </a> |";
         
         echo "<a href='novo_form_skin.php'> add skin </a> |";
+
+        echo "<a href='novo_form_pergunta.php'> add perguntas </a> |";
 
       
     }
