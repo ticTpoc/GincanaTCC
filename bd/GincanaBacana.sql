@@ -3,6 +3,7 @@ USE GB;
 
 /* o comando sagrado: DROP DATABASE GB; *//* o comando sagrado: DROP DATABASE GB; */
 
+
 create table inimigos(
 mob varchar(10) not null primary key,
 mincoin int not null,
@@ -64,6 +65,7 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 /* quiz */
 create table quiz(
+
 question text not null,
 R1 text not null,
 R2 text not null,
@@ -72,6 +74,7 @@ RC text not null,
 RN text,
 idq int(4) not null auto_increment primary key
 
+
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
 
@@ -79,6 +82,7 @@ idq int(4) not null auto_increment primary key
 
 insert into quiz(question,R1,R2,R3,RC,RN) values
 ('Oque Pesa mais? 100kg de Ferro ou 100kg de Algodão? ','100kg de Algodão', '100kg de Ferro','Não Sei Não :/','Ambos Tem o Mesmo Peso','Nenhuma Das Questões Anteriores');
+
 
 
 insert into skins(id,jogo, nome, preco, img, funcao,valor, qtd,modelo) values
@@ -111,7 +115,10 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nive
 ('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
 
 
-
+ select * from quiz;
+ select * from usuarios;
+ 
+  show databases;
 
 /*
 

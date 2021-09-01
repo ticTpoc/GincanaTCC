@@ -12,7 +12,7 @@
 
 <body>    
   
- <div id="corpo">
+
  <?php
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
@@ -28,6 +28,12 @@ require_once "includes/login.php";
 
 
 
+<div class="form-titulo">
+   <h1> Alteração de dados </h1>
+</div>
+
+
+<div id="formulario">
 
 <h1> Alteração de dados </h1>
 
@@ -43,6 +49,7 @@ require_once "includes/login.php";
 <tr><td> <input type="submit" value="Alterar">
 
 
+</div>
 
 </table>
 <?php echo voltar(); ?>

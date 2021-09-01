@@ -24,7 +24,9 @@ $reg = $busca->fetch_object();
 ?>  
 
 
+
  <div id="corpo">
+
 
 
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -155,6 +157,7 @@ moveToSlide(track, currentSlide, nextSlide);
  cliques++;
  return;
 }else{
+
    
   morreu("você morreu, se mata");
 }
@@ -178,6 +181,7 @@ function atacar(){
  
   if(vida <= 0 ){
   morreu("você morreu, se mata");
+
 }
 
 

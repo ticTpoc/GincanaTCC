@@ -1,10 +1,16 @@
 
 <?php
+
+
+   
+
+
 echo "<br>";
 echo "<br>";
 echo "<br>";
 echo voltar();
-    echo"<footer>";
+
+ echo"<footer id='rodape'style=font-size:60%>";
 
 echo "<p> Acessado por [".$_SERVER['REMOTE_ADDR']."] em |".date('d/m/y')."| ";
 

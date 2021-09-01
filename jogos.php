@@ -15,13 +15,14 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
- <div id="corpo">
+
      <h1> Lista de jogos </h1>
      <h2><?php if(logado()){ 
          echo "olá ". $_SESSION['tipo']." " . $_SESSION['user'];
          
          } ?></h2>   
      <?php include_once "header.php" ?>
+     <div id="corpo">
      <table class='jogos'>
     <?php 
     echo "<h2> carteira <h2>";
@@ -36,9 +37,10 @@ require_once "includes/login.php";
         
         ?>
         </table>
+        </div>
      <?php  include_once "footer.php"; ?>
 
-    
+       
 </body>
 
 </html>
