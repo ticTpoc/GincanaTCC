@@ -33,7 +33,7 @@ require_once "includes/login.php";
  <tr><td> Valor <td> <input type="number" name="valor" id="valor" size="3" maxlength="3">
  <tr><td  id='modelo'> Modelo <td> <select name='modelo' id='modelo'>
  <option value='item' selected> Item </option>
- <option value='skin' selected> Skin </option>
+ <option value='skin'> Skin </option>
 <tr><td> <input type="submit" value="Cadastrar">
 
 
