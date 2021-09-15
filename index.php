@@ -16,16 +16,10 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
 
-
- 
-    
      <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
  <h2><?php if(logado()){ 
          echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
-         
          } ?></h2>   
- 
-
 <div>
     <?php include_once "header.php" ?>
 
@@ -35,6 +29,8 @@ require_once "includes/login.php";
 <div id="rodape">
      <?php  include_once "footer.php"; ?>
 </div>
+
+
     
         </div>
 </body>

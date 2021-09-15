@@ -3,3 +3,9 @@
 
 
 //tentativa 3 carai
+
+
+
+
+    //cartas
+  

@@ -7,8 +7,7 @@
 function sair() {
 
     var logout= new FormData();
-    var vida = 1;
-        logout.append('logout', vida);   
+   
 
     $.ajax({
             url:'logout_usuario.php',
@@ -59,7 +58,7 @@ if(empty($_SESSION['user'])){
     
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
-
+    echo " <a href ='notificacoes.php' > notificações</a>|";
     echo " <a href ='jogos.php' > Jogos </a>|";
     
     

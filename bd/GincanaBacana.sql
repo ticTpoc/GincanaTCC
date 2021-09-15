@@ -4,6 +4,8 @@ USE GB;
 /* o comando sagrado: DROP DATABASE GB; *//* o comando sagrado: DROP DATABASE GB; */
 
 
+
+
 create table inimigos(
 mob varchar(10) not null primary key,
 mincoin int not null,
@@ -35,6 +37,31 @@ nivel int(3) not null,
 foreign key(salas_id) references salas(id)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table apostas(
+ida int(5) not null primary key auto_increment,
+valor int(5) not null,
+usuario1 int(5) not null,
+usuario2 int(5) not null,
+impopar char(5) not null,
+dia date not null,
+confirmacao bool,
+ativa bool,
+vencedor int(5),
+foreign key(usuario1) references usuarios(rm),
+foreign key(usuario2) references usuarios(rm)
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table notificacoes(
+idn int(8) not null primary key auto_increment,
+texto text,
+assunto varchar(30) not null,
+usuarios_rm int(5) not null,
+foreign key(usuarios_rm) references usuarios(rm)
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 create table skins(
 nome varchar(30) not null,
@@ -99,7 +126,6 @@ insert into skins(id,jogo, nome, preco, img, funcao,valor, qtd,modelo) values
 
 
 
-
 insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
 ('goblin', 3, 6, 1, 30),
 ('anao', 1, 7, 1, 20),
@@ -112,13 +138,16 @@ insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
 ('unicornio',0,500,5,77);
 
 insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel,vida) values
-('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
+('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
+('1','teste','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
+('2','teste','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
+/*
+
+)
+*/
 
 
- select * from quiz;
- select * from usuarios;
- 
-  show databases;
+
 
 /*
 
@@ -128,13 +157,21 @@ select * from skins;
 select * from compras;
 select * from salas;
 select * from itens;
-
 select * from inimigos;
-
+select * from apostas;
+select * from notificacoes;
 select * from usuarios order by estado;
 
+update apostas
+  set confirmacao=true
+  where ida=1;
 
 select produtos.cod, skins.id, skins.nome, skins.img, skins.preco  from skins join produtos where skins.id=produtos.skin_id;
+
+// selecionar duas foreign key com uma só chave primária
+
+SELECT b.ida,a.usuario,c.usuario,b.valor from apostas b JOIN usuarios a ON b.usuario1=a.rm JOIN usuarios c ON b.usuario2=c.rm;
+
 
 select skins.img, skins.nome, skins.id, compras.skins_id from skins join compras where compras.skins_id=skins.id;
 select usuarios.rm, usuarios.usuario, compras.usuarios_rm from usuarios join compras on compras.usuarios_rm=usuarios.rm where usuarios.rm=1;
