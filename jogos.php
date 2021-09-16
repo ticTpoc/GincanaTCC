@@ -34,11 +34,11 @@ require_once "includes/login.php";
          echo "<td> Quiz<br>"; 
          echo "  <tr><td><a href='cassino.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
          echo "<td> Cassino<br>"; 
-         echo "  <tr><td><a href='memory.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
+         echo "  <tr><td><a href='memory.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/memoria.png'></a>";
          echo "<td> Jogo da memória<br>"; 
-         echo "  <tr><td><a href='snake.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
+         echo "  <tr><td><a href='snake.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/nunca.png'></a>";
          echo "<td> Cobrinha<br>"; 
-         echo "  <tr><td><a href='tetris.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
+         echo "  <tr><td><a href='tetris.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/nunca.png'></a>";
          echo "<td> Tetris<br>"; 
         
         ?>
