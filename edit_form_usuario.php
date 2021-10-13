@@ -25,18 +25,18 @@ require_once "includes/login.php";
 
 
 ?>
+<div class="cabecalho">
+     <h1> Gincana Bacana </h1> 
 
+ <h2><?php if(logado()){ echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
 
-
-<div class="form-titulo">
-   <h1> Alteração de dados </h1>
+ 
 </div>
 
+<div class="conteudo">
 
-<div id="formulario">
 
-<h1> Alteração de dados </h1>
-
+<div id="editusuario">
 
 <form action="edit_usuario.php" method="post">
 <table>
@@ -49,11 +49,12 @@ require_once "includes/login.php";
 <tr><td> <input type="submit" value="Alterar">
 
 
-</div>
-
 </table>
+</div>
+</div>
+<div class="rodape">
 <?php echo voltar(); ?>
-
+</div>
 </form> 
 
 </body>

@@ -15,10 +15,18 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
+<div class="corpo"> 
+<div class="cabecalho">
+     <h1> Gincana Bacana </h1> 
 
- <div id="loja">
-     <h1> Loja </h1>
-     <table class="loja">
+ <h2><?php if(logado()){ echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+
+
+</div>
+
+     <div class="conteudo">
+         <div id="loja"> 
+     <table>
 <?php
 $q="select * from skins";
 $busca = $banco->query($q);
@@ -28,17 +36,17 @@ if(!$busca){
     if($busca->num_rows==0){
         echo aviso('nenhum registro foi encontrado :/');
     }else{
-        echo "<tr clas='loja' style='background-color:black; color:white'><td class='loja'>Nome";
-        echo "<td class='loja'>Imagem";
-        echo "<td class='loja'>Preço";
+        echo "<tr><td>Nome";
+        echo "<td>Imagem";
+        echo "<td>Preço";
         while ($reg = $busca->fetch_object()){
             $t = thumb($reg->img);
 
             
-            echo  "<tr class ='loja'><td class ='loja'><p style='color:black;' id='secundario'>$reg->nome</p>";
-            echo  "<td class ='loja'><img src='$t' width='200px' height='200px'>";
-            echo  "<td class ='loja'><p style='color:black;' id='secundario'>$reg->preco coins</p>";
-            echo "<tr class='loja'><td colspan='3'><a href='compra.php?id=$reg->id'><p style='text-align:center;'> COMPRAR</p></a>";
+            echo  "<tr><td><p>$reg->nome</p>";
+            echo  "<td><img src='$t' width='200px' height='200px'>";
+            echo  "<td><p>$reg->preco coins</p>";
+            echo "<tr><td colspan='3'><a href='compra.php?id=$reg->id'><p> COMPRAR</p></a>";
            
             
             
@@ -51,11 +59,11 @@ if(!$busca){
 
 
 
-
+<div class="rodape">
      <?php  include_once "footer.php"; ?>
-
-
 <?php echo voltar(); ?>
+</div>
+</div>
 </div>
 </body>
 

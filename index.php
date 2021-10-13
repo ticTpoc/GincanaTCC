@@ -15,24 +15,31 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
+<div class="corpo">
 
-     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
- <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
-         } ?></h2>   
-<div>
-    <?php include_once "header.php" ?>
+<div class="cabecalho">
+     <h1> Gincana Bacana </h1> 
+
+ <h2><?php if(logado()){ echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+
 
 </div>
-<div class="corpo">
- 
-<div id="rodape">
+
+<div class="conteudo">
+    
+<?php include_once "header.php" ?>
+<p> Conteudo </p>
+
+
+</div>
+
+<div class="rodape">
      <?php  include_once "footer.php"; ?>
 </div>
 
 
     
-        </div>
+</div>
 </body>
 
 </html>

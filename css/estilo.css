@@ -9,16 +9,14 @@
     src: url(pixel.TTF);
   }
 
-  div#cabecalho{
+  div.cabecalho{
     
     padding: 1px;
     font-family: Pixel;
     text-align: center;
     background-color: rgb(92, 148, 221);
 }
-div#corpo{
-    margin-left: 100px;
-}
+
 
 div#corpo-principal{
    
@@ -99,9 +97,7 @@ div.form-titulo{
     src: url(VintageAvalanche.otf);
 }
 
-div#rodape{
-    margin-top: 50%;
-}
+
 
 table.loja{
     width:100%;
@@ -282,13 +278,6 @@ a:link{
 
 }
 
-a:hover{
-  font-size: 20px;
- 
-
-
-
-}
 
 
 

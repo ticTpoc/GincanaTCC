@@ -82,7 +82,7 @@ if(empty($_SESSION['user'])){
    
 }
 
- echo "</div>";
+ 
     
 
 echo "</header>";
