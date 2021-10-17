@@ -36,7 +36,7 @@ if(empty($_SESSION['user'])){
     echo "<div id='corpo-princ-login'>";
     echo "<a href='novo_usuario.php'> Cadastro </a> ";
     echo "<a href='login_usuario.php' ><p style='font-size:20px;'> Login </p></a>";
-    echo "<a href='loja.php'> loja </a>";
+   
 
 }else{
    

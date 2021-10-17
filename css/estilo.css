@@ -43,10 +43,10 @@ div#corpo-principal{
 div#corpo-princ-login{
    
     
-    color:white;
+    color:rgb(211, 211, 211);
     text-align: center;
     margin-top: 14%;
-    background-color: rgb(114, 158, 216);
+    background-color: rgb(211, 211, 211);
 
    
 }
@@ -134,12 +134,14 @@ body{
     .box{
     width: 300px;
     padding: 40px;
+    padding-left:20px ;
+    padding-right: 20px;
     margin-top: -100px;
     margin-left: -200px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate (-50%,-50%);
+    transform: (-50%,-50%);
     background-color:rgb(211,211,211);
     border-radius: 24px;
     text-align: center;

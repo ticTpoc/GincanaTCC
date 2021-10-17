@@ -20,7 +20,7 @@ require_once "includes/login.php";
 <div class="cabecalho">
      <h1> Gincana Bacana </h1> 
 
- <h2><?php if(logado()){ echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+ <h2><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
 
 
 </div>
@@ -28,7 +28,7 @@ require_once "includes/login.php";
 <div class="conteudo">
     
 <?php include_once "header.php" ?>
-<p> Conteudo </p>
+
 
 
 </div>
