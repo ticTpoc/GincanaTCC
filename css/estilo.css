@@ -2,6 +2,27 @@
     box-sizing: border-box;
 }
 
+div.esquerda{
+    float:left;
+    width:50%;
+    font-family: Pixel;
+    padding: 1px;
+    height: 200px;
+    background-color: rgb(58, 108, 173);
+}
+
+.direita{
+    float:right;
+    width:50%;
+    height: 200px;
+    background-color: rgb(58, 108, 173);
+}
+
+header{
+    background-color: rgb(58, 108, 173);
+   
+}
+
 
 @font-face {
 
@@ -9,12 +30,7 @@
     src: url(pixel.TTF);
   }
 
-  div.cabecalho{
-    
-    padding: 1px;
-    font-family: Pixel;
-    background-color: rgb(58, 108, 173);
-}
+
 
 
 div#corpo-principal{
@@ -497,7 +513,7 @@ width:100%;
 text-decoration: none;
   }  
      a:visited{
-        color:rgb(57, 105, 168) 
+        color:rgb(0, 0, 0) 
      }     
      #texto{
         margin-left: 2%;
