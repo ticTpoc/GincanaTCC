@@ -13,8 +13,7 @@
     
     padding: 1px;
     font-family: Pixel;
-    text-align: center;
-    background-color: rgb(92, 148, 221);
+    background-color: rgb(58, 108, 173);
 }
 
 
@@ -506,6 +505,20 @@ text-decoration: none;
     
     #rodape{
    padding-bottom: 50%;
+   margin-top: 30%;
+   padding: 15px;
+   background-color: rgb(58, 108, 173);
 
     }
+ #nome{
+     font-size: 200%;
+     margin-left: 1%;
 
+ }
+     div.conteudo{
+        float:left;
+        float:right;
+        width: 65%;
+        margin-bottom:100%;
+        
+     }

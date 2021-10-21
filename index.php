@@ -18,7 +18,7 @@ require_once "includes/login.php";
 <div class="corpo">
 
 <div class="cabecalho">
-     <h1> Gincana Bacana </h1> 
+    <h1 id="nome"> Gincana Bacana  </h1> 
 
  <h2><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
 
