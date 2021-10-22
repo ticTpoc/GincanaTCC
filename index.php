@@ -21,7 +21,7 @@ require_once "includes/login.php";
     <div class="esquerda">
     <h1 id="nome"> Gincana Bacana  </h1> 
 
- <h2><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+ <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
     </div>
     <div class="direita">
  <?php include_once "header.php" ?>

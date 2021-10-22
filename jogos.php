@@ -18,14 +18,19 @@ require_once "includes/login.php";
   <div id="corpo">
 
      <div class="cabecalho"> 
-     <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']." " . $_SESSION['user'];
+     <div class="esquerda">
+    <h1 id="nome"> Gincana Bacana  </h1> 
+
+ <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+    </div>
+    <div class="direita">
+ <?php include_once "header.php" ?>
+</div>
+</div>  
          
-         } ?></h2>   
-         </div> 
 
          <div class="conteudo">
-     <?php include_once "header.php" ?>
+    
    
      <table id="jogos">
     <?php 

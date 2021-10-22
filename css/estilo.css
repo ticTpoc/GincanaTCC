@@ -4,17 +4,17 @@
 
 div.esquerda{
     float:left;
-    width:50%;
+    width:35%;
     font-family: Pixel;
     padding: 1px;
-    height: 200px;
+    height: 100px;
     background-color: rgb(58, 108, 173);
 }
 
 .direita{
     float:right;
-    width:50%;
-    height: 200px;
+    width:65%;
+    height: 100px;
     background-color: rgb(58, 108, 173);
 }
 
@@ -41,15 +41,14 @@ div#corpo-principal{
     text-align: center;
     margin-top: 14%;
     background-color: rgb(114, 158, 216);
-
     width: 300px;
     padding: 40px;
-    margin-top: -10px;
+    margin-top: -50px;
     margin-left: -200px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate (-50%,-50%);
+    
     background-color:rgb(211, 211, 211);
     border-radius: 24px;
     text-align: center;
@@ -257,6 +256,9 @@ td.loja:nth-child(3){
 
 div.cabeca{
     background-color: rgb(114, 158, 216);
+    margin-top: 4%;
+    margin-right: 35%;
+   
 
 }
 
@@ -521,20 +523,28 @@ text-decoration: none;
     
     #rodape{
    padding-bottom: 50%;
-   margin-top: 30%;
+   margin-top: 38%;
    padding: 15px;
    background-color: rgb(58, 108, 173);
 
     }
+
  #nome{
      font-size: 200%;
      margin-left: 1%;
 
  }
+
      div.conteudo{
         float:left;
         float:right;
         width: 65%;
         margin-bottom:100%;
+        
+     }
+ 
+     #mensagem{
+        margin-top: 3px;
+        margin-left:2%;
         
      }

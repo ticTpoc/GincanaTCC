@@ -8,7 +8,7 @@
 echo "<br>";
 echo "<br>";
 echo "<br>";
-echo voltar();
+
 
  echo"<footer id='rodape'style=font-size:60%>";
 
