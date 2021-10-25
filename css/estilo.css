@@ -548,3 +548,17 @@ text-decoration: none;
         margin-left:2%;
         
      }
+
+     #editusuario{
+
+        margin-top: 10%;
+     }
+     input#usuario, #rm, #tipo, #senha0, #senha1, #senha2 {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        background: none;
+        border-bottom: 2px solid rgb(25, 60, 124);
+     }
