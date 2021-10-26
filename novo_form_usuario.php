@@ -17,7 +17,7 @@ $q="select * from salas";
 <form action="novo_usuario.php" method="post">
 <table>
  <tr><td> Usuário <td><input type="text" name="usuario" id="usuario" size="15" maxlength="10" required>
- <tr><td> RM <td><input type="text" name="rm" id="rm" size="15" maxlength="30" required>
+ <tr><td> RM <td><input type="text" name="rm" id="rm2" size="15" maxlength="30" required>
  <tr><td  id='sala'> Sala <td> <select name='sala' id='sala'>
 
 <?php

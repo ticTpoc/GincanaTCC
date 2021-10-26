@@ -520,11 +520,15 @@ text-decoration: none;
      #texto{
         margin-left: 2%;
     }
+    .conteudo{
+        margin-bottom:50%;
+        float:left;
+        width:100%;
+    }
     
-    #rodape{
-   padding-bottom: 50%;
-   margin-top: 38%;
-   padding: 15px;
+    .rodape{
+   width: 100%;
+   float:left;
    background-color: rgb(58, 108, 173);
 
     }
@@ -539,7 +543,7 @@ text-decoration: none;
         float:left;
         float:right;
         width: 65%;
-        margin-bottom:100%;
+       
         
      }
  
@@ -553,7 +557,7 @@ text-decoration: none;
 
         margin-top: 10%;
      }
-     input#usuario, #rm, #tipo, #senha0, #senha1, #senha2 {
+     input#usuario, #rm2, #tipo, #senha0, #senha1, #senha2 {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -562,3 +566,26 @@ text-decoration: none;
         background: none;
         border-bottom: 2px solid rgb(25, 60, 124);
      }
+      input{
+
+            background-color: rgb(255, 255, 255); 
+            color: black; 
+            border: 2px solid #2955b4;
+          
+          }
+          input:hover {
+            background-color: #2955b4;
+            color: white;
+          }
+
+          #sair{
+            background-color: white; 
+            color: black; 
+            border: 2px solid #2955b4;
+          
+
+          }
+          #sair:hover {
+            background-color: #2955b4;
+            color: white;
+          }

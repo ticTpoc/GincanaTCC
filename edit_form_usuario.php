@@ -27,7 +27,7 @@ require_once "includes/login.php";
 ?>
 <div class="cabecalho">
 <div class="esquerda">
-    <h1 id="nome"> Gincana Bacana  </h1> 
+    <h1 id="nome"><a href = index.php>Gincana Bacana</a> </h1> 
 
  <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
     </div>
@@ -44,18 +44,18 @@ require_once "includes/login.php";
 <form action="edit_usuario.php" method="post">
 <table>
 <tr><td> Usuário <td> <input type="text" name="usuario" id="usuario" size="10" maxlength="10" value="<?php echo $reg-> usuario;?>">
-<tr><td> RM <td> <input type="text" name="rm" id="rm" size="6" maxlength="6" value="<?php echo $reg-> rm;?>" readonly>
-<tr><td> Tipo <td> <input type="text" name="tipo" id="tipo" size="15" maxlength="15" value="<?php echo $reg-> $_SESSION['tipo'];?>" readonly>
+<tr><td> RM <td> <input type="text" name="rm" id="rm2" size="6" maxlength="6" value="<?php echo $reg-> rm;?>" readonly>
+<tr><td> Tipo <td> <input type="text" name="tipo" id="tipo" size="15" maxlength="15" value="<?php echo $_SESSION['tipo']; ?>" readonly>
 <tr><td> Senha antiga <td> <input type="password" name="senha0" id="senha0" size="10" maxlength="10">
 <tr><td> Nova senha <td> <input type="password" name="senha1" id="senha1" size="10" maxlength="10">
 <tr><td> Confirme sua senha <td> <input type="password" name="senha2" id="senha2" size="10" maxlength="10">
-<tr><td> <input type="submit" value="Alterar">
+<tr><td> <input id="alterar" type="submit" value="Alterar">
 
 
 </table>
 </form> 
 </div>
-
+</div>
 <div class="rodape">
 <?php  include_once "footer.php"; ?>
 </div>
