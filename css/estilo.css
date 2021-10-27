@@ -2,6 +2,27 @@
     box-sizing: border-box;
 }
 
+div.esquerda{
+    float:left;
+    width:35%;
+    font-family: Pixel;
+    padding: 1px;
+    height: 100px;
+    background-color: rgb(58, 108, 173);
+}
+
+.direita{
+    float:right;
+    width:65%;
+    height: 100px;
+    background-color: rgb(58, 108, 173);
+}
+
+header{
+    background-color: rgb(58, 108, 173);
+   
+}
+
 
 @font-face {
 
@@ -9,13 +30,7 @@
     src: url(pixel.TTF);
   }
 
-  div.cabecalho{
-    
-    padding: 1px;
-    font-family: Pixel;
-    text-align: center;
-    background-color: rgb(92, 148, 221);
-}
+
 
 
 div#corpo-principal{
@@ -26,15 +41,14 @@ div#corpo-principal{
     text-align: center;
     margin-top: 14%;
     background-color: rgb(114, 158, 216);
-
     width: 300px;
     padding: 40px;
-    margin-top: -10px;
+    margin-top: -50px;
     margin-left: -200px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate (-50%,-50%);
+    
     background-color:rgb(211, 211, 211);
     border-radius: 24px;
     text-align: center;
@@ -242,6 +256,9 @@ td.loja:nth-child(3){
 
 div.cabeca{
     background-color: rgb(114, 158, 216);
+    margin-top: 4%;
+    margin-right: 35%;
+   
 
 }
 
@@ -498,14 +515,77 @@ width:100%;
 text-decoration: none;
   }  
      a:visited{
-        color:rgb(57, 105, 168) 
+        color:rgb(0, 0, 0) 
      }     
      #texto{
         margin-left: 2%;
     }
+    .conteudo{
+        margin-bottom:50%;
+        float:left;
+        width:100%;
+    }
     
-    #rodape{
-   padding-bottom: 50%;
+    .rodape{
+   width: 100%;
+   float:left;
+   background-color: rgb(58, 108, 173);
 
     }
 
+ #nome{
+     font-size: 200%;
+     margin-left: 1%;
+
+ }
+
+     div.conteudo{
+        float:left;
+        float:right;
+        width: 65%;
+       
+        
+     }
+ 
+     #mensagem{
+        margin-top: 3px;
+        margin-left:2%;
+        
+     }
+
+     #editusuario{
+
+        margin-top: 10%;
+     }
+     input#usuario, #rm2, #tipo, #senha0, #senha1, #senha2 {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        background: none;
+        border-bottom: 2px solid rgb(25, 60, 124);
+     }
+      input{
+
+            background-color: rgb(255, 255, 255); 
+            color: black; 
+            border: 2px solid #2955b4;
+          
+          }
+          input:hover {
+            background-color: #2955b4;
+            color: white;
+          }
+
+          #sair{
+            background-color: white; 
+            color: black; 
+            border: 2px solid #2955b4;
+          
+
+          }
+          #sair:hover {
+            background-color: #2955b4;
+            color: white;
+          }

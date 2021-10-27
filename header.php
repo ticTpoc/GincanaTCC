@@ -53,13 +53,13 @@ if(empty($_SESSION['user'])){
       $busca=$banco->query($q);
     $reg = $busca->fetch_object();
 
-
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
-    
+
     echo " <a href ='loja.php' > Loja </a>|";
     echo " <a href ='inventario.php' > Inventário </a>|";
     echo " <a href ='notificacoes.php' > notificações</a>|";
     echo " <a href ='jogos.php' > Jogos </a>|";
+  
     
     
 
@@ -78,7 +78,7 @@ if(empty($_SESSION['user'])){
       
     }
 
-    echo " <br><br><button id='sair' onclick='sair()'> Sair </button> ";
+    echo " <button id='sair' onclick='sair()'> Sair </button> ";
    
 }
 

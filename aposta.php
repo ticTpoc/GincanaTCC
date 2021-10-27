@@ -16,7 +16,7 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
 
-     <h1 id="texto"style="text-align:left"> Gincana Bacana </h1> 
+     <h1 id="texto"style="text-align:left"> <a href = index.php>Gincana Bacana</a> </h1> 
  <h2><?php if(logado()){ 
          echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
          } ?></h2>   
