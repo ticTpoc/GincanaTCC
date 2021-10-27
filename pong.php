@@ -12,7 +12,7 @@
 				margin: auto;
 				width: 60%;
 				padding: 10px;
-				border 3px solid blue;
+				/*border: 3px solid blue;*/
 			}
 			#canvas{
 				border: 2px solid black;
@@ -26,11 +26,34 @@
 		</style>
     </head>
     <body>
+	<?php 
+require_once "includes/bd.php";
+require_once "includes/funcao.php";
+require_once "includes/login.php";
+?>  
+		<div class="corpo">
 		<div class="cabecalho">
-			<h2>Pong</h2>
-		</div>
+    <div class="esquerda">
+    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
+
+ <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+    </div>
+    <div class="direita">
+ <?php include_once "header.php" ?>
+ <h2>Pong</h2>
+</div>
+</div>
+			
+		
 		<div class="center">
-			<canvas id="canvas" width="800" height="500"></canvas>
+			<canvas  id="canvas" width="800" height="500"></canvas>
+			</div>
+		
+			<div class="rodape">
+                <?php include_once "footer.php"; ?>
+			</div>
+		</div>
+
 			<script type = "text/javascript">
 				let ctx, p1_y, p2_y, p1_points, p2_points
 				let ball_y_orientation, ball_x_orientation, ball_x, ball_y, ball_speed = 0, ball_tspeed = 5
@@ -150,6 +173,6 @@
 			<audio controls autoplay loop>
 				<source src="SoundTrack\pong-caos-song.mp3">
 			</audio>
-		</div>
+		
     </body>
 </html>

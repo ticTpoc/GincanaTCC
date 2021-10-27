@@ -11,6 +11,15 @@ div.esquerda{
     background-color: rgb(58, 108, 173);
 }
 
+div.center{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
 .direita{
     float:right;
     width:65%;
@@ -413,12 +422,13 @@ text-decoration: none;
         margin-left: 2%;
     }
     .conteudo{
-        margin-bottom:50%;
         float:left;
-        width:100%;
+        width: 100%;
+        background-color: rgb(127, 171, 228)
     }
     
     .rodape{
+        
    width: 100%;
    float:left;
    background-color: rgb(58, 108, 173);
@@ -431,13 +441,7 @@ text-decoration: none;
 
  }
 
-     div.conteudo{
-        float:left;
-        
-        width: 65%;
-       
-        
-     }
+    
  
      #mensagem{
         margin-top: 3px;

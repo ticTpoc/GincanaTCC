@@ -18,7 +18,7 @@ require_once "includes/login.php";
 ?>  
 <body>    
 <div class="corpo">
-<div id='cassino'>
+<div id='cassino' class='center'>
 
 <form method="post" action="aposta.php">
 <table>

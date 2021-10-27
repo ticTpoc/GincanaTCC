@@ -45,7 +45,7 @@ require_once "includes/login.php";
          
          echo "  <tr><td><a href='memory.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/memoria.png'></a>";
          
-         echo "  <td><a href='pong.html?coin=$reg->coin'><img height='100px' width='100px' src='imagens/pong.png'></a>";
+         echo "  <td><a href='pong.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/pong.png'></a>";
        
          echo " <td><a href='tetris.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/nunca.png'></a>";
        

@@ -30,7 +30,7 @@ require_once "includes/login.php";
 
 <div class="conteudo">
     
-
+<p>TEXTO TEXTO <br> texto foda <br> <h1> titulo </h1> não titulo <i> que isso turma</i></p>
 </div>
 
 <div class='rodape'>

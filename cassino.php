@@ -26,18 +26,17 @@ require_once "includes/login.php";
 
 ?>  
 
-     <h1 id="texto"style="text-align:left"> Cassino </h1> 
- <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
-         
-         } ?></h2>   
+<div class="cabecalho"> 
+     <div class="esquerda">
+    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
 
-<div>
-    <?php include_once "header.php" ?>
-
-
-
+ 
+    </div>
+    <div class="direita">
+ <?php include_once "header.php" ?>
 </div>
+</div>  
+<div class="conteudo">
 <table >
 <?php
 $rm = $_SESSION['rm'];
@@ -140,6 +139,9 @@ echo "</table><br><br>";
 ?>
 
 </div> 
+<div class="rodape">
+     <?php  include_once "footer.php"; ?>
+        </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">

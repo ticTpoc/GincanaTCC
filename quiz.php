@@ -16,9 +16,20 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
  <div id="corpo">
-     <h1> JOGUINHO QUIZ</h1>
+ <div class="cabecalho">
+    <div class="esquerda">
+    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
+
+ <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+    </div>
+    <div class="direita">
+ <?php include_once "header.php" ?>
+ 
+</div>
+</div>
+  
      
-     <?php include_once "header.php" ?>
+  
 <div class="quiz">
     <div class="quizcontainer">
 <div id="question-container" class="hide">
@@ -37,6 +48,7 @@ require_once "includes/login.php";
 </div>
 </div>
 <div id="results"></div>
+
 
      <script type='text/javascript'>
 
@@ -174,7 +186,9 @@ while($reg = $busca->fetch_object()){
     ?>
 ]
 </script>
-
+<div class="rodape">
+                <?php include_once "footer.php"; ?>
+			</div>
 
 <?php  include_once "footer.php"; ?>
 

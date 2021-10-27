@@ -16,15 +16,21 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
 
-     <h1 id="texto"style="text-align:left"> <a href = index.php>Gincana Bacana</a> </h1> 
- <h2><?php if(logado()){ 
-         echo "olá ". $_SESSION['tipo']."  " . $_SESSION['user'];
-         } ?></h2>   
-<div>
-    <?php include_once "header.php" ?>
-
-</div>
+    
 <div class="corpo">
+<div class="cabecalho"> 
+     <div class="esquerda">
+    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
+
+ 
+    </div>
+    <div class="direita">
+ <?php include_once "header.php" ?>
+</div>
+</div>  
+
+<div class="conteudo">
+    <div >
 <?php
 
 $valor = $_POST['valor'] ?? null;
@@ -54,7 +60,7 @@ if($decisao !== 'sim'){
     }else{
        
         
-            echo "<form method='post' action='aposta.php'>";
+            echo "<form  method='post' action='aposta.php'>";
             echo "<table>";
             echo "<tr><td> Desafiado <input type='text' name='usuario2' value='$usuario2' readonly > ";
             echo "<tr><td> Valor da Aposta <input type='number' name='valor' value='$valor'readonly > ";
@@ -117,8 +123,10 @@ if($decisao !== 'sim'){
 }
 
 ?>
+    </div>
+</div>
  
-<div id="rodape">
+<div class="rodape">
      <?php  include_once "footer.php"; ?>
 </div>
 
