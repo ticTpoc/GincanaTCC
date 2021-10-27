@@ -35,9 +35,9 @@ require_once "includes/login.php";
      <table id="jogos">
     <?php 
     echo "<h2> carteira <h2>";
-    echo "<tr><td> dinheiro: $reg->coin <br><br><br>";
+    echo "dinheiro: $reg->coin <br><br><br>";
     
-       echo "  <tr><td><a href='farm.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/dungeon.png'></a>";
+       
       
          echo "  <td><a href='quiz.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/quizz.png'></a>";
          
@@ -49,9 +49,16 @@ require_once "includes/login.php";
        
          echo " <td><a href='tetris.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/nunca.png'></a>";
        
+   
+
         
         ?>
         </table>
+        <?php 
+        echo "<br><br><h1>MANUTENÇÃO</h1>";
+        echo "  <a href='farm.php?coin=$reg->coin' style='pointer-events:none;'><img height='100px' width='100px' src='imagens/dungeon.png'></a>";
+
+        ?>
         </div>
         </div>
         <div class="rodape">
