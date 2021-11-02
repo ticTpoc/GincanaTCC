@@ -6,7 +6,90 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <meta name="quiz" content="width=device-width,initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<style>
+    :root{
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 140;
+}
 
+.quiz{
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin:0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  
+   background-color: hsl(var(--hue), 100%, 20%);
+}
+
+
+.correct{
+    --hue: var(--hue-correct);
+}
+
+.wrong{
+    --hue: var(--hue-wrong);
+}
+
+.quizcontainer{
+     width: 800px;
+     max-width: 80%;     
+     background-color: white;
+     border-radius: 5px;
+     padding: 60px;
+     box-shadow: 0 10px 20px 5px;
+}
+
+.btn-grid{
+    display:grid;
+    grid-template-columns: repeat(2,auto);
+     gap:20px;
+     margin:20px 0;
+}
+
+.btn{
+    --hue: var(--hue-neutral);
+    border: 2px solid hsl(var(--hue),100%,30%);
+    background-color: hsl(var(--hue),100%, 60%);
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: black;
+    outline: none;
+}
+
+.btn:hover{
+
+  background-color:aqua;
+}
+.btn.correct{
+    --hue: var(--hue-correct);
+    
+}
+.btn.wrong{
+    --hue: var(--hue-wrong);
+}
+
+
+.start-btn, .next-btn{
+    font-size:1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide{
+    display:none;
+}
+    </style>
 </head>
 
 <body>    

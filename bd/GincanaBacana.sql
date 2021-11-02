@@ -5,7 +5,6 @@ USE GB;
 
 
 
-
 create table inimigos(
 mob varchar(10) not null primary key,
 mincoin int not null,
@@ -63,15 +62,14 @@ foreign key(usuarios_rm) references usuarios(rm)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-create table skins(
+create table itens(
+id Int not null auto_increment primary key,
 nome varchar(30) not null,
-preco int(4) not null,
 img varchar(30) not null,
-id Int(5) not null auto_increment primary key,
-jogo varchar(20),
-modelo char(10),
-qtd int(3),
+preco int(4) not null,
 funcao text,
+tipo char(5) not null,
+jogo varchar(20) not null,
 valor int(3)
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -81,10 +79,10 @@ valor int(3)
 
 /* drop table compras; */ 
 create table compras(
-skins_id int(5) not null,
+itens_id int(5) not null,
 usuarios_rm int(6) not null,
 
-foreign key(skins_id) references skins(id),
+foreign key(itens_id) references itens(id),
 
 foreign key(usuarios_rm) references usuarios(rm)
 
@@ -104,7 +102,23 @@ idq int(4) not null auto_increment primary key
 
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
-
+insert into itens(nome,img,preco,jogo,tipo,valor,funcao) values
+('corzinha1','azul.jpg','420','memoria','skin','1','muda a cor?'),
+('monstro?','armadura.png','69','dungeon','item','2',' é um monstro?'),
+('espadinha1','camisa.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha2','armadura.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha3','chave.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha4','cartola.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha5','João_Paulo.jpg','666','dungeon','item','3','nate nos bicho?'),
+('espadinha6','azul.jpg','666','dungeon','item','3','nate nos bicho?'),
+('escudinho7','cartola.png','66','dungeon','item','1','defende ?'),
+('bolinha','armadura.png','4','pong','skin','1','é bola'),
+('fundo dahora','João_Paulo.jpg','1','pong','skin','60','muda a corzinha do fundo?'),
+('Pergunta nem tem como','camisa.png','60','quiz','item','1',' a porra de uma pergunta? nem da pra fazer isso mano kakaka'),
+('cor do botão wtf','coina.png','930','quiz','skin','1','change the button color?'),
+('kakaka','azul.jpg','314','memoria','item','4','não?'),
+('lacoste','cartola.png','430','cassino','skin','1','crocodilo jacaré maneiro na parada?'),
+('espadinha0','chave.png','300','pong','skin','6','espadinha? no pong?');
 
 
 insert into quiz(question,R1,R2,R3,RC,RN) values
@@ -112,9 +126,6 @@ insert into quiz(question,R1,R2,R3,RC,RN) values
 
 
 
-insert into skins(id,jogo, nome, preco, img, funcao,valor, qtd,modelo) values
-(1,'dungeon','chave','100','chave.png','aumenta seu nivel na dungeon',1,0,'item'),
-(2,'dungeon','armadura','50','armadura.png','aumenta sua vida na dungeon',1,0,'item');
 
 
 
@@ -153,7 +164,7 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nive
 
 select * from quiz;
 select * from usuarios;
-select * from skins;
+select * from itens;
 select * from compras;
 select * from salas;
 select * from itens;
