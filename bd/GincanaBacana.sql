@@ -90,14 +90,17 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 /* quiz */
 create table quiz(
-
+idq int(4) not null auto_increment primary key,
 question text not null,
 R1 text not null,
 R2 text not null,
 R3 text not null,
 RC text not null,
-RN text,
-idq int(4) not null auto_increment primary key
+aprovacao bool not null,
+pontos int(3),
+erros int,
+acertos int
+
 
 
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
@@ -121,8 +124,27 @@ insert into itens(nome,img,preco,jogo,tipo,valor,funcao) values
 ('espadinha0','chave.png','300','pong','skin','6','espadinha? no pong?');
 
 
-insert into quiz(question,R1,R2,R3,RC,RN) values
-('Oque Pesa mais? 100kg de Ferro ou 100kg de Algodão? ','100kg de Algodão', '100kg de Ferro','Não Sei Não :/','Ambos Tem o Mesmo Peso','Nenhuma Das Questões Anteriores');
+insert into quiz(question,R1,R2,R3,RC,aprovacao) values
+('Quantas casas decimais tem o número pi?',
+'duas', 'centenas','nenhuma','infinitas', false),
+(' Qual o número minnimo de jogadores em uma partida de futebol?  ',
+' 9 ', ' 11 ',' 5 ',' 7 ',false),
+(' Em que período pré-histórico o fogo foi descoberto? ',
+' neolítico ', ' idade dos metais ',' era do fogo ',' paleolítico ',false),
+(' Quem é o autor de "O príncipe"? ',
+' Antoine de Saint-Exupéry ', ' Montesquieu ',' Principe Charles ',' Maquiavel ',false),
+(' Qual o maior osso humano? ',
+' coração ', ' coluna ',' pele ',' fêmur ',false),
+(' O que é Na na tabela periódica? ',
+' lítio ', ' chumbo ',' sal ',' sódio ',false),
+(' Qual a capital da Australia? ',
+' Navarra ', ' Camberra ',' Sidney ',' Canberra ',false),
+(' Qual o livro mais vendido no mundo? ',
+' Senhor dos anéis ', ' Harry Potter ',' O enigma ',' Dom quixote ',false),
+(' Qual dessas entidades geográficas possui um maior território físico? ',
+' Rússia ', ' Estados Unidos ',' Europa ',' América do Sul ',false),
+('Oque Pesa mais? 100kg de Ferro ou 100kg de Algodão? ',
+'100kg de Algodão', '100kg de Ferro','Não Sei Não :/','Ambos Tem o Mesmo Peso',false);
 
 
 

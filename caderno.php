@@ -9,6 +9,7 @@
 <style> 
 
 #paragrafo{
+    position: fixed;
     background-color: plum;
     pointer-events: none;
     padding: 0.3rem;

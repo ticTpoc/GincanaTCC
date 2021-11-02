@@ -7,87 +7,93 @@
 <meta name="quiz" content="width=device-width,initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <style>
-    :root{
-    --hue-neutral: 200;
-    --hue-wrong: 0;
-    --hue-correct: 140;
+
+#admin{
+    background-color: blue;
+    text-align: center;
+}
+
+:root{
+--hue-neutral: 200;
+--hue-wrong: 0;
+--hue-correct: 140;
 }
 
 .quiz{
-    --hue: var(--hue-neutral);
-    padding: 0;
-    margin:0;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-  
-   background-color: hsl(var(--hue), 100%, 20%);
+--hue: var(--hue-neutral);
+padding: 0;
+margin:0;
+display: flex;
+width: 100%;
+height: 100vh;
+justify-content: center;
+align-items: center;
+
+background-color: hsl(var(--hue), 100%, 20%);
 }
 
 
 .correct{
-    --hue: var(--hue-correct);
+--hue: var(--hue-correct);
 }
 
 .wrong{
-    --hue: var(--hue-wrong);
+--hue: var(--hue-wrong);
 }
 
 .quizcontainer{
-     width: 800px;
-     max-width: 80%;     
-     background-color: white;
-     border-radius: 5px;
-     padding: 60px;
-     box-shadow: 0 10px 20px 5px;
+width: 800px;
+max-width: 80%;     
+background-color: white;
+border-radius: 5px;
+padding: 60px;
+box-shadow: 0 10px 20px 5px;
 }
 
 .btn-grid{
-    display:grid;
-    grid-template-columns: repeat(2,auto);
-     gap:20px;
-     margin:20px 0;
+display:grid;
+grid-template-columns: repeat(2,auto);
+gap:20px;
+margin:20px 0;
 }
 
 .btn{
-    --hue: var(--hue-neutral);
-    border: 2px solid hsl(var(--hue),100%,30%);
-    background-color: hsl(var(--hue),100%, 60%);
-    border-radius: 5px;
-    padding: 10px 10px;
-    color: black;
-    outline: none;
+--hue: var(--hue-neutral);
+border: 2px solid hsl(var(--hue),100%,30%);
+background-color: hsl(var(--hue),100%, 60%);
+border-radius: 5px;
+padding: 10px 10px;
+color: black;
+outline: none;
 }
 
 .btn:hover{
 
-  background-color:aqua;
+background-color:aqua;
 }
 .btn.correct{
-    --hue: var(--hue-correct);
-    
+--hue: var(--hue-correct);
+
 }
 .btn.wrong{
-    --hue: var(--hue-wrong);
+--hue: var(--hue-wrong);
 }
 
 
 .start-btn, .next-btn{
-    font-size:1.5rem;
-    font-weight: bold;
-    padding: 10px 20px;
+font-size:1.5rem;
+font-weight: bold;
+padding: 10px 20px;
 }
 
 .controls{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+display:flex;
+justify-content: center;
+align-items: center;
 }
 
 .hide{
-    display:none;
+display:none;
 }
     </style>
 </head>
@@ -97,6 +103,10 @@
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+
+
+
+
 ?>  
  <div id="corpo">
  <div class="cabecalho">
@@ -111,9 +121,17 @@ require_once "includes/login.php";
 </div>
 </div>
   
-     
+<div id="admin">
+<?php
+if($_SESSION['tipo']=='admin'){
+    echo "<button><a href='aprovar.php'> Aprovar Perguntas </a></button>";
+}
+
+?>
+</div>
   
 <div class="quiz">
+
     <div class="quizcontainer">
 <div id="question-container" class="hide">
     <div id="question">Question</div> 
@@ -132,7 +150,7 @@ require_once "includes/login.php";
 </div>
 <div id="results"></div>
 
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script type='text/javascript'>
 
 function shuffle(a) {
@@ -153,6 +171,8 @@ const questionElement = document.getElementById('question');
 
 const answerButtonsElement = document.getElementById('answer-buttons')
 
+var pontos = 0;
+
 let shuffledQuestions, currentQuestionIndex
 
 let shuffledAnswers
@@ -171,21 +191,29 @@ function startGame(){
     currentQuestionIndex=0;
     questionContainerElement.classList.remove('hide');
     setNextQuestion();
+    console.log(questions);
+
+    
 }
 function setNextQuestion(){
  resetState();
  showQuestion(shuffledQuestions[currentQuestionIndex]);
 
- console.log(shuffledQuestions);
+
 }
 
 function showQuestion(question){
 
     questionElement.innerText = question.question;
+    var id = question.idq[0];
+    questionElement.setAttribute('idq', id);
 answers = question.answers.sort(() => Math.random() - 0.5);
+       
+      
+        
     question.answers.forEach(answer =>{
         const button = document.createElement('button');
-
+        
         
         button.innerText=answer.text;
         button.classList.add('btn');
@@ -195,6 +223,7 @@ answers = question.answers.sort(() => Math.random() - 0.5);
         button.addEventListener('click', selectAnswer);
         answerButtonsElement.appendChild(button);
     })
+    
 }
 
 function resetState(){
@@ -207,13 +236,50 @@ function resetState(){
 function selectAnswer(e){
 const selectedButton = e.target;
 const correct= selectedButton.dataset.correct;
+var correto = correct;
 
+var id = questionElement.getAttribute('idq');
+
+if(correto == undefined){
+    var identificador= new FormData();
+    identificador.append('identificador', id);
+    
+
+    console.log(identificador);
+   $.ajax({
+           url:'errou.php',
+           method: 'post',
+           data: identificador,
+           processData: false,
+           contentType:false,
+           success: function(resposta){
+                 
+           }
+   });
+       
+}else{
+    var identificador= new FormData();
+    identificador.append('identificador', id);
+    
+
+    console.log(identificador);
+   $.ajax({
+           url:'acertou.php',
+           method: 'post',
+           data: identificador,
+           processData: false,
+           contentType:false,
+           success: function(resposta){
+                 
+           }
+   });
+}
 
 Array.from(answerButtonsElement.children).forEach(button =>{
     setStatusClass(button, button.dataset.correct);
 })
 if(shuffledQuestions.length > currentQuestionIndex + 1){
-    nextButton.classList.remove('hide');
+    setTimeout(function(){nextButton.classList.remove('hide')}, 1000);
 }else{
     startButton.innerText = 'Recomeçar';
     startButton.classList.remove('hide');
@@ -247,6 +313,7 @@ while($reg = $busca->fetch_object()){
     echo "
     {
         question: '$reg->question',
+        idq: '$reg->idq',
         answers: [
             { text: '$reg->R1', correct:false},
             { text: '$reg->R2', correct:false},
@@ -255,17 +322,7 @@ while($reg = $busca->fetch_object()){
         ]
     },";
 }
-  echo "
-    {
-        question: 'Feliz?',
-        answers: [
-            { text: 'SIM', correct:false},
-            { text: 'SIM', correct:false},
-            { text: 'NÃO', correct:true},
-            { text: 'SIM', correct:false}
-        ]
-    }
-    ";
+  
     ?>
 ]
 </script>
