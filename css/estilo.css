@@ -2,6 +2,11 @@
 box-sizing: border-box;
 }
 
+
+.hide{
+display:none;
+}
+
 div.esquerda{
 float:left;
 width:35%;

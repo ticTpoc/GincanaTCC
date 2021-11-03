@@ -92,9 +92,6 @@ justify-content: center;
 align-items: center;
 }
 
-.hide{
-display:none;
-}
     </style>
 </head>
 
