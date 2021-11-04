@@ -56,7 +56,7 @@ require_once "includes/login.php";
 
 
 <h2>Automaticamente:</h2>
-<button id="aprovar">Aprovar</button>
+<button onclick="Aprovar()" id="aprovar">Aprovar</button>
 
 <h2>Manualmente:</h2>
 <table>
@@ -64,12 +64,13 @@ require_once "includes/login.php";
     $q="select * from quiz";
     $busca = $banco->query($q);
 
-    echo "<tr><td>Pergunta<td>Acertos<td>Erros<td>Pontos<td>Aprovação";
+    echo "<tr><td>Pergunta<td>Acertos<td>Erros<td>Pontos<td>Jogadas<td>Aprovação";
       while($reg = $busca->fetch_object()){
           echo "<tr><td>$reg->question
           <td>$reg->acertos
           <td>$reg->erros
-          <td>$reg->pontos";
+          <td>$reg->pontos
+          <td>$reg->jogadas";
           if($reg->aprovacao==0){echo "<td id='desaprovado'>Não Aprovado";}else{echo "<td id='aprovado'>Aprovado";};
       }
 
@@ -88,6 +89,27 @@ require_once "includes/login.php";
 
     
 </div>
+
+<script type="text/javascript">
+
+function Aprovar(){
+
+    var identificador= new FormData();
+    
+   $.ajax({
+           url:'aprovarpergunta.php',
+           method: 'post',
+           data: identificador,
+           processData: false,
+           contentType:false,
+           success: function(resposta){
+           }
+
+
+   });
+
+}
+</script>
 </body>
 
 </html>

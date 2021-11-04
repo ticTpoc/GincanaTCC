@@ -75,6 +75,8 @@ if(empty($_SESSION['user'])){
 
         echo "<a href='novo_form_pergunta.php'> add perguntas </a> |";
 
+        echo "<a href='sprites.html'> sprites </a> |";
+
       
     }
 

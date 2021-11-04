@@ -59,10 +59,7 @@ var acertos = document.getElementById("acertos").value;
 var erros = document.getElementById("erros").value;
 var diferenca = erros - acertos; 
 
-console.log("acertos: "+acertos);
-console.log("erros: "+erros);
 if(diferenca>=0){
- 
     
      pontos = pontos + diferenca;
    

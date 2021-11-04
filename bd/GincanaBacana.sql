@@ -96,14 +96,20 @@ R1 text not null,
 R2 text not null,
 R3 text not null,
 RC text not null,
-aprovacao bool not null,
+aprovacao boolean not null,
 pontos int(3),
 erros int,
-acertos int
+acertos int,
+jogadas int as (COALESCE(acertos, 0) + COALESCE(erros, 0))
 
 
 
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
+
+/*
+ALTER TABLE quiz ADD COLUMN jogadas int AS (COALESCE(acertos, 0) + COALESCE(erros, 0));
+select * from quiz;
+*/
 
 insert into itens(nome,img,preco,jogo,tipo,valor,funcao) values
 ('corzinha1','azul.jpg','420','memoria','skin','1','muda a cor?'),
@@ -180,6 +186,8 @@ insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nive
 */
 
 
+   
+    
 
 
 /*
@@ -194,6 +202,8 @@ select * from inimigos;
 select * from apostas;
 select * from notificacoes;
 select * from usuarios order by estado;
+
+UPDATE quiz  SET  aprovacao = IF(jogadas>=10, 1, aprovacao);
 
 update apostas
   set confirmacao=true

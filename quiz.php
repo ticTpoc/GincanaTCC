@@ -202,7 +202,7 @@ function setNextQuestion(){
 function showQuestion(question){
 
     questionElement.innerText = question.question;
-    var id = question.idq[0];
+    var id = question.idq;
     questionElement.setAttribute('idq', id);
 answers = question.answers.sort(() => Math.random() - 0.5);
        
@@ -237,6 +237,9 @@ var correto = correct;
 
 var id = questionElement.getAttribute('idq');
 
+
+console.log("correto "+correto);
+console.log("id"+id);
 if(correto == undefined){
     var identificador= new FormData();
     identificador.append('identificador', id);
