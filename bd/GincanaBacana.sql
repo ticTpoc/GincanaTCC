@@ -26,7 +26,6 @@ create table usuarios(
 usuario varchar(20) not null,
 rm int(5) not null primary key,
 senha Varchar(70) not null,
-highscore int(10),
 tipo char(10) not null,
 estado char(10),
 coin int(5) not null,
@@ -88,6 +87,23 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table jogos(
+idj int not null primary key auto_increment,
+nome varchar(15) not null,
+manutencao bool default 0
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table rankings(
+idr int primary key not null auto_increment,
+usuarios_rm int(6) not null,
+jogos_idj int not null,
+highscore int (3),
+foreign key(jogos_idj) references jogos(idj),
+foreign key(usuarios_rm) references usuarios(rm)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /* quiz */
 create table quiz(
 idq int(4) not null auto_increment primary key,
@@ -96,13 +112,12 @@ R1 text not null,
 R2 text not null,
 R3 text not null,
 RC text not null,
+situacao bool not null default 0, 
 aprovacao boolean not null,
-pontos int(3),
-erros int,
-acertos int,
+pontos int(3) not null default 10,
+erros int default 0,
+acertos int default 0,
 jogadas int as (COALESCE(acertos, 0) + COALESCE(erros, 0))
-
-
 
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
@@ -163,8 +178,6 @@ insert into quiz(question,R1,R2,R3,RC,aprovacao) values
 ('Administração','Adm', '#00BFFF', 'azul', 'rgb(0,191,255)'),
 ('Desenvolvimento de sistemas','Ds', '#00BFFF', 'azul', 'rgb(0,191,255)');
 
-
-
 insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
 ('goblin', 3, 6, 1, 30),
 ('anao', 1, 7, 1, 20),
@@ -176,22 +189,24 @@ insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
 ('poseidon', 100, 150, 3, 90),
 ('unicornio',0,500,5,77);
 
-insert into usuarios(rm,usuario,highscore,coin,senha,tipo,estado, salas_id, nivel,vida) values
-('3441','William','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
-('1','teste','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
-('2','teste','0','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
+insert into usuarios(rm,usuario,coin,senha,tipo,estado, salas_id, nivel,vida) values
+('3441','William','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
+('1','teste','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
+('2','teste','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
+
+insert into jogos(nome,manutencao) values
+('quiz',0),
+('dungeon',1),
+('memoria',0),
+('pong',0),
+('cassino',0);
+
+
+
+
 /*
-
-)
-*/
-
-
-   
-    
-
-
-/*
-
+select * from jogos;
+select * from rankings;
 select * from quiz;
 select * from usuarios;
 select * from itens;
@@ -203,37 +218,30 @@ select * from apostas;
 select * from notificacoes;
 select * from usuarios order by estado;
 
+select * from rankings where usuarios_rm=3441;
+
+// update baseado num if 
 UPDATE quiz  SET  aprovacao = IF(jogadas>=10, 1, aprovacao);
+
+insert into rankings(usuarios_rm,jogos_idj, highscore) values 
+        (3441,1,30);
 
 update apostas
   set confirmacao=true
   where ida=1;
 
-select produtos.cod, skins.id, skins.nome, skins.img, skins.preco  from skins join produtos where skins.id=produtos.skin_id;
 
 // selecionar duas foreign key com uma só chave primária
 
 SELECT b.ida,a.usuario,c.usuario,b.valor from apostas b JOIN usuarios a ON b.usuario1=a.rm JOIN usuarios c ON b.usuario2=c.rm;
 
 
-select skins.img, skins.nome, skins.id, compras.skins_id from skins join compras where compras.skins_id=skins.id;
-select usuarios.rm, usuarios.usuario, compras.usuarios_rm from usuarios join compras on compras.usuarios_rm=usuarios.rm where usuarios.rm=1;
+// select para ranking
+select usuarios.rm , usuarios.usuario like '%%', jogos.nome '%q%', rankings.highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+join jogos on jogos.idj=jogos_idj where jogos_idj=1 order by rankings.highscore desc;
 
-select c.usuarios_rm, sk.nome, c.skins_id, sk.img from skins sk join compras c on c.skins_id=sk.id 
- join usuarios u on c.usuarios_rm=1; LIXO
- 
- select skins.id, skins.nome, skins.img,compras.usuarios_rm, usuarios.rm, usuarios.usuario from skins join compras on skins.id=compras.skins_id
- join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=3441; LIXO
+select rankings.idr as identificador, usuarios.rm, usuarios.usuario, jogos.nome, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+join jogos on jogos.idj=jogos_idj where usuarios.rm=3441 and jogos.idj=1 order by rankings.highscore desc;
 
-select skins.id, skins.nome, skins.img,compras.usuarios_rm, usuarios.rm, usuarios.usuario from skins join compras on skins.id=compras.skins_id
- join usuarios on usuarios.rm=compras.usuarios_rm;
-
-select skins.img,usuarios_rm,skins_id from compras join skins where 3441=usuarios_rm; LIXO
-
-
-describe usuarios;
-describe skins;
-describe compras;
-
-delete from usuarios where rm=666;
 */
+

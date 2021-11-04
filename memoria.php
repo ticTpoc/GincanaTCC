@@ -27,6 +27,9 @@
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+
+$id= $_GET['id'];
+
 ?>  
 <div id="corpomemoria"> 
     <h3>Score:<span id='result'></span></h3>
@@ -213,7 +216,10 @@ function flipCard(){
     }
     window.adeus = function() {
     coin = cardsWon.length * 2;
-    window.location.href="loot.php?coin="+coin;
+
+    var jogoid = <?php echo "$id;" ?>
+
+    window.location.href="loot.php?pontos="+coin+"&id="+jogoid;
 }
 
     createBoard();

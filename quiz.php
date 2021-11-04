@@ -8,6 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <style>
 
+.secreto{
+    pointer-events: none;
+}
 #admin{
     background-color: blue;
     text-align: center;
@@ -142,6 +145,7 @@ if($_SESSION['tipo']=='admin'){
 <div class="controls">
     <button id="start-btn" class="start-btn btn">Start</button>
     <button id="next-btn" class="next-btn btn hide">Next</button>
+    <button id="end-btn" onclick="ganhar()" class="end-btn btn hide">Finalizar</button>
     </div>
 </div>
 </div>
@@ -163,6 +167,7 @@ function shuffle(a) {
     
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
+const endButton = document.getElementById('end-btn');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 
@@ -183,12 +188,13 @@ nextButton.addEventListener('click', () =>{
 
 function startGame(){
 
+
     startButton.classList.add('hide');
     shuffledQuestions= questions.sort(()=>Math.random() - .5)
     currentQuestionIndex=0;
     questionContainerElement.classList.remove('hide');
     setNextQuestion();
-    console.log(questions);
+    
 
     
 }
@@ -235,17 +241,16 @@ const selectedButton = e.target;
 const correct= selectedButton.dataset.correct;
 var correto = correct;
 
+
 var id = questionElement.getAttribute('idq');
 
 
-console.log("correto "+correto);
-console.log("id"+id);
 if(correto == undefined){
     var identificador= new FormData();
     identificador.append('identificador', id);
     
 
-    console.log(identificador);
+    
    $.ajax({
            url:'errou.php',
            method: 'post',
@@ -262,7 +267,7 @@ if(correto == undefined){
     identificador.append('identificador', id);
     
 
-    console.log(identificador);
+  
    $.ajax({
            url:'acertou.php',
            method: 'post',
@@ -271,9 +276,12 @@ if(correto == undefined){
            contentType:false,
            success: function(resposta){
                  
+                pontos = pontos + parseInt(resposta);
+                console.log('pontos: '+pontos);
            }
    });
 }
+
 
 Array.from(answerButtonsElement.children).forEach(button =>{
     setStatusClass(button, button.dataset.correct);
@@ -281,8 +289,7 @@ Array.from(answerButtonsElement.children).forEach(button =>{
 if(shuffledQuestions.length > currentQuestionIndex + 1){
     setTimeout(function(){nextButton.classList.remove('hide')}, 1000);
 }else{
-    startButton.innerText = 'Recomeçar';
-    startButton.classList.remove('hide');
+    endButton.classList.remove('hide');
 }
 
 }
@@ -291,14 +298,18 @@ function setStatusClass(element, correct){
     clearStatusClass(element);
     if(correct){
         element.classList.add('correct');
+        element.classList.add('secreto');
     }else{
         element.classList.add('wrong');
+        element.classList.add('secreto');
     }
 }
 
 function clearStatusClass(element){
     element.classList.remove('correct');
     element.classList.remove('wrong');
+    element.classList.remove('secreto');
+   
 } 
 
 
@@ -325,6 +336,13 @@ while($reg = $busca->fetch_object()){
   
     ?>
 ]
+<?php $id=$_GET['id'] ?>
+var jogoid = <?php echo "$id;" ?>
+function ganhar(){
+    window.location.href="loot.php?pontos="+pontos+"&id="+jogoid;
+}
+
+
 </script>
 <div class="rodape">
                 <?php include_once "footer.php"; ?>

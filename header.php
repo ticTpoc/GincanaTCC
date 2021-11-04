@@ -56,12 +56,10 @@ if(empty($_SESSION['user'])){
     echo " <a href ='edit_form_usuario.php' > Meus dados </a>|";
 
     echo " <a href ='cadernos.php' > Comprar </a>|";
-    echo " <a href ='inventario.php' > Inventário </a>|";
-    echo " <a href ='notificacoes.php' > notificações</a>|";
+    //echo " <a href ='inventario.php' > Inventário </a>|";
+    //echo " <a href ='notificacoes.php' > Notificações</a>|";
     echo " <a href ='jogos.php' > Jogos </a>|";
-  
-    
-    
+    echo "<a href='ranking.php'> Ranking </a> |";
 
     if(admin()){
      
@@ -76,6 +74,8 @@ if(empty($_SESSION['user'])){
         echo "<a href='novo_form_pergunta.php'> add perguntas </a> |";
 
         echo "<a href='sprites.html'> sprites </a> |";
+
+       
 
       
     }

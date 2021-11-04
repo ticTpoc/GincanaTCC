@@ -8,6 +8,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+
+.itens{
+    margin-left: 10px;
+    border: 2px solid black;
+    padding: 10px;
+}
 button#aprovar{
     padding: 10px;
 }
@@ -52,6 +58,7 @@ require_once "includes/login.php";
 </div>
 
 <div class="conteudo">
+<div class="itens">
 <h1> Aprovar perguntas para o quiz </h1>
 
 
@@ -61,25 +68,46 @@ require_once "includes/login.php";
 <h2>Manualmente:</h2>
 <table>
     <?php
+     $q="select * from quiz where aprovacao=1 and situacao=0;";
+     $busca = $banco->query($q);
+     while($reg = $busca->fetch_object()){
+        $novospontos = $reg->pontos - $reg->acertos + $reg->erros;~
+
+        $q="update quiz
+            set pontos ='$novospontos',
+            situacao = 1
+            where idq='$reg->idq';";
+       $banco->query($q);
+        
+     }
+    ?>
+    <?php
     $q="select * from quiz";
     $busca = $banco->query($q);
 
     echo "<tr><td>Pergunta<td>Acertos<td>Erros<td>Pontos<td>Jogadas<td>Aprovação";
       while($reg = $busca->fetch_object()){
-          echo "<tr><td>$reg->question
-          <td>$reg->acertos
-          <td>$reg->erros
-          <td>$reg->pontos
-          <td>$reg->jogadas";
-          if($reg->aprovacao==0){echo "<td id='desaprovado'>Não Aprovado";}else{echo "<td id='aprovado'>Aprovado";};
+
+
+            $previsao = $reg->pontos - $reg->acertos + $reg->erros;
+            echo "<tr><td>$reg->question
+            <td>$reg->acertos
+            <td>$reg->erros";
+            if($reg->situacao==0){
+            echo "<td>$previsao*";
+            }else{
+            echo " <td>$reg->pontos";
+            }
+            echo "<td>$reg->jogadas";
+            if(($reg->aprovacao==0) and ($reg->situacao == 0)){echo "<td id='desaprovado'>Não Aprovado";}else{echo "<td id='aprovado'>Aprovado";};
       }
 
           
 
     ?>
 </table>
-
-
+<p>*previsão de pontuação</p>
+</div>
 </div>
 
 <div class='rodape'>

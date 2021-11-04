@@ -37,28 +37,32 @@ require_once "includes/login.php";
     echo "<h2> carteira <h2>";
     echo "dinheiro: $reg->coin <br><br><br>";
     
+    $q="select * from jogos where manutencao=0;";
+    $busca = $banco->query($q);
+       while ($reg = $busca->fetch_object()){
+
+         echo "  <td><a href='$reg->nome.php?id=$reg->idj'><img height='100px' width='100px' src='imagens/jogos/$reg->nome.png'></a>";
+
+       }
+       echo "  <td><a href='jogos.php'><img height='100px' width='100px' src='imagens/jogos/nunca.png'></a>";
+
+       echo"<tr><td rowspan='2'>Manutenção";
+       $q="select * from jogos where manutencao=1;";
+       $busca = $banco->query($q);
+          while ($reg = $busca->fetch_object()){
+   
+            echo "  <td><a href='$reg->nome.php'><img style='pointer-events:none;' height='100px' width='100px' src='imagens/jogos/$reg->nome.png'></a>";
+   
+          }
        
-      
-         echo "  <td><a href='quiz.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/quizz.png'></a>";
-         
-         echo "  <td><a href='cassino.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/cassino.png'></a>";
-         
-         echo "  <tr><td><a href='memory.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/memoria.png'></a>";
-         
-         echo "  <td><a href='pong.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/pong.png'></a>";
        
-         echo " <td><a href='tetris.php?coin=$reg->coin'><img height='100px' width='100px' src='imagens/nunca.png'></a>";
-       
+            
    
 
         
         ?>
         </table>
-        <?php 
-        echo "<br><br><h1>MANUTENÇÃO</h1>";
-        echo "  <a href='farm.php?coin=$reg->coin' style='pointer-events:none;'><img height='100px' width='100px' src='imagens/dungeon.png'></a>";
-
-        ?>
+       
         </div>
         </div>
         <div class="rodape">

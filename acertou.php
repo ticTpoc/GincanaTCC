@@ -18,5 +18,9 @@ $id = $_POST['identificador'];
                   
       $banco->query($h);
 
+//if($reg->situacao == 1){
+    $pontos = $reg->pontos;
+    echo "$pontos";
+//}
 
-?>;
+?>
