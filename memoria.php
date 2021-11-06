@@ -2,17 +2,46 @@
 <html lang="pt-br">
 <head>
 <style>
+    html{
+        cursor:crosshair;
+    }
     #corpomemoria{
         background-color:white;
         margin-left:0;
-        height:100%;
+        height:90%;
+       
     }
     .grid{
         display: flex;
+        margin: auto;
         flex-wrap: wrap;
         height: 300px;
         width: 400px;
         
+    }
+    .botoes{
+        position: fixed;
+        height: 10%;
+        width: 100%;
+        background-color:white;
+    }
+    #end{
+        width: 50%;
+        text-align: center;
+        line-height: 100px;
+        font-size: 7rem;
+        background-color: red;
+        position: relative;
+        float: left;
+    }
+    #next{
+        text-align: center;
+        line-height: 100px;
+        font-size: 7rem;
+        background-color: blue;
+        position: relative;
+        float: left;
+        width: 50%;
     }
     </style>
 <title></title>
@@ -33,96 +62,65 @@ $id= $_GET['id'];
 ?>  
 <div id="corpomemoria"> 
     <h3>Score:<span id='result'></span></h3>
+    <h3>Nivel:<span id='nivel'></span></h3>
 <div class="grid">
 
 </div>
-<button id="end" onclick="adeus()"> Finalizar </button>
 </div>
-
+<div class="botoes">
+<div id="end" onclick="adeus()"> Finalizar </div>
+<div id="next" onclick="passarFase()" class="hide"> Próxima fase </div>
+</div>
 </body>
 <script type="text/javascript" defer>
 
-document.addEventListener('DOMContentLoaded', () => {
+function randomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
 
-    const cardArray=[
-        {
-            name: 'brasil',
-            img: 'imagens/memoria/brasil.png'
-        },
-        {
-            name: 'coisa',
-            img: 'imagens/memoria/coisa.png'
-        },
-        {
-            name: 'emoji',
-            img: 'imagens/memoria/emoji.png'
-        },
-        {
-            name: 'minion',
-            img: 'imagens/memoria/minion.png'
-        },
-        {
-            name: 'papa',
-            img: 'imagens/memoria/papa.png'
-        },
-        {
-            name: 'pilula',
-            img: 'imagens/memoria/pilula.png'
-        },
-        // a partir daqui repetir
-        {
-            name: 'brasil',
-            img: 'imagens/memoria/brasil.png'
-        },
-        {
-            name: 'coisa',
-            img: 'imagens/memoria/coisa.png'
-        },
-        {
-            name: 'emoji',
-            img: 'imagens/memoria/emoji.png'
-        },
-        {
-            name: 'minion',
-            img: 'imagens/memoria/minion.png'
-        },
-        {
-            name: 'papa',
-            img: 'imagens/memoria/papa.png'
-        },
-        {
-            name: 'pilula',
-            img: 'imagens/memoria/pilula.png'
-        },
-        {
-            name: 'estrela',
-            img: 'imagens/memoria/estrela.png'
-        },
-        {
-            name: 'estrela',
-            img: 'imagens/memoria/estrela.png'
-        },
-        {
-            name: 'ferramenta',
-            img: 'imagens/memoria/ferramenta.png'
-        },
-        {
-            name: 'ferramenta',
-            img: 'imagens/memoria/ferramenta.png'
-        },
-    ]
-
-    
-
-
+  
     //tabuleiro
     const grid = document.querySelector('.grid');
     const resultDisplay = document.querySelector('#result');
+    const nivelDisplay = document.querySelector('#nivel');
     var cardsChosen = [];
     var cardsChosenID = [];
     var cardsWon = [];
     const botaoEnd =  document.getElementById('end');
+    var nivel = 1;
+    console.log(nivel);
+    const cartas = ['brasil',
+    'coisa','emoji','estrela','ferramenta','minion','papa','pilula',
+    'guardinha','mochilapong','seta','filosofo','campea','flipflop',
+    'titi','kevin'];
+    var cardArray =[];
+
+function criarCartas(){
+
+
+    for(var i = 0; i < nivel+4; i++){
+
+var selecao = randomInt(0,cartas.length);
+var carta = cartas[selecao];
+
+    cardArray.push(
+        {
+    name: carta,
+    img: 'imagens/memoria/'+carta+'.png'
+    },
+    {
+    name: carta,
+    img: 'imagens/memoria/'+carta+'.png'
+    },
+    )
+}
+}
+    
+     
+
 
 
 
@@ -131,16 +129,21 @@ document.addEventListener('DOMContentLoaded', () => {
      
     //criar o tabuleiro com loop
 
-cardArray.sort(() => Math.random() - 0.5);
 
-    function createBoard(){
 
-        botaoEnd.classList.add('hide');  
+function createBoard(){
+
+    criarCartas();
+
+    cardArray.sort(() => Math.random() - 0.5);
+        //botaoEnd.classList.add('hide');  
         for (let i= 0; i< cardArray.length; i++){
 
             
 var card= document.createElement('img');
 card.setAttribute('src', 'imagens/memoria/blank.png');
+card.setAttribute('height', '100px');
+card.setAttribute('width', '100px');
 card.setAttribute('data-id', i);
 card.addEventListener('click',flipCard);
 grid.appendChild(card);
@@ -151,14 +154,13 @@ grid.appendChild(card);
 
     //checar iguais
 function checkForMatch(){
+
     var cards = document.querySelectorAll('img');
 const optionOneID = cardsChosenID[0];
 const optionTwoID = cardsChosenID[1];
 
-console.log('cardschosen id' + cardsChosenID[0]);
-console.log('cardschosen id' + cardsChosenID[1]);
 
-console.log('cards chosen: ' + cardsChosen);
+
 if(cardsChosenID[0] === cardsChosenID[1]){
 
     
@@ -187,25 +189,28 @@ if(cardsChosenID[0] === cardsChosenID[1]){
 cardsChosen= [];
 cardsChosenID= [];
 
+// mostrar pontuação
+resultDisplay.textContent = cardsWon.length*2;
 
-resultDisplay.textContent = cardsWon.length;
 
-console.log('cardswon' + cardsWon);
-if(cardsWon.length === cardArray.length/2){
-resultDisplay.textContent = "parabéns carai";
-botaoEnd.classList.remove('hide');
+// ao ganhar
+// ta com um bug aqui que ele mostra o botão de próxima fase toda hora
+if(cardsWon.length === (cardArray.length/2)*nivel){
+document.getElementById('next').classList.remove('hide');
 }
 }
 
+nivelDisplay.textContent= nivel;
 //virar a cartas
 function flipCard(){
+
+    console.log("cartas ganhas"+cardsWon.length);
 
         var cardID= this.getAttribute('data-id')
        
         cardsChosen.push(cardArray[cardID].name);
         cardsChosenID.push(cardID);
-         console.log('cardschosenid: ' + cardsChosenID)
-        console.log('cardid: ' + cardID);
+    
         this.setAttribute('src', cardArray[cardID].img);
 
 
@@ -214,21 +219,33 @@ function flipCard(){
             setTimeout(checkForMatch, 500);
         }
     }
-    window.adeus = function() {
-    coin = cardsWon.length * 2;
+window.adeus = function() {
+coin = cardsWon.length * 2;
 
-    var jogoid = <?php echo "$id;" ?>
+var jogoid = <?php echo "$id;" ?>
 
-    window.location.href="loot.php?pontos="+coin+"&id="+jogoid;
+window.location.href="loot.php?pontos="+coin+"&id="+jogoid;
+}
+window.passarFase = function() {
+   
+    document.getElementById('next').classList.add('hide');
+cardArray =[]
+    nivel++;
+    nivelDisplay.textContent= nivel;
+    console.log(nivel);
+    grid.innerHTML = '';
+  createBoard();
+  
+
 }
 
+
+   
     createBoard();
     
 
-});
- 
 
-// 
+ 
 
 
 </script>

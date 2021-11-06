@@ -52,11 +52,15 @@ $key = $_GET['chave'] ?? "";
 
 
 echo "<tr><td><form method='get' action='ranking.php'><input type='text' id='chave' name='chave'><input type='submit' value='Pesquisar'></form>";
-$q= "select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore  from usuarios join rankings on usuarios.rm=usuarios_rm
-join jogos on jogos.idj=jogos_idj ";
+$q= "select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+join jogos on jogos.idj=jogos_idj order by rankings.highscore desc";
 
 if(!empty($key)){
-    $q.= " where usuarios.usuario like '%$key%' or jogos.nome like '%$key%' or usuarios.rm like '%$key%' ";
+    $q = " select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+    join jogos on jogos.idj=jogos_idj where usuarios.usuario like '%$key%' or jogos.nome like '%$key%' or usuarios.rm like '%$key%'  ";
+}else{
+    $q= "select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+    join jogos on jogos.idj=jogos_idj order by rankings.highscore desc";
 }
 
 

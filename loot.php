@@ -37,7 +37,7 @@ if ($reg = $busca->fetch_object()) {
   if($pontos> $reg->highscore){
     $j="update rankings
     set highscore = '$pontos'
-    where usuarios_rm = '$jogador'";
+    where usuarios_rm = '$jogador' and jogos_idj='$jogo'";
     $banco->query($j);
   }
     

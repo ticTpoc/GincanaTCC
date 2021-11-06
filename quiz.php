@@ -275,7 +275,7 @@ if(correto == undefined){
            processData: false,
            contentType:false,
            success: function(resposta){
-                 
+                
                 pontos = pontos + parseInt(resposta);
                 console.log('pontos: '+pontos);
            }
