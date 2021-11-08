@@ -15,7 +15,8 @@
 
 table.cadernos{
     border-collapse: separate;
-    border-spacing: 4rem 2rem;
+    border: 2px solid black;
+    border-spacing: 3rem 1rem;
     background-color: red;
     width: 80%;
     margin-left: 10%;
@@ -53,26 +54,18 @@ require_once "includes/login.php";
 
      <div class="conteudo">
          <div class="cadernos"> 
-            <table class="cadernos">
-                
-<tr><td><a href="caderno.php?jogo=dungeon">
-<div id="preenchimento">
-</div></a>
-<td><a href="caderno.php?jogo=pong">
-<div id="preenchimento">
-</div></a>
-<td><a href="caderno.php?jogo=memoria">
-<div id="preenchimento">
-</div></a>  
-<tr><td><a href="caderno.php?jogo=quiz">
-<div id="preenchimento">
-</div></a>
-<td><a href="caderno.php?jogo=cassino">
-<div id="preenchimento">
-</div></a>
-<td><a href="caderno.php?jogo=nenhum">
-<div id="preenchimento">
-</div></a>   
+         <table class="cadernos">
+             <?php 
+
+$q = "select * from jogos";
+$busca = $banco->query($q);
+   echo "<tr>";
+while($reg = $busca->fetch_object()){
+    
+    echo "<td><a href='caderno.php?jogo=$reg->nome'><div id='preenchimento'></div></a>";
+
+}
+             ?>
             </table>
 </div>
 </div>
