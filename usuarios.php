@@ -47,7 +47,6 @@ if(!$busca){
         echo "<td class='lista'>rm";
         echo "<td class='lista'>tipo";
         echo "<td class='lista'>coin";
-        echo "<td class='lista'>highscore";
         echo "<td class='lista'>nivel";
         echo "<td class='lista'>ação";
         while ($reg = $busca->fetch_object()){
@@ -56,7 +55,6 @@ if(!$busca){
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->rm</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->nivel</p>";
 
             if($reg->tipo=='admin'){
@@ -93,7 +91,6 @@ if(!$busca){
         echo "<td class='lista'>rm";
         echo "<td class='lista'>tipo";
         echo "<td class='lista'>coin";
-        echo "<td class='lista'>highscore";
         echo "<td class='lista'>nivel";
         echo "<td class='lista'>ação";
         while ($reg = $busca->fetch_object()){
@@ -102,7 +99,6 @@ if(!$busca){
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->rm</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->tipo</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->coin</p>";
-            echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->highscore</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'>$reg->nivel</p>";
             echo  "<td class ='lista'><p style='color:black;' id='secundario'><button onclick='banir($reg->rm)'>Desbanir</button></p>";
           

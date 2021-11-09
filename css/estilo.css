@@ -258,9 +258,6 @@ margin: 40px 0 40px 0;
 }
 
 
-
-
-
 #ln{
 font-size:30px;
 text-align: center;
@@ -271,24 +268,11 @@ border-width:5 ;
 margin:10px 400px 10px 400px;
 border-radius: 20%;
 
-
-
-
-
 }
-
 a:link{
 text-decoration:none;
 
-
-
-
-
 }
-
-
-
-
 div.pe{
 font-size:small;
 
@@ -372,4 +356,12 @@ border: 2px solid #2955b4;
 #sair:hover {
 background-color: #2955b4;
 color: white;
+}
+
+
+/* "BESTEIRAS" */
+
+
+#branco{
+    color:white;
 }

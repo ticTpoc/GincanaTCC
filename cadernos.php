@@ -8,25 +8,35 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
-#preenchimento{
+.preenchimento{
     height: 100%;
     width: 100%;
 }
 
 table.cadernos{
     border-collapse: separate;
-    border: 2px solid black;
-    border-spacing: 3rem 1rem;
+    border-spacing: 3rem 0.2rem;
     background-color: red;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
 }
 td{
-   
+    border: 2px solid black;
     background-color: yellow;
-    height: 600px;
+    height: 500px;
     width: 300px;
+}
+td#mostragem{
+    border: 2px solid black;
+    background-color: wheat;
+    height: 90px;
+}
+#comunidade{
+  background-color: blue;
+}
+#oficial{
+  background-color: brown;
 }
 </style>
 </head>
@@ -57,15 +67,20 @@ require_once "includes/login.php";
          <table class="cadernos">
              <?php 
 
-$q = "select * from jogos";
+$q = "select * from jogos where tipo='1'";
 $busca = $banco->query($q);
-   echo "<tr>";
-while($reg = $busca->fetch_object()){
-    
-    echo "<td><a href='caderno.php?jogo=$reg->nome'><div id='preenchimento'></div></a>";
+
+for($i = 0;$reg = $busca->fetch_object(); $i++){
+
+echo "<td><a href='caderno.php?jogo=$reg->nome'><div class='preenchimento' id='oficial'></div></a>";
 
 }
-             ?>
+   
+        
+          /*    if($i % 5 == 0 and $i != 0){
+            echo "<tr><td id='mostragem' colspan = '5'><tr> ";
+        }*/
+        ?>
             </table>
 </div>
 </div>
