@@ -83,6 +83,7 @@ function randomInt(min, max) {
 
   
     //tabuleiro
+    var pontuacao = 0;
     const grid = document.querySelector('.grid');
     const resultDisplay = document.querySelector('#result');
     const nivelDisplay = document.querySelector('#nivel');
@@ -190,9 +191,9 @@ resultDisplay.textContent = cardsWon.length*2;
 
 // ao ganhar
 // ta com um bug aqui que ele mostra o botão de próxima fase toda hora
-console.log("cartas ganhas"+cardsWon.length);
-console.log("cartas numero"+cardArray.length);
-console.log("nivel"+nivel);
+console.log("cartas ganhas: "+cardsWon.length);
+console.log("cartas numero: "+cardArray.length);
+console.log("nivel: "+nivel);
 if(cardsWon.length*2 == cardArray.length){
 
 document.getElementById('next').classList.remove('hide');
@@ -223,10 +224,13 @@ coin = cardsWon.length * 2;
 
 var jogoid = <?php echo "$id;" ?>
 
-window.location.href="loot.php?pontos="+coin+"&id="+jogoid;
+window.location.href="loot.php?pontos="+pontuacao+"&id="+jogoid;
 }
 window.passarFase = function() {
-   
+
+    pontuacao = pontuacao + cardsWon.length * 2;
+
+    console.log("pontuação: "+pontuacao);
     cardsWon = [];
     document.getElementById('next').classList.add('hide');
 cardArray =[]

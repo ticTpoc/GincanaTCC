@@ -6,30 +6,35 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
 
+#baixo{
+   position: fixed;
+   bottom:0;
+   float:center;
+}
+
+
+</style>
 </head>
 
 <body>    
-    <?php 
-require_once "includes/bd.php";
-require_once "includes/funcao.php";
-require_once "includes/login.php";
-?>  
+  
 <div class="corpo">
 
 <div class="cabecalho">
     <div class="esquerda">
     <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
 
- <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
+ <h2 id="mensagem"></h2> 
     </div>
     <div class="direita">
- <?php include_once "header.php" ?>
+
 </div>
 </div>
 
 <div class="conteudo">
-<div>
+<div id='testepontuacao'>
 <h1> Teste de Pontuação </h1>
 <h2> Para o quiz</h2>
 <form method="post" action="">
@@ -41,11 +46,24 @@ require_once "includes/login.php";
 <button type='button' onclick="Rodar()">submit</button> 
 </form>
 <p id='pontos'></p>
-</div>    
+</div>   
+
+
+<div id='testerodape'>
+
+<h1> Testar o rodapé</h1>
+
+
 </div>
-<div class='rodape'>
-     <?php  include_once "footer.php"; ?>
+
 </div>
+
+
+   <div id='baixo'>
+      <span> Texto Foda </span>
+   </div>
+
+
 </div>
 
 <script type="text/javascript">

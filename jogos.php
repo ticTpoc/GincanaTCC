@@ -8,9 +8,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+.conteudo{
+  background-color: #EAD4AA;
+}
+#corredor{
 
-p1:hover{
-
+margin-left: 5rem;
 
 }
 
@@ -22,10 +25,16 @@ p1:hover{
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
+
+
+$corredor = $_GET['corredor']  ?? 1;
+
+$proximoCorredor = $corredor + 1;
+$corredorAnterior = $corredor - 1;
 ?>  
   <div id="corpo">
 
-     <div class="cabecalho"> 
+      <!-- div class="cabecalho"> 
      <div class="esquerda">
     <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
 
@@ -34,66 +43,68 @@ require_once "includes/login.php";
     <div class="direita">
  <?php include_once "header.php" ?>
 </div>
-</div>  
+</div -->  
          
 
          <div class="conteudo">
-         <img src="imagens/fundos/corredor.png" class="fundos" id="corredor" usemap="#image-map">
+         <img src="imagens/fundos/corredor.png" id="corredor" usemap="#image-map">
 
 <map name="image-map">
   <?php 
-  
-  $q="select * from jogos limit 6";
+  $max = $corredor * 6;
+  $min  = $max - 5;
+
+  $q="select * from jogos where idj between '$min' and '$max' ";
   $busca= $banco->query($q);
 
-  ?>
-   <?php  
-      echo "<area id='p1'  onmouseover='abrir(1)' onmouseout='fechar()' target='$reg->nome.php?id=$reg->idj' alt='porta1' title='porta1' href='' coords='78,257,283,310,283,650,80,748' shape='poly'>";
 
-      echo " <area id='p2' onmouseover='abrir(2)' onmouseout='fechar()' target='' alt='porta2' title='porta2' href='' coords='339,304,494,356,497,561,340,622' shape='poly'>";
+   for($i= 0; $reg = $busca->fetch_object(); $i++){
+    switch($i){
+case 0:
+  
+  echo "<area id='p1'  onmouseover='abrir(1)' onmouseout='fechar()' target='' alt='porta1' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='78,257,283,310,283,650,80,748' shape='poly'>";
+break;
+case 1:
+  echo " <area id='p2' onmouseover='abrir(2)' onmouseout='fechar()' target='' alt='porta2' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='339,304,494,356,497,561,340,622' shape='poly'>";
+break;
+case 2:
+  echo " <area id='p3' onmouseover='abrir(3)' onmouseout='fechar()'target='' alt='porta3' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='528,356,638,387,642,496,528,543' shape='poly'>"; 
+break;
+case 3:
+  echo " <area id='p4' onmouseover='abrir(4)' onmouseout='fechar()' target='' alt='porta4' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='959,373,1055,358,1055,527,963,500' shape='poly'>"; 
+break;
+case 4:
+  echo " <area id='p5' onmouseover='abrir(5)' onmouseout='fechar()' target='' alt='porta5' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='1109,338,1106,561,1243,628,1246,308' shape='poly'>"; 
+break;
+case 5:
+  echo " <area id='p6' onmouseover='abrir(6)' onmouseout='fechar()' target='' alt='porta6' title='$reg->nome'
+   href='$reg->nome.php?id=$reg->idj' coords='1296,306,1516,275,1520,740,1297,642' shape='poly'>"; 
+break;
+    }
 
-      echo " <area id='p3' onmouseover='abrir(3)' onmouseout='fechar()' target='' alt='porta3' title='porta3' href='' coords='528,356,638,387,642,496,528,543' shape='poly'>"; 
+   }
 
-      echo " <area id='p4' onmouseover='abrir(4)' onmouseout='fechar()' target='' alt='porta4' title='porta4' href='' coords='959,373,1055,358,1055,527,963,500' shape='poly'>"; 
 
-      echo " <area id='p5' onmouseover='abrir(5)' onmouseout='fechar()' target='' alt='porta5' title='porta5' href='' coords='1109,338,1106,561,1243,628,1246,308' shape='poly'>"; 
+   echo "<area target='' alt='proxcorredor' title='próximo corredor'
+    href='jogos.php?corredor=$proximoCorredor' coords='720,307,880,503' shape='rect'>";
+if($corredorAnterior<1){
+  echo "<area target='' alt='voltar' title='voltar' href='index.php?papo=1&ideia=1' coords='432,651,1221,798' shape='rect'>";
 
-      echo " <area id='p6' onmouseover='abrir(6)' onmouseout='fechar()' target='' alt='porta6' title='porta6' href='' coords='1298,315,1514,276,1522,738,1295,645' shape='poly'>";
-    ?>
+}else{
+  echo "<area target='' alt='voltar' title='voltar' href='jogos.php?corredor=$corredorAnterior' coords='432,651,1221,798' shape='rect'>";
+
+}
+       ?>
+
+
     </map>
    
-     <table id="jogos">
-    <?php 
-
-
-    echo "<h2> carteira <h2>";
-    echo "dinheiro: $reg->coin <br><br><br>";
-    
-    $q="select * from jogos where manutencao=0;";
-    $busca = $banco->query($q);
-       while ($reg = $busca->fetch_object()){
-
-         echo "  <td><a href='$reg->nome.php?id=$reg->idj'><img height='100px' width='100px' src='imagens/jogos/$reg->nome.png'></a>";
-
-       }
-       echo "  <td><a href='jogos.php'><img height='100px' width='100px' src='imagens/jogos/nunca.png'></a>";
-
-       echo"<tr><td rowspan='2'>Manutenção";
-       $q="select * from jogos where manutencao=1;";
-       $busca = $banco->query($q);
-          while ($reg = $busca->fetch_object()){
-   
-            echo "  <td><a href='$reg->nome.php'><img style='pointer-events:none;' height='100px' width='100px' src='imagens/jogos/$reg->nome.png'></a>";
-   
-          }
-       
-       
-            
-  
-        
-        ?>
-        </table>
-       
+     
         </div>
         </div>
         <div class="rodape">

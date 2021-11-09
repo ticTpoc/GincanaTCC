@@ -201,14 +201,14 @@ insert into jogos(nome,manutencao,tipo) values
 ('memoria',0,1),
 ('pong',0,1),
 ('velha',0,1),
-('teste1',0,0),
-('teste2',0,0),
-('teste2',0,0),
-('teste2',0,0),
-('teste2',0,0),
-('teste2',0,0),
-('teste3',0,0),
-('cassino',0,1);
+('cassino',0,1),
+('teste1',0,1),
+('teste2',0,1),
+('teste3',0,1),
+('teste4',0,1),
+('teste5',0,1),
+('teste6',0,1),
+('teste7',0,1);
 
 
 
