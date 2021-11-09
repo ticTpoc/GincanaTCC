@@ -121,11 +121,6 @@ var carta = cartas[selecao];
     
      
 
-
-
-
-    console.log(grid);
-
      
     //criar o tabuleiro com loop
 
@@ -195,7 +190,11 @@ resultDisplay.textContent = cardsWon.length*2;
 
 // ao ganhar
 // ta com um bug aqui que ele mostra o botão de próxima fase toda hora
-if(cardsWon.length === (cardArray.length/2)*nivel){
+console.log("cartas ganhas"+cardsWon.length);
+console.log("cartas numero"+cardArray.length);
+console.log("nivel"+nivel);
+if(cardsWon.length*2 == cardArray.length){
+
 document.getElementById('next').classList.remove('hide');
 }
 }
@@ -204,7 +203,7 @@ nivelDisplay.textContent= nivel;
 //virar a cartas
 function flipCard(){
 
-    console.log("cartas ganhas"+cardsWon.length);
+    
 
         var cardID= this.getAttribute('data-id')
        
@@ -228,6 +227,7 @@ window.location.href="loot.php?pontos="+coin+"&id="+jogoid;
 }
 window.passarFase = function() {
    
+    cardsWon = [];
     document.getElementById('next').classList.add('hide');
 cardArray =[]
     nivel++;

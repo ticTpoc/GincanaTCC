@@ -7,11 +7,7 @@
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-.fundos{
-    height:100%;
-    width:100%;
-    max-width:100%;
-}
+
 #guardinha{
     height:130px;
     width: 130px;
@@ -65,7 +61,7 @@ echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' 
  shape='rect'>";
 
 }else{
-    echo "<img src='imagens/fundos/entradaguardinha.png' class='fundos' id='entrada' usemap='#image-map'>";
+    echo "<img src='imagens/fundos/entradaguardinhamaiorblush.png' class='fundos' id='entrada' usemap='#image-map'>";
 echo "<map name='image-map'>";
 echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' coords='574,338,791,559'
  shape='rect'>";
