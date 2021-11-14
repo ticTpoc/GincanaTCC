@@ -7,7 +7,13 @@
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-
+#mochila{
+    position:fixed;
+    right:0;
+    top:0;
+    width: 150px;
+    height:150px;
+}
 .conteudo{
   background-color: #EAD4AA;
 }
@@ -47,6 +53,7 @@ $corredorAnterior = $corredor - 1;
          
 
          <div class="conteudo">
+         <a href='mochila.php'><img  id='mochila' src='imagens/sprites/mochila.png'></a>
          <img src="imagens/fundos/corredor.png" id="corredor" usemap="#image-map">
 
 <map name="image-map">
@@ -61,7 +68,6 @@ $corredorAnterior = $corredor - 1;
    for($i= 0; $reg = $busca->fetch_object(); $i++){
     switch($i){
 case 0:
-  
   echo "<area id='p1'  onmouseover='abrir(1)' onmouseout='fechar()' target='' alt='porta1' title='$reg->nome'
    href='$reg->nome.php?id=$reg->idj' coords='78,257,283,310,283,650,80,748' shape='poly'>";
 break;

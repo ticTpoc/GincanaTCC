@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+
 #fechar{
     position:absolute;
     right:0;
@@ -51,10 +52,12 @@ $papo = $_GET['papo'] ?? null;
  <?php include_once "header.php" ?>
 </div>
 </div>
-
-
 <div class="conteudo">
+
+
 <?php 
+
+
 
 if(!logado()){
 echo "<img src='imagens/fundos/entradaguardinhamaior.png' class='fundos' id='entrada' usemap='#image-map'>";
@@ -74,7 +77,7 @@ echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' 
         echo "<map name='image-map'>";
         echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' coords='574,338,791,559'
          shape='rect'>";
-         echo "<area target='' alt='portão' title='portão' href='jogos.php' coords='966,269,1351,734' shape='rect'>";
+         echo "<area target='' alt='portão' title='portão' href='jogos.php?corredor=1' coords='966,269,1351,734' shape='rect'>";
     }
    
 
@@ -89,6 +92,9 @@ if($papo == 1){
 
         case 1:
             echo "<span> guardinhaMaroto:  Vai Meter a Fuga Mesmo? </span>";
+        break;
+        case 2:
+            echo "<span> Serelepinho </span>";
         break;
 
         default:

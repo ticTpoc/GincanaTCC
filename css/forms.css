@@ -1,0 +1,16 @@
+table{
+    width:50%;
+    margin: auto;
+}
+table,tr,td{
+ 
+}
+#tipo{
+    margin-left: 0;
+}
+td#esquerda{
+    text-align: left;
+}
+td{
+    text-align: center;
+}

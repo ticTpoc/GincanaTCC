@@ -17,7 +17,7 @@ require_once "includes/login.php";
 require_once "includes/rm.php";
 ?>  
  <div id="corpo">
-     <h1> ARE DE LOOT </h1>
+     <h1> Paontuação  </h1>
      <h2></h2>   
      <?php include_once "header.php" ?>
      

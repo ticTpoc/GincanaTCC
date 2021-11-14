@@ -63,7 +63,8 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
 <div class="caderno"> 
    <table class="caderno">
  <?php
-            $q="select * from itens where jogo='$jogo'";
+            $q="select itens.funcao, itens.id, itens.img, itens.nome from jogos join itens 
+            on itens.jogos_idj=jogos.idj where jogos.nome='$jogo'";
             $busca = $banco->query($q);
        
            

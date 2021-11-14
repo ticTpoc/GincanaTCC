@@ -80,5 +80,20 @@ function algoritmo($rigor){
 }
 
 
+function organizar($a,$b,$c,$d,$H){
+
+    if($a==$H){
+       $a=$b;
+       
+    }else if($b==$H){
+
+    }else if($c==$H){
+
+    }else if($d==$H){
+
+    }
+
+}
+
 
 ?>

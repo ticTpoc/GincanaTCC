@@ -8,6 +8,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+.cadernos{
+    background-color: white;
+}
 .preenchimento{
     height: 100%;
     width: 100%;
@@ -16,14 +19,12 @@
 table.cadernos{
     border-collapse: separate;
     border-spacing: 3rem 0.2rem;
-    background-color: red;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
 }
 td{
-    border: 2px solid black;
-    background-color: yellow;
+    
     height: 500px;
     width: 300px;
 }
@@ -33,10 +34,13 @@ td#mostragem{
     height: 90px;
 }
 #comunidade{
-  background-color: blue;
+
 }
 #oficial{
-  background-color: brown;
+ 
+}
+img{
+    border-radius: 10%;
 }
 </style>
 </head>
@@ -47,8 +51,6 @@ td#mostragem{
 require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
-
-
 ?>  
 <div class="corpo"> 
 <div class="cabecalho">
@@ -72,14 +74,16 @@ $busca = $banco->query($q);
 
 for($i = 0;$reg = $busca->fetch_object(); $i++){
 
-echo "<td><a href='caderno.php?jogo=$reg->nome'><div class='preenchimento' id='oficial'></div></a>";
-
+    
+    if($i % 5 == 0 and $i != 0){
+        echo "<tr><td id='mostragem' colspan = '5'><tr> ";
+         }
+    echo "<td><a href='caderno.php?jogo=$reg->nome'><div class='preenchimento' id='oficial'>
+    <img width='100%' src='imagens/jogos/livros/$reg->livro.png'></div></a>";
+    
 }
    
         
-          /*    if($i % 5 == 0 and $i != 0){
-            echo "<tr><td id='mostragem' colspan = '5'><tr> ";
-        }*/
         ?>
             </table>
 </div>
@@ -87,10 +91,6 @@ echo "<td><a href='caderno.php?jogo=$reg->nome'><div class='preenchimento' id='o
 
 
 
-<div class="rodape">
-     <?php  include_once "footer.php"; ?>
-
-</div>
 </div>
 </div>
 </body>

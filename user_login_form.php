@@ -9,12 +9,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 
-
 </head>
 
 <body>    
-   
-
 
 <form  class="box-fora" action='login_usuario.php' method='post'>
 
