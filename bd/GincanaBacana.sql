@@ -5,6 +5,7 @@ USE GB;
 
 
 
+
 create table inimigos(
 mob varchar(10) not null primary key,
 mincoin int not null,
@@ -60,15 +61,6 @@ foreign key(usuarios_rm) references usuarios(rm)
 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table jogos(
-idj int not null primary key auto_increment,
-nome varchar(15) not null,
-img varchar(20) not null,
-livro varchar(20),
-tipo bool default 0,
-manutencao bool default 0
-
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table itens(
 id Int not null auto_increment primary key,
@@ -77,11 +69,14 @@ img varchar(30) not null,
 preco int(4) not null,
 funcao text,
 tipo char(5) not null,
-jogos_idj int,
-valor int(3),
-foreign key(jogos_idj) references jogos(idj)
+jogo varchar(20) not null,
+valor int(3)
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
 /* drop table compras; */ 
 create table compras(
 itens_id int(5) not null,
@@ -92,6 +87,14 @@ foreign key(itens_id) references itens(id),
 foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table jogos(
+idj int not null primary key auto_increment,
+nome varchar(15) not null,
+tipo bool default 0,
+manutencao bool default 0
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table rankings(
 idr int primary key not null auto_increment,
@@ -124,36 +127,26 @@ jogadas int as (COALESCE(acertos, 0) + COALESCE(erros, 0))
 ALTER TABLE quiz ADD COLUMN jogadas int AS (COALESCE(acertos, 0) + COALESCE(erros, 0));
 select * from quiz;
 */
-insert into jogos(nome,manutencao,tipo,livro,img) values
-('quiz',0,1,'quizlivro','quiz.png'),
-('dungeon',1,1,'dungeonlivro','dungeon.png'),
-('memoria',0,1,'memorialivro','memoria.png'),
-('pong',0,1,'ponglivro','pong.png'),
-('velha',0,1,'velhalivro','velha.png'),
-('cassino',0,1,'cassinolivro','cassino.png');
 
-insert into itens(nome,img,preco,jogos_idj,tipo,valor,funcao) values
-('corzinha1','azul.jpg','420','1','skin','1','muda a cor?'),
-('monstro?','armadura.png','69','2','item','2',' é um monstro?'),
-('espadinha1','camisa.png','666','1','item','3','nate nos bicho?'),
-('espadinha2','armadura.png','666','2','item','3','nate nos bicho?'),
-('espadinha3','chave.png','666','3','item','3','nate nos bicho?'),
-('espadinha4','cartola.png','666','5','item','3','nate nos bicho?'),
-('espadinha5','João_Paulo.jpg','666','1','item','3','nate nos bicho?'),
-('espadinha6','azul.jpg','666','2','item','3','nate nos bicho?'),
-('escudinho7','cartola.png','66','3','item','1','defende ?'),
-('bolinha','armadura.png','4','2','skin','1','é bola'),
-('fundo dahora','João_Paulo.jpg','1','4','skin','60','muda a corzinha do fundo?'),
-('Pergunta nem tem como','camisa.png','60','5','item','1',' a porra de uma pergunta? nem da pra fazer isso mano kakaka'),
-('cor do botão wtf','coina.png','930','2','skin','1','change the button color?'),
-('kakaka','azul.jpg','314','3','item','4','não?'),
-('lacoste','cartola.png','430','4','skin','1','crocodilo jacaré maneiro na parada?'),
-('espadinha0','chave.png','300','1','skin','6','espadinha? no pong?');
-/*
- 
- 
- R1 R2 R3 RC 
- */ 
+insert into itens(nome,img,preco,jogo,tipo,valor,funcao) values
+('corzinha1','azul.jpg','420','memoria','skin','1','muda a cor?'),
+('monstro?','armadura.png','69','dungeon','item','2',' é um monstro?'),
+('espadinha1','camisa.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha2','armadura.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha3','chave.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha4','cartola.png','666','dungeon','item','3','nate nos bicho?'),
+('espadinha5','João_Paulo.jpg','666','dungeon','item','3','nate nos bicho?'),
+('espadinha6','azul.jpg','666','dungeon','item','3','nate nos bicho?'),
+('escudinho7','cartola.png','66','dungeon','item','1','defende ?'),
+('bolinha','armadura.png','4','pong','skin','1','é bola'),
+('fundo dahora','João_Paulo.jpg','1','pong','skin','60','muda a corzinha do fundo?'),
+('Pergunta nem tem como','camisa.png','60','quiz','item','1',' a porra de uma pergunta? nem da pra fazer isso mano kakaka'),
+('cor do botão wtf','coina.png','930','quiz','skin','1','change the button color?'),
+('kakaka','azul.jpg','314','memoria','item','4','não?'),
+('lacoste','cartola.png','430','cassino','skin','1','crocodilo jacaré maneiro na parada?'),
+('espadinha0','chave.png','300','pong','skin','6','espadinha? no pong?');
+
+
 insert into quiz(question,R1,R2,R3,RC,aprovacao) values
 ('Quantas casas decimais tem o número pi?',
 'duas', 'centenas','nenhuma','infinitas', false),
@@ -176,6 +169,11 @@ insert into quiz(question,R1,R2,R3,RC,aprovacao) values
 ('Oque Pesa mais? 100kg de Ferro ou 100kg de Algodão? ',
 '100kg de Algodão', '100kg de Ferro','Não Sei Não :/','Ambos Tem o Mesmo Peso',false);
 
+
+
+
+
+
  insert into salas(nome,apelido, corhex, cor, corrgb) values
 ('informática para internet','Infonet', '#00BFFF', 'azul', 'rgb(0,191,255)'),
 ('Mecatrônica','Meca', '#00BFFF', 'azul', 'rgb(0,191,255)'),
@@ -196,7 +194,24 @@ insert into inimigos(mob, mincoin, maxcoin,dano, chance) values
 insert into usuarios(rm,usuario,coin,senha,tipo,estado, salas_id, nivel,vida) values
 ('3441','William','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
 ('1','teste','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
-('2','teste','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5);
+('2','teste','9999','$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu','admin','ativo',1,1,5),
+('34246', 'Mr. Mpedia', '9999', '$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu', 'admin', 'ativo',1,1,200);
+
+insert into jogos(nome,manutencao,tipo) values
+('quiz',0,1),
+('dungeon',1,1),
+('memoria',0,1),
+('pong',0,1),
+('velha',0,1),
+('cassino',0,1),
+('teste1',0,1),
+('teste2',0,1),
+('teste3',0,1),
+('teste4',0,1),
+('teste5',0,1),
+('teste6',0,1),
+('teste7',0,1);
+
 
 
 
@@ -226,14 +241,6 @@ update apostas
   set confirmacao=true
   where ida=1;
 
-
-//selecionar os jogos a partir dos itens
-
-select  jogos.nome, itens.funcao, itens.img, itens.nome from jogos join itens 
-            on itens.jogos_idj=jogos.idj where itens.jogos_idj=1
-
-
-select itens.nome,itens.jogos_idj, jogos.nome from jogos join itens on itens.jogos_idj=jogos.idj
 
 // selecionar duas foreign key com uma só chave primária
 
