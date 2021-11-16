@@ -113,9 +113,7 @@ if($corredorAnterior<1){
      
         </div>
         </div>
-        <div class="rodape">
-     <?php  include_once "footer.php"; ?>
-        </div>
+       
 
         <script type="text/javascript" defer>
 

@@ -24,7 +24,7 @@ table.cadernos{
     margin-right: 10%;
 }
 td{
-    
+    text-align: center;
     height: 500px;
     width: 300px;
 }
@@ -33,8 +33,12 @@ td#mostragem{
     background-color: wheat;
     height: 90px;
 }
-#comunidade{
-
+#mostragem{
+background-image: url("imagens/fundos/madeira.png");
+background-size:cover;
+background-repeat: no-repeat;
+width: 800px;
+height:90px;
 }
 #oficial{
  
@@ -76,7 +80,7 @@ for($i = 0;$reg = $busca->fetch_object(); $i++){
 
     
     if($i % 5 == 0 and $i != 0){
-        echo "<tr><td id='mostragem' colspan = '5'><tr> ";
+        echo "<tr><td id='mostragem' colspan = '5'>Livros oficiais<tr> ";
          }
     echo "<td><a href='caderno.php?jogo=$reg->nome'><div class='preenchimento' id='oficial'>
     <img width='100%' src='imagens/jogos/livros/$reg->livro.png'></div></a>";

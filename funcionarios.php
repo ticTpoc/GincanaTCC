@@ -72,7 +72,7 @@ require_once "includes/login.php";
         <td><a href='addjogo.php?feito=0'><div id='cheia'>Adicionar Jogo</div></a></td>
         <td><a href='addsala.php?feito=0'><div id='cheia'>Futuro</div></a></td>
         <tr><td><a href='usuarios.php'><div id='cheia'>Lista de Alunos</div></a></td>
-        <td><a href='novo_form_item.php'><div id='cheia'>add jog</div></a></td>
+        <td><a href='perguntas.php'><div id='cheia'>Lista de Perguntas</div></a></td>
         <td><a href='novo_form_item.php'><div id='cheia'>add itens</div></a></td>
         <td><a href='novo_form_item.php'><div id='cheia'>add itens</div></a></td>
 

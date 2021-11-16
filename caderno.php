@@ -14,14 +14,28 @@
     pointer-events: none;
     padding: 0.3rem;
 }
-
+div.caderno{
+   height:800px
+}
+div.aberto{
+    margin:auto;
+    width:80%;
+    height:800px;
+    position:fixed;
+    left:10%;
+    background-image: url("imagens/fundos/livroaberto.png");
+    bottom: -40px;
+}
 table.caderno{
+    
+  
     border-collapse: separate ;
     border-spacing: 8rem 4rem;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    background-color: blue;
+    margin-left: 50px;
+    
+   
+ 
+    
 }
 img{
     height:220px;
@@ -60,7 +74,10 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
 
 <div class="conteudo">
     <h1> <?php echo "$jogo"; ?></h1>
+   
+    <!-- img class="aberto" src="imagens/fundos/livroaberto.png" -->
 <div class="caderno"> 
+<div class="aberto">
    <table class="caderno">
  <?php
             $q="select itens.funcao, itens.id, itens.img, itens.nome from jogos join itens 
@@ -91,16 +108,14 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
    </table>
 </div>
 </div>
-
-<div class='rodape'>
-     <?php  include_once "footer.php"; ?>
 </div>
+
 </div>
 <script type="text/javascript">
 function placeDiv(x_pos, y_pos) {
   var d = document.getElementById('paragrafo');
   console.log(d);
-  d.style.position = "absolute";
+  d.style.position = "fixed";
   d.style.left = x_pos+'px';
   d.style.top = y_pos+'px';
 }

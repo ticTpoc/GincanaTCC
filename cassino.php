@@ -128,7 +128,7 @@ $busca=$banco->query($q);
 
 echo "</table><br><br>";
 
-    include_once "novo_form_aposta.php";
+    include_once "addaposta.php"
 
 
   
