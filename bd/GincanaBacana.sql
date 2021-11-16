@@ -204,7 +204,7 @@ insert into jogos(nome,manutencao,tipo) values
 ('pong',0,1),
 ('velha',0,1),
 ('cassino',0,1),
-('teste1',0,1),
+('campominado',0,1),
 ('teste2',0,1),
 ('teste3',0,1),
 ('teste4',0,1),
