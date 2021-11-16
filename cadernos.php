@@ -22,23 +22,24 @@ table.cadernos{
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    background-image: url("imagens/fundos/estante.png");
+   
 }
 td{
     text-align: center;
     height: 500px;
     width: 300px;
+  
 }
 td#mostragem{
     border: 2px solid black;
     background-color: wheat;
     height: 90px;
+    width: 100%;
+    background-image: url("imagens/fundos/madeira.png");
 }
-#mostragem{
-background-image: url("imagens/fundos/madeira.png");
-background-size:cover;
-background-repeat: no-repeat;
-width: 800px;
-height:90px;
+tr{
+    
 }
 #oficial{
  

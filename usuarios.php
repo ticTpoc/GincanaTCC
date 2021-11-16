@@ -114,9 +114,7 @@ if(!$busca){
 </table>
 </div>
 
-<div class="rodape">
-<?php  include_once "footer.php"; ?>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
@@ -144,7 +142,6 @@ document.location.reload(true);
 
 </script>
 
-     <?php  include_once "footer.php"; ?>
 
 
 </div>

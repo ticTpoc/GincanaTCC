@@ -94,7 +94,7 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
                     }
                     $alt = $reg->funcao; 
             echo "<td>$reg->id<br>
-            <img onmouseover=\" Mostrar('$alt')\"  onmouseout=\" Desmostrar() \" src='imagens/itens/$reg->img'><br>
+            <a href='comprar.php?id=$reg->id' ><img onmouseover=\" Mostrar('$alt')\"  onmouseout=\" Desmostrar() \"  src='imagens/itens/$reg->img'></a><br>
             $reg->nome";
             echo "<p id='descricao'> </p>";
 
