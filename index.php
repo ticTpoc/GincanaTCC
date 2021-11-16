@@ -96,6 +96,9 @@ if($papo == 1){
         case 2:
             echo "<span> Serelepinho </span>";
         break;
+        case 3:
+            echo "<span> você cometeu um grande erro </span>";
+        break;
 
         default:
         if(logado()){
@@ -105,7 +108,7 @@ if($papo == 1){
         }else{
             
             echo "<span>guardinhaMaroto: <a id='branco' href='login_usuario.php'>Login</a> 
-            ou <a id='branco' href='novo_usuario.php'>Cadastro</a> ?</span>";
+            ou <a id='branco' href='addusuario.php?feito=0'> Cadastro</a> ?</span>";
            
         }
 
