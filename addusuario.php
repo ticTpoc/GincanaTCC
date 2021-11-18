@@ -23,7 +23,7 @@ $currentPage= $_SERVER['SCRIPT_NAME'];
      $feito = $_GET['feito'];
 
      if($feito == 0){
-         include_once "forms/".substr($currentPage,15,-4).".php";
+         include_once "forms/".substr($currentPage,26,-4).".php";
      }else{
      
        
