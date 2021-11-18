@@ -21,8 +21,13 @@ require_once "includes/bd.php";
 require_once "includes/funcao.php";
 require_once "includes/login.php";
 
+$dia=date('Y/m/d');
+$usuario = $_SESSION['rm'];
 
-
+$h="select * from usuarios where usuarios.rm='$usuario'";
+$busca2= $banco->query($h);
+$reg2= $busca2->fetch_object();
+$moedas = $reg2->coin;
 ?>  
  <div class="corpo">
 
@@ -40,7 +45,7 @@ require_once "includes/login.php";
 
 <div class="conteudo">
      <h1> Comprar item </h1>
-     
+     <table>
 <?php
 $feito = $_GET['feito'] ?? null;
 
@@ -52,22 +57,22 @@ $reg = $busca->fetch_object();
 
 $preco = $reg->preco;
 if($feito=='feito'){
-    echo "<table>
+
+$j=" select usuarios.usuario, itens.id from compras join usuarios on usuarios_rm=usuarios.rm
+join itens on itens_id=itens.id where usuarios.rm='$usuario' and itens.id='$reg->id' ";
+$busca3=$banco->query($j);
+
+if($busca3->num_rows>=1){
+    echo "
     <tr><td rowspan='3'><img src='imagens/itens/$reg->img'>
     <td><p>$reg->nome</p>
     <tr><td><p>$reg->funcao</p>
     <tr><td><p>Comprado!</p>
-    </table>"; 
-$dia=date('Y/m/d');
-$usuario = $_SESSION['rm'];
-            $h="select * from usuarios where usuarios.rm='$usuario'";
-            $busca2= $banco->query($h);
-            $reg2= $busca2->fetch_object();
-            $moedas = $reg2->coin;
+    "; 
 
-
+}else{
+echo sucesso("Item Comprado com sucesso, cheque sua mochila");
 $novocoin= $moedas-$preco;
-echo "<br>novocoin: $novocoin";
 if($novocoin<0){
     echo aviso("você não tem moedas o suficiente");
 }else{
@@ -75,12 +80,13 @@ if($novocoin<0){
     set coin = $novocoin
     where rm = $usuario;";
     $banco->query($m);
-
+ 
 
     $k= "insert into compras(dia,usuarios_rm,itens_id) values
     ('$dia','$usuario','$id');
     ";
     $banco->query($k);
+}  
 }
 
 }else{
@@ -96,6 +102,7 @@ if($novocoin<0){
 }
 
 ?>
+     </table>
 </div>
 
  </div>

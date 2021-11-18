@@ -201,9 +201,6 @@ insert into usuarios(rm,usuario,coin,senha,tipo,estado, salas_id, nivel,vida) va
 ('34246', 'Mr. Mpedia', '9999', '$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu', 'admin', 'ativo',1,1,200);
 
 
-update usuarios 
-    set coin = 345
-    where rm = 3441;
 
 /*
 select * from jogos;
