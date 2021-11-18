@@ -11,4 +11,6 @@ while ($reg = $busca->fetch_object()){
     print_r($reg);
 }
 
+
+
 ?>

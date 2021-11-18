@@ -90,9 +90,9 @@ valor int(3),
 create table compras(
 itens_id int(5) not null,
 usuarios_rm int(6) not null,
+dia date not null,
 
 foreign key(itens_id) references itens(id),
-
 foreign key(usuarios_rm) references usuarios(rm)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -144,22 +144,10 @@ insert into jogos(nome,manutencao,tipo,livro) values
 
 
 insert into itens(nome,img,preco,jogos_idj,tipo,valor,funcao) values
-('corzinha1','azul.jpg','420',1,'skin','1','muda a cor?'),
-('monstro?','armadura.png','69',2,'item','2',' é um monstro?'),
-('espadinha1','camisa.png','666',3,'item','3','nate nos bicho?'),
-('espadinha2','armadura.png','666',4,'item','3','nate nos bicho?'),
-('espadinha3','chave.png','666',5,'item','3','nate nos bicho?'),
-('espadinha4','cartola.png','666',1,'item','3','nate nos bicho?'),
-('espadinha5','João_Paulo.jpg','666',7,'item','3','nate nos bicho?'),
-('espadinha6','azul.jpg','666',4,'item','3','nate nos bicho?'),
-('escudinho7','cartola.png','66',2,'item','1','defende ?'),
-('bolinha','armadura.png','4',3,'skin','1','é bola'),
-('fundo dahora','João_Paulo.jpg','1',1,'skin','60','muda a corzinha do fundo?'),
-('Pergunta nem tem como','camisa.png','60',6,'item','1',' a porra de uma pergunta? nem da pra fazer isso mano kakaka'),
-('cor do botão wtf','coina.png','930',2,'skin','1','change the button color?'),
-('kakaka','azul.jpg','314',1,'item','4','não?'),
-('lacoste','cartola.png','430',2,'skin','1','crocodilo jacaré maneiro na parada?'),
-('espadinha0','chave.png','300',3,'skin','6','espadinha? no pong?');
+('adaga','adaga.png','20',2,'item','1','perfeita para degolar goblins'),
+('escudo de madeira','escudo1.png','50',2,'item','2','feito de madeira, eu acho'),
+('escudo inglês','escudo2.png','100',2,'item','3','utilizado por James o VI e I  da Inglaterra e escócia na batalha de Vivivuland'),
+('espada','espada.png','60',2,'item','2',' tudo que um herói necessita');
 
 
 insert into quiz(question,R1,R2,R3,RC,aprovacao) values
@@ -213,7 +201,9 @@ insert into usuarios(rm,usuario,coin,senha,tipo,estado, salas_id, nivel,vida) va
 ('34246', 'Mr. Mpedia', '9999', '$2y$10$wpiB/CCICaVb8jD5yFK0oeWxN7umIxAQc8/9oPFzsGciRTOyeBuUu', 'admin', 'ativo',1,1,200);
 
 
-
+update usuarios 
+    set coin = 345
+    where rm = 3441;
 
 /*
 select * from jogos;

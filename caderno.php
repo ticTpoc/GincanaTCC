@@ -73,7 +73,12 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
 </div>
 
 <div class="conteudo">
-    <h1> <?php echo "$jogo"; ?></h1>
+    <h1> <?php echo "$jogo<br>";
+    $usuario = $_SESSION['rm'];
+                $u = "select * from usuarios where rm='$usuario'";
+                $buscau = $banco->query($u);
+                $regu = $buscau->fetch_object();
+              echo "moedas:$regu->coin"; ?></h1>
    
     <!-- img class="aberto" src="imagens/fundos/livroaberto.png" -->
 <div class="caderno"> 
@@ -92,12 +97,26 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
                     
                      echo "<tr>";
                     }
-                    $alt = $reg->funcao; 
-            echo "<td>$reg->id<br>
-            <a href='comprar.php?id=$reg->id' ><img onmouseover=\" Mostrar('$alt')\"  onmouseout=\" Desmostrar() \"  src='imagens/itens/$reg->img'></a><br>
-            $reg->nome";
-            echo "<p id='descricao'> </p>";
 
+                    $usuario = $_SESSION['rm'];
+                    $j=" select usuarios.usuario, itens.id from compras join usuarios on usuarios_rm=usuarios.rm
+                    join itens on itens_id=itens.id where usuarios.rm='$usuario' and itens.id='$reg->id' ";
+                    $busca2=$banco->query($j);
+
+
+                    if($busca2->num_rows>=1){
+                        echo "";
+                    }else{
+                        $alt = $reg->funcao; 
+                        $caminho = thumb('itens',$reg->img);
+                        echo "<td>$reg->id<br>
+                        <a href='comprar.php?id=$reg->id' ><img onmouseover=\" Mostrar('$alt')\"  onmouseout=\" Desmostrar() \"
+                          src='$caminho'></a><br>
+                        $reg->nome";
+                        echo "<p id='descricao'> </p>";
+        
+                    }
+              
            
 
             }
