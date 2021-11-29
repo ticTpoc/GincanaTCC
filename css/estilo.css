@@ -347,10 +347,7 @@ border: 2px solid #2955b4;
 
 }
 
-input:hover {
-background-color: #2955b4;
-color: white;
-}
+
 
 #sair{
 background-color: white; 
@@ -369,4 +366,8 @@ color: white;
 
 #branco{
     color:white;
+}
+
+form{
+    background-image: url("imagens/fundos/folha.png");
 }

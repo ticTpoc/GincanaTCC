@@ -1,6 +1,7 @@
 table{
     width:50%;
     margin: auto;
+  
 }
 table,tr,td{
  
@@ -14,3 +15,12 @@ td#esquerda{
 td{
     text-align: center;
 }
+.folha{
+    height:944px;
+    background: url("imagens/fundos/folha.png") no-repeat center;
+}
+form{
+    position:relative;
+    top: 50px;
+}
+

@@ -26,16 +26,7 @@ require_once "includes/login.php";
 
 ?>  
 
-<div class="cabecalho"> 
-     <div class="esquerda">
-    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
 
- 
-    </div>
-    <div class="direita">
- <?php include_once "header.php" ?>
-</div>
-</div>  
 <div class="conteudo">
 <table >
 <?php
@@ -139,9 +130,7 @@ echo "</table><br><br>";
 ?>
 
 </div> 
-<div class="rodape">
-     <?php  include_once "footer.php"; ?>
-        </div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -189,9 +178,6 @@ function notificacao(texto){
 });
 }
 </script>
-<div id="rodape">
-     <?php  include_once "footer.php"; ?>
-</div>
 </div>
 
 </body>

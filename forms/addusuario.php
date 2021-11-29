@@ -1,5 +1,6 @@
--<html>
+<html>
 <head>
+<link rel="stylesheet" href="forms.css">
 </head>
 <body>
     <?php
@@ -13,7 +14,7 @@ $q="select * from salas";
     ?>
 <h1> Cadastrar </h1>
 <h3> Novo Usuário </h3>
-
+<div class="folha">
 <form action="addusuario.php?feito=1" method="post">
 <table>
  <tr><td> Usuário <td><input type="text" name="usuario" id="usuario" size="15" maxlength="10" required>
@@ -32,6 +33,7 @@ while($reg=$busca->fetch_object()){
 </table>
 
 </form>
+</div>
 
 </body>
 <!--

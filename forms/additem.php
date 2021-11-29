@@ -8,9 +8,9 @@ $busca =$banco->query($q);
 
 ?>
 <head>
-<link rel="stylesheet" href="css/forms.css">
+<link rel="stylesheet" href="forms.css">
 </head>
-
+<div class="folha">
 <form action="additem.php?feito=1" method="post">
 
     <table>
@@ -38,3 +38,4 @@ while($reg = $busca->fetch_object()){
 
   
 </form>
+</div>

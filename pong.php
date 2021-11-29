@@ -32,26 +32,13 @@ require_once "includes/funcao.php";
 require_once "includes/login.php";
 ?>  
 		<div class="corpo">
-		<div class="cabecalho">
-    <div class="esquerda">
-    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
-
- <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
-    </div>
-    <div class="direita">
- <?php include_once "header.php" ?>
- <h2>Pong</h2>
-</div>
-</div>
 			
 		
 		<div class="center">
 			<canvas  id="canvas" width="800" height="500"></canvas>
 			</div>
 		
-			<div class="rodape">
-                <?php include_once "footer.php"; ?>
-			</div>
+			
 		</div>
 
 			<script type = "text/javascript">

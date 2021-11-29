@@ -1,23 +1,7 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-function sair() {
 
-    var logout= new FormData();
-   
-
-    $.ajax({
-            url:'logout_usuario.php',
-            method: 'post',
-            data: logout,
-            processData: false,
-            contentType:false,
-            success: function(resposta){
-                    alert("Adeus :D");
-            }
-    });
-    window.location.href="index.php";
-}
  </script>
 
 <div class="cabeca">

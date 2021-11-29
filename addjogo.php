@@ -26,16 +26,6 @@ $currentPage= $_SERVER['SCRIPT_NAME'];
 ?>  
  <div class="corpo">
 
- <div class="cabecalho">
-    <div class="esquerda">
-    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
-
- <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
-    </div>
-    <div class="direita">
- <?php include_once "header.php" ?>
-</div>
-</div>
 
 
 <div class="conteudo">
@@ -49,26 +39,26 @@ if($feito == 0){
 }else{
     $nome = $_POST['nome'];
     $livro = $_POST['livro'];
-    $img = $_POST['img'];
+    //$img = $_POST['img'];
     $tipo = $_POST['tipo'];
     
-   echo "$nome: ".$nome."<br>";
-   echo "$livro: ".$livro."<br>";
-   echo "$img: ".$img."<br>";
-   echo "$tipo: ".$tipo."<br>";
+   echo "nome: ".$nome."<br>";
+   echo "livro: ".$livro."<br>";
+   //echo "imagem: ".$img."<br>";
+   echo "tipo: ".$tipo."<br>";
 
 
-   if( empty($nome) || empty($img)){
+   if( empty($nome)){
     echo erro("preencha todos os campos");   
    }else{
      
        
         if($tipo==0){
-        $q="INSERT into jogos(nome,manutencao,tipo,livro,img) values
-        ('$nome',0,0,'livrocomunidade.png','$img');";
+        $q="INSERT into jogos(nome,manutencao,tipo,livro) values
+        ('$nome',0,0,'livrocomunidade.png');";
         }else{
-        $q="INSERT into jogos(nome,manutencao,tipo,livro,img) values
-        ('$nome',0,1,'$livro','$img');";
+        $q="INSERT into jogos(nome,manutencao,tipo,livro) values
+        ('$nome',0,1,'$livro');";
         }
       
         if($banco->query($q)){
@@ -85,9 +75,7 @@ if($feito == 0){
 }
 ?>
 </div>
-<div class='rodape'>
-     <?php  include_once "footer.php"; ?>
-</div>
+
  </div>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript">

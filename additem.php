@@ -5,6 +5,7 @@
 <title></title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
     .conteudo{
@@ -24,18 +25,7 @@ require_once "includes/login.php";
 $currentPage= $_SERVER['SCRIPT_NAME'];
 
 ?>  
- <div class="corpo">
 
- <div class="cabecalho">
-    <div class="esquerda">
-    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
-
- <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
-    </div>
-    <div class="direita">
- <?php include_once "header.php" ?>
-</div>
-</div>
 
 
 <div class="conteudo">
@@ -90,9 +80,7 @@ if($feito == 0){
 }
 ?>
 </div>
-<div class='rodape'>
-     <?php  include_once "footer.php"; ?>
-</div>
+
  </div>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript">

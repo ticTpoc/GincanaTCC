@@ -8,9 +8,9 @@ require_once "includes/login.php";
 
 ?>
 <head>
-<link rel="stylesheet" href="css/forms.css">
+<link rel="stylesheet" href="forms.css">
 </head>
-
+<div class="folha">
 <form action="addjogo.php?feito=1" method="post">
 
 <label for="nome" >Nome do Jogo</label>
@@ -19,10 +19,12 @@ require_once "includes/login.php";
 <input type="file" name='livro' id='livro' required><br>
 <label for="Icone">Icone</label>
 <input type="file" name='img' id='img' required><br>
-<label for="tipo">Tipo</label>
-<select name='tipo' id='tipo' required>
-<option value='1' selected> Oficial </option><br>
-<option value='0'> Comunidade </option><br>
+
+<h4>Tipo:</h4>
+<label for="comunidade">Comunidade</label>
+<input type="radio" name="tipo" id="comunidade" value="0"> <br>
+<label for="oficial">Oficial</label>
+<input type="radio" name="tipo" id="oficial" value="1"><br>
 </select><br>
 
 <button type="submit">Enviar</button>
@@ -30,3 +32,4 @@ require_once "includes/login.php";
 
   
 </form>
+</div>

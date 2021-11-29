@@ -42,16 +42,7 @@ $ideia = $_GET['ideia'] ?? null;
 $papo = $_GET['papo'] ?? null;
 ?>  
 <div class="corpo">
-<div class="cabecalho">
-    <div class="esquerda">
-    <h1 id="nome"> <a href = index.php>Gincana Bacana</a> </h1> 
 
- <h2 id="mensagem"><?php if(logado()){ echo "Ola ". $_SESSION['tipo']."  " . $_SESSION['user']; } ?></h2> 
-    </div>
-    <div class="direita">
- <?php include_once "header.php" ?>
-</div>
-</div>
 <div class="conteudo">
 
 
@@ -72,13 +63,16 @@ echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' 
         echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' coords='574,338,791,559'
          shape='rect'>";
          echo "<area target='' alt='portão' title='portão' href='funcionarios.php' coords='966,269,1351,734' shape='rect'>";
+         echo "<area  target='' href='sair.php' alt='sair' title='sair' coords='-2,180,279,894' shape='rect'>";
     }else{
         echo "<img src='imagens/fundos/entradaguardinhamaiorblush.png' class='fundos' id='entrada' usemap='#image-map'>";
         echo "<map name='image-map'>";
         echo "<area target='' alt='guardinha' title='guardinha' href='index.php?papo=1' coords='574,338,791,559'
          shape='rect'>";
          echo "<area target='' alt='portão' title='portão' href='jogos.php?corredor=1' coords='966,269,1351,734' shape='rect'>";
-    }
+         echo "<area ' target='' href='sair.php' alt='sair' title='sair' coords='-2,180,279,894' shape='rect'>";
+
+        }
    
 
 }
@@ -127,6 +121,7 @@ function fechar(){
 
     papo.classList.add('hide');
 }
+
 
 </script>
 </body>

@@ -8,9 +8,9 @@ require_once "includes/login.php";
 
 ?>
 <head>
-<link rel="stylesheet" href="css/forms.css">
+<link rel="stylesheet" href="forms.css">
 </head>
-
+<div class="folha">
 <form action="addpergunta.php?feito=1" method="post">
 <label for="pergunta">Pergunta</label>
 <input type="text" name='pergunta' id='pergunta'><br><br>
@@ -29,3 +29,4 @@ require_once "includes/login.php";
 
   
 </form>
+</div>
