@@ -3,8 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Campo minado</title>
+        
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
         <style>
+            body{
+                background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+
+            }
             .center{
 				margin: auto;
 				width: 45%;
@@ -26,10 +31,16 @@
                 background-color: #dcd6bc;
                 margin-left: 50px;
                 margin-top: 20px;
+                margin:auto;
                 border: 10px solid #dcd6bc;
                 margin-bottom: 10px;
             }
-            
+            #bandeiras{
+                text-align: center ;
+                margin-left:100px;
+                
+
+            }
             div {
                 font-size: 40px;
                 text-align: center;
@@ -80,6 +91,23 @@
             #result {
                 margin-top: 5px;
                 color: #e76346;
+            
+            }
+            .button {
+            background-color: purple; 
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 66px;
+            margin-left:33%;
+            margin-right:33%;
+            position:relative;
+            width:400px;
+            cursor: pointer;
+            border-radius: 500%;
             }
         </style>
     </head>
@@ -88,12 +116,21 @@
         <div class="container">
             <div class="grid">
                 <script type="text/javascript">
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
                     document.addEventListener('DOMContentLoaded', () => {
                     const grid = document.querySelector('.grid')
                     const flagsLeft = document.querySelector('#flags-left')
                     const result = document.querySelector('#result')
                     let width = 10
-                    let bombAmount = 20
+
+                    
+                    let bombAmount = getRandomInt(10,20)
                     let flags = 0
                     let squares = []
                     let isGameOver = false
@@ -174,6 +211,7 @@
                     if (square.classList.contains('checked') || square.classList.contains('flag')) return
                     if (square.classList.contains('bomb')) {
                         gameOver(square)
+                         
                     } else {
                         let total = square.getAttribute('data')
                         if (total !=0) {
@@ -251,6 +289,7 @@
                     //game over
                     function gameOver(square) {
                     result.innerHTML = 'BOOM! EXPLODIU!'
+                    
                     isGameOver = true
                 
                     //show ALL the bombs
@@ -274,17 +313,23 @@
                         }
                         if (matches === bombAmount) {
                         result.innerHTML = 'AEEEEEEEEEE! GANHOU!'
+
+                        setTimeout(function(){window.location.href="loot.php?pontos="+matches+"&id=7"}, 2000);   
+    
+
                         isGameOver = true
                         }
+
                     }
                     }
                     })
                 </script>
             </div>
-            <div>Bandeiras faltando: <span id='flags-left'></span></div>
+            <div id="bandeiras">Bandeiras faltando: <span id='flags-left'></span></div>
             <div id="result"></div>
         </div>
     </div>
+    <a href="campominado.php" class="button">Reiniciar</a>
     <audio controls autoplay loop>
 				<source src="SoundTrack\MSC.mp3">
 	</audio>
