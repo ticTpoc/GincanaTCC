@@ -35,7 +35,7 @@ $currentPage= $_SERVER['SCRIPT_NAME'];
 $feito = $_GET['feito'];
 
 if($feito == 0){
-    include_once "forms/".substr($currentPage,15,-4).".php";
+    include_once "forms/addpergunta.php";
 }else{
     $r1 = $_POST['r1'];
     $r2 = $_POST['r2'];

@@ -3,8 +3,11 @@ table{
     margin: auto;
   
 }
-table,tr,td{
+input{
  
+    border: none;
+    border-bottom: 2px solid black;
+
 }
 #tipo{
     margin-left: 0;

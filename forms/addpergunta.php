@@ -12,8 +12,8 @@ require_once "includes/login.php";
 </head>
 <div class="folha">
 <form action="addpergunta.php?feito=1" method="post">
-<label for="pergunta">Pergunta</label>
-<input type="text" name='pergunta' id='pergunta'><br><br>
+<label for="pergunta">Pergunta</label> 
+<input type="text" name='pergunta' id='pergunta'>   Correta<br><br>
 <label for="r1">Resposta 1</label>
 <input type="text" name='r1' id='r1'><input type='radio' name='rc' value='r1'><br><br>
 <label for="r2">Resposta 2</label>

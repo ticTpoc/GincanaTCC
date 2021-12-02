@@ -60,7 +60,7 @@ require_once "includes/login.php";
         <td><a href='additem.php?feito=0'><div id='cheia'>Adicionar item</div></a></td>
         <td><a href='addpergunta.php?feito=0'><div id='cheia'> Adicionar pergunta</div></a></td>
         <td><a href='addjogo.php?feito=0'><div id='cheia'>Adicionar Jogo</div></a></td>
-        <td><a href='addsala.php?feito=0'><div id='cheia'>Futuro</div></a></td>
+        <td><a href='jogos.php?corredor=1'><div id='cheia'>Jogos</div></a></td>
         <tr><td><a href='usuarios.php'><div id='cheia'>Lista de Alunos</div></a></td>
         <td><a href='perguntas.php'><div id='cheia'>Lista de Perguntas</div></a></td>
         <td><a href='novo_form_item.php'><div id='cheia'>add itens</div></a></td>
