@@ -41,6 +41,13 @@ img{
     height:220px;
     width: 150px;
 }
+@font-face {
+    font-family: edwardian;
+    src: url("..\css\edwardian-script-itc.ttf");
+}
+td {
+    font-family: edwardian;
+}
 
 </style>
 </head>

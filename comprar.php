@@ -12,6 +12,17 @@ img{
     width:500px;
     height:500px;
 }
+@font-face {
+    font-family: edwardian;
+    src: url("..\css\ITCEDSCR.TTF");
+}
+td{
+    font-family: edwardian;
+    font-size: 50px;
+}
+td{
+    background-color:#d2b48c;
+}
 </style>
 </head>
 
@@ -33,8 +44,8 @@ $moedas = $reg2->coin;
 
  
 
-<div class="conteudo">
-     <h1> Comprar item </h1>
+<div class="conteudo" style="background-color:#d2b48c;">
+     <h1 style="background-color:rgb(127, 171, 228);"> Comprar item </h1>
      <table>
 <?php
 $feito = $_GET['feito'] ?? null;
@@ -84,9 +95,9 @@ if($novocoin<0){
 
     echo "<table>
     <tr><td rowspan='3'><img src='imagens/itens/$reg->img'>
-    <td><p>$reg->nome</p>
-    <tr><td><p>$reg->funcao</p>
-    <tr><td><a href='comprar.php?id=$reg->id&feito=feito'> Comprar </a>
+    <td><p style='margin-left: 30px;'>$reg->nome</p>
+    <tr><td><p style='margin-left: 30px;'>$reg->funcao</p>
+    <tr><td><a href='comprar.php?id=$reg->id&feito=feito' style='font-family: bold; margin-left: 30px;'> Comprar </a>
     
     </table>";    
   
