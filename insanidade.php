@@ -88,6 +88,7 @@ require_once "includes/login.php";
 
 <div id='papo'>
 ...
+Roteiro produzido por uma inteligencia artificial
 
 </div>
 <button class="hide" id="passar" onclick="passar()">Próxima</button>
@@ -162,11 +163,25 @@ function passar(){
         case 12:
 
         break;
+       
+       
         
     }
-    
-    papo.textContent=falas[fase]+fase;
+    if(fase>12){
+
+//<a id='linkzin' class="hide" href="https://www.plot-generator.org.uk/story/">Site gerador de roteiros</a>
+linkzin = document.createElement("a");
+linkzin.setAttribute("href",'https://www.plot-generator.org.uk/story/')
+linkzin.setAttribute("target",'blank')
+linkzin.textContent="Site gerador de roteiros";
+papo.textContent="";
+papo.appendChild(linkzin);
+
+        }else{
+            papo.textContent=falas[fase]+fase;
     fase++;
+        }
+   
 }
 </script>
 </body>
