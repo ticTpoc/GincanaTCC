@@ -109,7 +109,6 @@ require_once "includes/login.php";
 					ball_x_orientation = Math.pow(2, Math.floor( Math.random() * 2 )+1) - 3 
 					ball_x = w / 2 -10
 					ball_y = h / 2 -10
-					ball_tspeed = ball_tspeed +	
 				}
 
 				function draw(){
