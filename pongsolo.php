@@ -34,16 +34,16 @@ require_once "includes/login.php";
 		<div class="corpo">
 			
 		
-		<div class="center">
-			<canvas  id="canvas" width="800" height="500"></canvas>
-			</div>
-		
+			<div class="center">
+				<canvas  id="canvas" width="800" height="500"></canvas>
+				</div>
 			
-		</div>
+				
+			</div>
 
 			<script type = "text/javascript">
 				let ctx, p1_y, p2_y, p1_points, p2_points
-				let ball_y_orientation, ball_x_orientation, ball_x, ball_y, ball_speed = 0, ball_tspeed = 5
+				let ball_y_orientation, ball_x_orientation, ball_x, ball_y, ball_tspeed = 5
 				let p1_key, p2_key
 				const h=500, w=800, p_w=20, p_h=200, p1_x = 10, p2_x = w - p_w - 10
 				function setup(){
@@ -82,25 +82,25 @@ require_once "includes/login.php";
 
 					if(ball_x+10 > w) {
 						p1_points++
-						ball_speed++
+			++
 						initBall()
 					}
 					else if(ball_x < 0){
 						p2_points ++
-						ball_speed++
+			++
 						initBall()
 					}
 
-					if(p1_key == 87 && p1_y > 0){
-						p1_y -= 10
-					}else if(p1_key == 83 && p1_y + p_h < h){
-						p1_y += 10
+					if(ball_y < p1_y  && p1_y > 0){
+						p1_y -=4
+					}else if(ball_y > p1_y +200  && p1_y + p_h < h){
+						p1_y +=4
 					}
 
 					if(p2_key == 38 && p2_y > 0){
-						p2_y -= 10
+						p2_y -= 5
 					}else if(p2_key == 40 && p2_y + p_h < h){
-						p2_y += 10
+						p2_y += 5
 					}
 					draw()
 				}
@@ -111,7 +111,7 @@ require_once "includes/login.php";
 					ball_x_orientation = Math.pow(2, Math.floor( Math.random() * 2 )+1) - 3 
 					ball_x = w / 2 -10
 					ball_y = h / 2 -10
-					ball_tspeed = ball_tspeed + ball_speed
+					ball_tspeed = ball_tspeed
 					
 				}
 
@@ -143,12 +143,7 @@ require_once "includes/login.php";
 					// 3*(w/4) = 3/4 da tela = metade da tela do player 2
 					ctx.fillText(p2_points, 3*(w/4), 50);
 				}
-
 				document.addEventListener("keydown",function(ev){
-					// keyCode 87 = w, keycode 83 = s
-					if(ev.keyCode == 87 || ev.keyCode == 83){
-						p1_key = ev.keyCode
-					}
 					// keycode 38 = arrowUp, keycode 40 = arrowDown
 					if(ev.keyCode== 38 || ev.keyCode==40){
 						p2_key = ev.keyCode

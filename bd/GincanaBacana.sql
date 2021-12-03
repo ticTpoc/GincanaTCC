@@ -137,7 +137,7 @@ insert into jogos(nome,manutencao,tipo,livro) values
 ('quiz',0,1,'quizlivro'),
 ('dungeon',1,1,'dungeonlivro'),
 ('memoria',0,1,'memorialivro'),
-('pong',0,1,'ponglivro'),
+('pongmodos',0,1,'ponglivro'),
 ('insanidade',0,1,'insanidadelivro'),
 ('cassino',0,1,'cassinolivro'),
 ('campominado',0,1,'campominadolivro');

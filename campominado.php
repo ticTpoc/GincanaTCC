@@ -116,20 +116,16 @@
         <div class="container">
             <div class="grid">
                 <script type="text/javascript">
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
-                    document.addEventListener('DOMContentLoaded', () => {
+                function getRandomInt(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min)) + min;
+                }
+                document.addEventListener('DOMContentLoaded', () => {
                     const grid = document.querySelector('.grid')
                     const flagsLeft = document.querySelector('#flags-left')
                     const result = document.querySelector('#result')
                     let width = 10
-
-                    
                     let bombAmount = getRandomInt(10,20)
                     let flags = 0
                     let squares = []
@@ -322,8 +318,8 @@ function getRandomInt(min, max) {
 
                     }
                     }
-                    })
-                </script>
+                })
+            </script>
             </div>
             <div id="bandeiras">Bandeiras faltando: <span id='flags-left'></span></div>
             <div id="result"></div>
