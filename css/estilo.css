@@ -2,6 +2,11 @@
 box-sizing: border-box;
 }
 
+@font-face {
+    font-family: edwardian;
+    src: url("../css/edwardian-script-itc.ttf");
+}
+
 .fundos{
     height:100%;
     width:100%;
@@ -43,11 +48,6 @@ background-color: rgb(58, 108, 173);
 }
 
 
-@font-face {
-
-font-family: Pixel;
-src: url(pixel.TTF);
-}
 
 
 
