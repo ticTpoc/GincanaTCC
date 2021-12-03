@@ -21,6 +21,20 @@ html{background-color: black;}
 ul.creditos{
     list-style-type: none;
 }
+#voltar{
+    color:white;
+    font-size: 20px;
+   
+}
+h1{
+    font-size: 60px;
+}
+h2{
+    font-size:40px;
+}
+h3{
+    font-size:20px;
+}
     </style>
 </head>
 
@@ -32,7 +46,7 @@ require_once "includes/login.php";
 
 ?>  
  <div class="creditos">
-<h1>CRÉDITOS</h1>
+<a id="voltar" href="creditos.php"><h1>CRÉDITOS</h1></a>
 <h2>Membros: </h2>
 <h3>Gabrielly</h3>
 <h3>Felipe</h3>
@@ -40,10 +54,45 @@ require_once "includes/login.php";
 <h3>Alecthor</h3>
 <h2>Participação especial: </h2>
 <h3>Kevin: Ator</h3>
+<h3>Nicolas: Random</h3>
+<h3>Tiago: Random</h3>
 <h3>Inhesta: Ator</h3>
 <h3>Gustavo: VIP</h3>
+<h3>João Paulo: Citação</h3>
+<h3>Guardinha: Guardinha</h3>
+<h3>Rei James: Citação </h3>
 <h3><?php echo $_SESSION['user']?>: Perfeição</h3>
+<h2>Não humanos: </h2>
+<h3>Goblin</h3>
+<h3>Dragão</h3>
+<h3>Orc</h3>
+<h3>Unicórnio</h3>
+<h3>Elfo</h3>
+<h3>Marcella</h3>
+<h3>Ogro</h3>
+<h3>Poseidon</h3>
+<h3>Bolinha</h3>
+<h3>Barrinha esquerda</h3>
+<h3>Barrinha direita</h3>
+<h3>Caos encarnado</h3>
+<h2>Localizações</h2>
+<h3>ETEC Anna de Oliveira Ferraz</h3>
+<h3>Ibiza</h3>
+<h3>Albânia</h3>
+
+
+    <a id= "voltar" href="index.php">Sair</a>
+
  </div>
+ 
+ <audio class="hide" controls autoplay>
+  <source  src="SoundTrack\classica.mp3">
+</audio>
+
 </body>
 
+<script type='text/javascript'>
+
+
+    </script>
 </html>

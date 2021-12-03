@@ -93,13 +93,13 @@ right:300px;
     position: fixed;
     text-align: center;
     text-shadow: 10px 2px 10px red;
-    color:bisque;
+    color:black;
     left:300px;
     top:0px;
     font-size: 80px;
     pointer-events: none;
     animation-name:descer;
-    animation-duration: 9s;
+    animation-duration: 11s;
 }
 
 @keyframes descer {
@@ -144,7 +144,8 @@ require_once "includes/login.php";
 
 <div id='papo'>
 ...
-Roteiro produzido por uma inteligencia artificial
+Roteiro produzido por uma inteligencia artificial<br>
+Jogo feito em 6 horas de uma sexta
 
 </div>
 <button  onclick = "passar('bad')" class="hide escolha1" id='escolha1'></button>
@@ -174,12 +175,12 @@ const falas = ["Ele era um bebedor de uísque corajoso e articulado, com braços
 "O FIM"];
 var fase = 0;
 
-setTimeout(function(){titulo.classList.add("hide")}, 8000); 
+setTimeout(function(){titulo.classList.add("hide")}, 10000); 
 setTimeout(function(){
     papo.textContent='Kevin sempre amou a ETEC gratuita com suas árvores altas e talentosas. Era um lugar onde ele sentia raiva.'
     document.getElementById('kevin').classList.remove("hide")
     document.getElementById('passar').classList.remove("hide")
-}, 8000); 
+}, 10000); 
 
 
 
@@ -222,7 +223,7 @@ function passar(ocorrido){
         case 7:
             var audio = new Audio('SoundTrack/classica.mp3');
             audio.play();
-            setTimeout(function(){audio.pause()}, 30000);
+            setTimeout(function(){audio.pause()}, 60000);
         break;
         case 8:
         /*   var matar = document.createElement('BUTTON');
@@ -291,6 +292,7 @@ switch(ocorrido){
             document.getElementById("inhesta").classList.add("hide");
           fundo.setAttribute("src","imagens/historia/good.png")
             papo.textContent="Kevin e Inhesta se tornam um lindo casal feliz e passam o resto da sua vida em Ibiza";
+            document.getElementById("creditos").classList.remove("hide");
             break;
             default:
                 papo.textContent="  A membrana da realidade foi corrompida e não sobrou nada além de sofrimento e dor";
