@@ -32,6 +32,19 @@ margin-bottom: 0px;
     right:0px;
     bottom:0px;
 }
+#creditos{
+    position: fixed;
+    left:0px;
+   bottom:0px;
+  
+}
+#creditos{
+    font-size: 20px;
+    background-color: black;
+    color:white;
+   width:125px;
+   height:50px;
+}
 #kevin{
     position: fixed;
     bottom:0px;
@@ -137,6 +150,7 @@ Roteiro produzido por uma inteligencia artificial
 <button  onclick = "passar('bad')" class="hide escolha1" id='escolha1'></button>
 <button  onclick = "passar('bom')" class="hide escolha2" id="escolha2"></button>
 <button class="hide" id="passar" onclick="passar()">Próxima</button>
+<div class= "hide" id="creditos"><a href="creditos.php"><button id="creditos">Créditos</button></a></div>
 <script type="text/javascript">
 
 const titulo = document.getElementById("titulo");
@@ -160,12 +174,12 @@ const falas = ["Ele era um bebedor de uísque corajoso e articulado, com braços
 "O FIM"];
 var fase = 0;
 
-setTimeout(function(){titulo.classList.add("hide")}, 1000); 
+setTimeout(function(){titulo.classList.add("hide")}, 8000); 
 setTimeout(function(){
     papo.textContent='Kevin sempre amou a ETEC gratuita com suas árvores altas e talentosas. Era um lugar onde ele sentia raiva.'
     document.getElementById('kevin').classList.remove("hide")
     document.getElementById('passar').classList.remove("hide")
-}, 1000); 
+}, 8000); 
 
 
 
@@ -243,7 +257,7 @@ function passar(ocorrido){
        
         
     }
-    if(fase>12){
+    if(fase>8){
 
 //<a id='linkzin' class="hide" href="https://www.plot-generator.org.uk/story/">Site gerador de roteiros</a>
 linkzin = document.createElement("a");
@@ -265,14 +279,18 @@ switch(ocorrido){
         escolha1.classList.add("hide");
         papo.textContent="Kevin mata o pobre Inhesta com sua lâmina mortífera";
         fundo.setAttribute("src","imagens/animacao/bad.gif")
+        document.getElementById("kevin").classList.add("hide");
         document.getElementById("kevin2").classList.add("hide");
             document.getElementById("inhesta").classList.add("hide");
+            document.getElementById("creditos").classList.remove("hide");
+        
         break;
         case 'bom':
+            document.getElementById("kevin").classList.add("hide");
             document.getElementById("kevin2").classList.add("hide");
             document.getElementById("inhesta").classList.add("hide");
           fundo.setAttribute("src","imagens/historia/good.png")
-            papo.textContent="Kevin e Inhesta se tornam um lindo casal feliz e passam o resto da sua vida em ibiza";
+            papo.textContent="Kevin e Inhesta se tornam um lindo casal feliz e passam o resto da sua vida em Ibiza";
             break;
             default:
                 papo.textContent="  A membrana da realidade foi corrompida e não sobrou nada além de sofrimento e dor";
