@@ -90,8 +90,11 @@ require_once "includes/login.php";
 </audio>
 
 </body>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type='text/javascript'>
+  
+  $('html,body').animate({scrollTop: document.body.scrollHeight},{duration:25000}  );
+
 
 
     </script>

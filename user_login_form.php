@@ -17,8 +17,8 @@
 
 <div class= "box">
 <h1 class ="login" id="login"> Login </h1>
-<input type="text" name="rm"  id='rm' maxlength=5 placeholder="RM">
-<input type="password" name="senha"  id='senha' maxlength=10 placeholder="password">
+<input type="text" name="rm"  id='rm' maxlength=6 placeholder="RM">
+<input type="password" name="senha"  id='senha' maxlength=50 placeholder="password">
 <input type="submit" name=""   >
 </div>
 

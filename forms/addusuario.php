@@ -17,8 +17,8 @@ $q="select * from salas";
 <div class="folha">
 <form action="addusuario.php?feito=1" method="post">
 <table>
- <tr><td> Usuário <td><input type="text" name="usuario" id="usuario" size="15" maxlength="10" required>
- <tr><td> RM <td><input type="text" name="rm" id="rm2" size="15" maxlength="30" required>
+ <tr><td> Usuário <td><input type="text" name="usuario" id="usuario" size="20" maxlength="20" required>
+ <tr><td> RM <td><input type="number" name="rm" id="rm2" required>
  <tr><td  id='sala'> Sala <td> <select name='sala' id='sala'>
 
 <?php

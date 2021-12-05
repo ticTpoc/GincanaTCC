@@ -101,7 +101,7 @@ if($papo == 1){
             echo "</span>";
         }else{
             
-            echo "<span>guardinhaMaroto: <a id='branco' href='login_usuario.php'>Login</a> 
+            echo "<span>guardinhaMaroto: <a id='branco' href='user_login_form.php'>Login</a> 
             ou <a id='branco' href='addusuario.php?feito=0'> Cadastro</a> ?</span>";
            
         }

@@ -147,7 +147,8 @@ insert into itens(nome,img,preco,jogos_idj,tipo,valor,funcao) values
 ('adaga','adaga.png','20',2,'item','1','perfeita para degolar goblins'),
 ('escudo de madeira','escudo1.png','50',2,'item','2','feito de madeira, eu acho'),
 ('escudo inglês','escudo2.png','100',2,'item','3','utilizado por James o VI e I  da Inglaterra e escócia na batalha de Vivivuland'),
-('espada','espada.png','60',2,'item','2',' tudo que um herói necessita');
+('espada','espada.png','60',2,'item','2',' tudo que um herói necessita'),
+('escuro','escuro.png','100',1,'skin','0',' tudo um pouco mais escuro');
 
 
 insert into quiz(question,R1,R2,R3,RC,aprovacao) values
@@ -233,6 +234,11 @@ update apostas
 
 SELECT b.ida,a.usuario,c.usuario,b.valor from apostas b JOIN usuarios a ON b.usuario1=a.rm JOIN usuarios c ON b.usuario2=c.rm;
 
+
+// selecionar itens do usuario
+
+select usuarios.usuario, itens.id from compras join usuarios on usuarios_rm=usuarios.rm
+join itens on itens_id=itens.id where usuarios.rm='3441'
 
 // select para ranking
 select usuarios.rm , usuarios.usuario like '%%', jogos.nome '%q%', rankings.highscore from usuarios join rankings on usuarios.rm=usuarios_rm

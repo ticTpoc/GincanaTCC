@@ -44,17 +44,22 @@ $currentPage= $_SERVER['SCRIPT_NAME'];
                if( empty($usuario) || empty ($rm) || empty($sala) || empty($senha1) || empty($senha2) ){
                  echo erro("preencha todos os campos");   
                }else{
-                 $senha= gerarhash($senha1);
+                   if($rm>99999){
+                       echo erro("RM inválido");
+                   }else{
+                    $senha= gerarhash($senha1);
 
-                 $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO,SALAS_ID,NIVEL,vida) VALUES 
-                 ('$usuario','$rm','$senha','jogador',0,'ativo','$sala',1,5);";
-                 if($banco->query($q)){
-
-                    echo sucesso(" Usuário $usuario cadastrado com êxito");
-                 }
-                 else{
-                      echo erro( " Falha no cadastro");
-                 }
+                    $q="INSERT INTO USUARIOS(USUARIO,RM,SENHA,TIPO,COIN,ESTADO,SALAS_ID,NIVEL,vida) VALUES 
+                    ('$usuario','$rm','$senha','jogador',0,'ativo','$sala',1,5);";
+                    if($banco->query($q)){
+   
+                       echo sucesso(" Usuário $usuario cadastrado com êxito");
+                    }
+                    else{
+                         echo erro( " Falha no cadastro");
+                    }
+                   }
+                
 
 
                }

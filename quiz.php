@@ -1,3 +1,29 @@
+<?php 
+require_once "includes/bd.php";
+require_once "includes/funcao.php";
+require_once "includes/login.php";
+$usuario = $_SESSION['rm'];
+
+$q= "select usuarios.rm, itens.id from compras join usuarios on usuarios_rm=usuarios.rm
+join itens on itens_id='5' where usuarios.rm=$usuario";
+$busca = $banco->query($q);
+
+if($busca){
+    if($busca->num_rows>=1){
+        $tema = "dark";
+    }else{
+        $tema = null;
+    }
+}else{
+    erro("tem coisa errada");
+}
+
+
+
+
+
+
+?> 
 <html>
     <head>
 <title></title>
@@ -17,24 +43,48 @@
 }
 
 :root{
+
+--lightness-dark: 2;
 --hue-neutral: 200;
 --hue-wrong: 0;
 --hue-correct: 140;
 }
 
 .quiz{
---hue: var(--hue-neutral);
 padding: 0;
 margin:0;
-display: flex;
 width: 100%;
 height: 100vh;
 justify-content: center;
 align-items: center;
 
-background-color: hsl(var(--hue), 100%, 20%);
+background-color: hsl(200,<?php
+switch($tema){
+    case "dark":
+        echo "100%,10%";
+        break;
+        default:
+            echo "100%, 60%";
+            break;
 }
 
+
+
+?>);
+}
+#question{
+    font-size: 30px;
+    <?php
+
+if($tema=="dark"){
+    echo " color:white; ";
+}else{
+   echo "color:black; ";
+}
+
+
+?>
+}
 
 .correct{
 --hue: var(--hue-correct);
@@ -45,12 +95,26 @@ background-color: hsl(var(--hue), 100%, 20%);
 }
 
 .quizcontainer{
-width: 800px;
+width:60%;
+left:20%;
+right:20%;
+top: 33%;
+margin: auto;
 max-width: 80%;     
-background-color: white;
+<?php
+
+if($tema=="dark"){
+    echo " background-color: black; ";
+}else{
+   echo "background-color: white; ";
+}
+
+
+?>
 border-radius: 5px;
 padding: 60px;
 box-shadow: 0 10px 20px 5px;
+position: absolute;
 }
 
 .btn-grid{
@@ -61,25 +125,75 @@ margin:20px 0;
 }
 
 .btn{
---hue: var(--hue-neutral);
-border: 2px solid hsl(var(--hue),100%,30%);
-background-color: hsl(var(--hue),100%, 60%);
+
+font-size:25px;
+<?php
+
+if($tema=="dark"){
+    echo "border: 2px solid hsl(var(--hue),100%,20%);";
+    echo " background-color: hsl(200,80%,30%);";
+}else{
+    echo "border: 2px solid hsl(var(--hue),100%,30%);";
+   echo "background-color: hsl(200,100%,70%);";
+}
+
+
+?>
 border-radius: 5px;
 padding: 10px 10px;
-color: black;
+<?php
+
+if($tema=="dark"){
+    echo " color:white; ";
+}else{
+   echo "color: black; ";
+}
+
+
+?>
 outline: none;
 }
 
 .btn:hover{
+    <?php
 
-background-color:aqua;
+if($tema=="dark"){
+    echo " background-color: hsl(200,100%,10%); ";
+}else{
+   echo "background-color:aqua;";
+}
+
+
+?>
+;
 }
 .btn.correct{
 --hue: var(--hue-correct);
+ <?php
+
+if($tema=="dark"){
+    echo " background-color: teal; ";
+}else{
+   echo "background-color:#28F55F;";
+}
+
+
+?>
 
 }
 .btn.wrong{
 --hue: var(--hue-wrong);
+<?php
+
+if($tema=="dark"){
+    echo " background-color:#9B0000; ";
+}else{
+   echo "background-color:#F52B28;";
+}
+
+
+?>
+
 }
 
 
@@ -99,15 +213,7 @@ align-items: center;
 </head>
 
 <body>    
-    <?php 
-require_once "includes/bd.php";
-require_once "includes/funcao.php";
-require_once "includes/login.php";
-
-
-
-
-?>  
+    
  <div id="corpo">
  
   

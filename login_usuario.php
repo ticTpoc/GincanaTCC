@@ -21,10 +21,7 @@ require_once "includes/login.php";
  $u = $_POST['rm'] ?? null;
 $s= $_POST['senha'] ?? null;
 
-if(is_null($u) or is_null($s)){
 
-    require 'user_login_form.php';
-}else{
 
     $q = "select usuario,rm,tipo,estado,senha from usuarios where rm='$u' limit 1";
 
@@ -55,15 +52,16 @@ if($busca->num_rows>0){
     echo erro('usuário não existe >:( ');
 }
     }
-}
+
  
 
  ?>
 
- <?php echo voltar(); ?>
 </div>
 
-
+<script type="text/javascript">
+    window.location.href="index.php";
+</script>
 </body>
 
 </html>
