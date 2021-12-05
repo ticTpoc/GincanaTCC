@@ -45,7 +45,7 @@ $moedas = $reg2->coin;
  
 
 <div class="conteudo" style="background-color:#d2b48c;">
-     <h1 style="background-color:rgb(127, 171, 228);"> Comprar item </h1>
+     <h1> Comprar item </h1>
      <table>
 <?php
 $feito = $_GET['feito'] ?? null;
