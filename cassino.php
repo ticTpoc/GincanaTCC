@@ -179,7 +179,9 @@ function notificacao(texto){
 }
 </script>
 </div>
-
+<audio class='hide' controls autoplay loop>
+	<source src="SoundTrack/12112-01021-11121.mp3">
+</audio>
 </body>
 
 </html>

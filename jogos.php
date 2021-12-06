@@ -148,7 +148,9 @@ function fechar(index){
 
 }
           </script>
-       
+        <audio class='hide' controls autoplay loop>
+	        <source src="SoundTrack/Sons da Escola.mp3">
+        </audio>
 </body>
 
 </html>
