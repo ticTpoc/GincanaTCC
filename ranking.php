@@ -12,10 +12,13 @@ table{
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
+    background-image: url("imagens/fundos/papel.jpg");
 }
 table,td{
-    border-collapse: collapse;
-    border: 2px solid brown;
+  
+}
+input{
+    border: none;
 }
 td{
     height: 50px;
@@ -40,7 +43,7 @@ require_once "includes/login.php";
 
 
 <div class="conteudo">
-<h1>Vou meter logo um ranking aqui e vai ser doido</h1>
+<h1>Lista dos Incríveis</h1>
 </div>
 <table class='ranking'>
 <?php 
