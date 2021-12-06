@@ -66,10 +66,25 @@
 
 </div>
 
-<a href="index.php" ><img src=" imagens/inimigos/goblin.png" ></a>
+<a href="index.php" ><img class="hide" src=" imagens/inimigos/goblin.png" ></a>
 
+
+<input type="file" onchange="mudar()" name="arquivo" id="arquivo">
+<img width='200px' height='200px'id="imagem"> 
 
 <script type="text/javascript">
+
+function mudar(){
+  var valor = document.getElementById('arquivo').value;
+console.log(valor.slice(12,valor.length));
+var novalor = valor.slice(12,valor.length);
+
+
+document.getElementById("imagem").setAttribute("src","imagens/"+novalor)
+
+}
+
+
    const mostrarPontos =  document.getElementById('pontos');
 function Rodar(){
  
