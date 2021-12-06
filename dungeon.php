@@ -495,12 +495,12 @@ const infoNivel = document.getElementById('nivel');
 
 
 
-const inimigos= { mobs:["goblin.png","orc.png","dragao.png","kevin.png","ogro.png","elfo.png","unicornio.png"],
- danomin:[0,2,3,1,1,0,10],
- danomax:[3,5,6,21,5,2,50],
- vidas:[2,3,5,7,4,1,13]}
+const inimigos= { mobs:["goblin.png","orc.png","dragao.png","kevin.png","ogro.png","elfo.png","unicornio.png","slime.png"],
+ danomin:[0,2,3,1,1,0,4,1],
+ danomax:[3,5,6,21,5,2,5,3],
+ vidas:[2,3,5,7,4,1,13,5]}
 
-const vidamaxima = 1000;
+const vidamaxima = 100;
 
 var vida = 100;
 
@@ -548,7 +548,8 @@ const espadaferro = document.getElementById('espadaferro');
 const espadaouro = document.getElementById('espadaouro');
 const escudobosta = document.getElementById('escudobosta');
 const escudoheroi = document.getElementById('escudoheroi');
-const escudolendario = document.getElementById('escudolendario');*/
+const escudolendario = document.getElementById('escudolendario');
+*/
 
 </script>
 <audio class='hide' controls autoplay loop>

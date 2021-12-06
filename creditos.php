@@ -54,6 +54,7 @@ require_once "includes/login.php";
 <h3>Alecthor</h3>
 <h2>Participação especial: </h2>
 <h3>Kevin: Ator</h3>
+<h3>Júlio: Fotógrafo</h3>
 <h3>Nicolas: Random</h3>
 <h3>Tiago: Random</h3>
 <h3>Inhesta: Ator</h3>
@@ -70,6 +71,7 @@ require_once "includes/login.php";
 <h3>Elfo</h3>
 <h3>Marcella</h3>
 <h3>Ogro</h3>
+<h3>Discord</h3>
 <h3>Poseidon</h3>
 <h3>Bolinha</h3>
 <h3>Barrinha esquerda</h3>
@@ -79,8 +81,16 @@ require_once "includes/login.php";
 <h3>ETEC Anna de Oliveira Ferraz</h3>
 <h3>Ibiza</h3>
 <h3>Albânia</h3>
+<h3>Brasília</h3>
 <h2>Agradecimentos especiais</h2>
 <h3>Melry Ellen</h3>
+<h3>Google</h3>
+<h3>Xampp</h3>
+<h3>Github</h3>
+<h3>VisualStudioCode</h3>
+
+
+<h2>todos os direitos reservados por TurminhaBacana 	&copy;</h2>
 
     <a id= "voltar" href="index.php">Sair</a>
 
@@ -94,7 +104,7 @@ require_once "includes/login.php";
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type='text/javascript'>
   
-  $('html,body').animate({scrollTop: document.body.scrollHeight},{duration:25000}  );
+  $('html,body').animate({scrollTop: document.body.scrollHeight},{duration:30000}  );
 
 
 

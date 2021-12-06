@@ -383,7 +383,7 @@ Array.from(answerButtonsElement.children).forEach(button =>{
     setStatusClass(button, button.dataset.correct);
 })
 if(shuffledQuestions.length > currentQuestionIndex + 1){
-    setTimeout(function(){nextButton.classList.remove('hide')}, 1000);
+    nextButton.classList.remove('hide')
 }else{
     endButton.classList.remove('hide');
 }

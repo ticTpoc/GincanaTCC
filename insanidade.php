@@ -145,7 +145,8 @@ require_once "includes/login.php";
 <div id='papo'>
 ...
 Roteiro produzido por uma inteligencia artificial<br>
-Jogo feito em 6 horas de uma sexta
+Jogo feito em 6 horas de uma sexta<br>
+Direitos autorais concebidos pelos integrantes
 
 </div>
 <button  onclick = "passar('bad')" class="hide escolha1" id='escolha1'></button>

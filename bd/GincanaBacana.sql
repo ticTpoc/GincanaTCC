@@ -140,7 +140,8 @@ insert into jogos(nome,manutencao,tipo,livro) values
 ('pong',0,1,'ponglivro'),
 ('insanidade',0,1,'insanidadelivro'),
 ('cassino',0,1,'cassinolivro'),
-('campominado',0,1,'campominadolivro');
+('campominado',0,1,'campominadolivro'),
+('velha',0,1,'velhalivro');
 
 
 insert into itens(nome,img,preco,jogos_idj,tipo,valor,funcao) values
@@ -238,6 +239,11 @@ update apostas
 
 SELECT b.ida,a.usuario,c.usuario,b.valor from apostas b JOIN usuarios a ON b.usuario1=a.rm JOIN usuarios c ON b.usuario2=c.rm;
 
+
+//selecionar para o ranking
+
+select usuarios.rm, usuarios.usuario as usuario,salas.apelido, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+join jogos on jogos.idj=jogos_idj join salas on usuarios.sala_id=salas.id order by rankings.highscore desc;
 
 // selecionar itens do usuario
 

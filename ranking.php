@@ -15,7 +15,10 @@ table{
     background-image: url("imagens/fundos/papel.jpg");
 }
 table,td{
-  
+  text-align: center;
+}
+.pesquisa{
+    text-align: left;
 }
 input{
     border: none;
@@ -50,23 +53,24 @@ require_once "includes/login.php";
 $key = $_GET['chave'] ?? "";
 
 
-echo "<tr><td><form method='get' action='ranking.php'><input type='text' id='chave' name='chave'><input type='submit' value='Pesquisar'></form>";
-$q= "select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
-join jogos on jogos.idj=jogos_idj order by rankings.highscore desc";
+echo "<tr><td class='pesquisa' ><form method='get' action='ranking.php'><input type='text' id='chave' name='chave'><input type='submit' value='Pesquisar'></form>";
+$q= "select usuarios.rm, usuarios.usuario as usuario,salas.apelido, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+join jogos on jogos.idj=jogos_idj join salas on usuarios.salas_id=salas.id order by rankings.highscore desc";
 
 if(!empty($key)){
-    $q = " select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
-    join jogos on jogos.idj=jogos_idj where usuarios.usuario like '%$key%' or jogos.nome like '%$key%' or usuarios.rm like '%$key%'  ";
+    $q = " select usuarios.rm, usuarios.usuario as usuario, salas.apelido, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+    join jogos on jogos.idj=jogos_idj  join salas on usuarios.salas_id=salas.id where usuarios.usuario like '%$key%' or jogos.nome like '%$key%' or usuarios.rm like '%$key%'  or salas.apelido like '%$key%'  ";
 }else{
-    $q= "select usuarios.rm, usuarios.usuario as usuario, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
-    join jogos on jogos.idj=jogos_idj order by rankings.highscore desc";
+    $q= "select usuarios.rm, usuarios.usuario as usuario,salas.apelido, jogos.nome as jogo, rankings.highscore as highscore from usuarios join rankings on usuarios.rm=usuarios_rm
+    join jogos on jogos.idj=jogos_idj join salas on usuarios.salas_id=salas.id order by rankings.highscore desc";
 }
 
 
 $busca = $banco->query($q);
-echo "<tr><td>Usuario<td>Jogo<td>Highscore";
+echo "<tr><td>Usuario<td>Jogo<td>Sala<td>Highscore";
 while($reg = $busca->fetch_object()){
-echo "<tr><td>$reg->usuario<td>$reg->jogo<td>$reg->highscore";
+echo "<tr><td>$reg->usuario<td>$reg->jogo<td>$reg->apelido<td>$reg->highscore";
+
 }
 
 ?>
