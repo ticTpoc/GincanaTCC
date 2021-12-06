@@ -551,6 +551,8 @@ const escudoheroi = document.getElementById('escudoheroi');
 const escudolendario = document.getElementById('escudolendario');*/
 
 </script>
-
+<audio class='hide' controls autoplay loop>
+	<source src="SoundTrack/Sad.mp3">
+</audio>
 </body>
 </html>

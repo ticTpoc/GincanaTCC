@@ -253,4 +253,7 @@ cardArray =[]
 
 
 </script>
+<audio class='hide' controls autoplay loop>
+	<source src="SoundTrack/ALS-LSD.mp3">
+</audio>
 </html>
