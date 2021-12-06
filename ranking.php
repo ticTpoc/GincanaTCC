@@ -20,7 +20,13 @@ table,td{
 td{
     height: 50px;
 }
-
+#porta{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100px;
+    height:150px;
+}
 </style>
 </head>
 
@@ -66,7 +72,7 @@ echo "<tr><td>$reg->usuario<td>$reg->jogo<td>$reg->highscore";
 
 
 
-    
+<a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'>
 </div>
 </body>
 

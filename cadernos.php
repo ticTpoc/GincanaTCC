@@ -47,6 +47,18 @@ tr{
 img{
     border-radius: 10%;
 }
+#livro{
+    position: fixed;
+    right:0;
+    bottom:0;
+}
+#porta{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100px;
+    height:150px;
+}
 </style>
 </head>
 
@@ -89,6 +101,8 @@ for($i = 0;$reg = $busca->fetch_object(); $i++){
 
 </div>
 </div>
+<a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'></a>
+<a href='cadernos.php'><img id='livro' src='imagens/sprites/livroloja.png'></a>
 </body>
 
 </html>
