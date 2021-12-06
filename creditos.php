@@ -79,7 +79,8 @@ require_once "includes/login.php";
 <h3>ETEC Anna de Oliveira Ferraz</h3>
 <h3>Ibiza</h3>
 <h3>Albânia</h3>
-
+<h2>Agradecimentos especiais</h2>
+<h3>Melry Ellen</h3>
 
     <a id= "voltar" href="index.php">Sair</a>
 
