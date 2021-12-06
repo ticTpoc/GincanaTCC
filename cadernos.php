@@ -51,6 +51,8 @@ img{
     position: fixed;
     right:0;
     bottom:0;
+    width:150px;
+    height:150px;
 }
 #porta{
     position: fixed;
@@ -102,7 +104,7 @@ for($i = 0;$reg = $busca->fetch_object(); $i++){
 </div>
 </div>
 <a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'></a>
-<a href='cadernos.php'><img id='livro' src='imagens/sprites/livroloja.png'></a>
+<a href='mochila.php'><img id='livro' src='imagens/sprites/mochila.png'></a>
 </body>
 
 </html>
