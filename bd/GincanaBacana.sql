@@ -137,18 +137,22 @@ insert into jogos(nome,manutencao,tipo,livro) values
 ('quiz',0,1,'quizlivro'),
 ('dungeon',1,1,'dungeonlivro'),
 ('memoria',0,1,'memorialivro'),
-('pongmodos',0,1,'ponglivro'),
+('pong',0,1,'ponglivro'),
 ('insanidade',0,1,'insanidadelivro'),
 ('cassino',0,1,'cassinolivro'),
 ('campominado',0,1,'campominadolivro');
 
 
 insert into itens(nome,img,preco,jogos_idj,tipo,valor,funcao) values
-('adaga','adaga.png','20',2,'item','1','perfeita para degolar goblins'),
-('escudo de madeira','escudo1.png','50',2,'item','2','feito de madeira, eu acho'),
-('escudo inglês','escudo2.png','100',2,'item','3','utilizado por James o VI e I  da Inglaterra e escócia na batalha de Vivivuland'),
-('espada','espada.png','60',2,'item','2',' tudo que um herói necessita'),
-('escuro','escuro.png','100',1,'skin','0',' tudo um pouco mais escuro');
+('Adaga','adaga.png','20',2,'item','1','perfeita para degolar goblins'),
+('Escudo de madeira','escudo1.png','50',2,'item','2','feito de madeira, eu acho'),
+('Escudo inglês','escudo2.png','100',2,'item','3','utilizado por James o VI e I  da Inglaterra e escócia na batalha de Vivivuland'),
+('Espada','espada.png','60',2,'item','2',' tudo que um herói necessita'),
+('Escuro','escuro.png','100',1,'skin','0',' tudo um pouco mais escuro'),
+('Chave Fast-Ball','chave.png', '30', '4', 'item', '0', 'Dizem que libera uma velocidade além para a bola'),
+('Chave Fast-Game','chave.png', '30', '4', 'item', '0', 'Dizem que libera um jogo veloz'),
+('Chave Dupla','chavedupla.png', '100', '4', 'item', '0', 'Uma chave... ou seriam duas? Dizem que libera caos dobrado'),
+('Relógio do caos', 'relogio.png', '300', '4', 'item', '0', 'Parece ter a foto de pai e filho... mas exala uma energia');
 
 
 insert into quiz(question,R1,R2,R3,RC,aprovacao) values

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 
-<title></title>
+<title>Entrada</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +28,6 @@
     text-align: center;
     font-size: 30px;
 }
-
 </style>
 </head>
 
@@ -124,6 +123,9 @@ function fechar(){
 
 
 </script>
+<audio class='hide' controls autoplay loop>
+	<source src="SoundTrack\brasilia.mp3">
+</audio>
 </body>
 
 </html>

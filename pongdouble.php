@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <title>
-            Pong - Bola Rápida
+            Pong - Dobro
         </title>
         <meta charset="UTF-8"> 
 		<link rel="stylesheet" href="css/estilo.css">
@@ -27,10 +27,10 @@
     </head>
     <body>
 	<?php 
-        require_once "includes/bd.php";
-        require_once "includes/funcao.php";
-        require_once "includes/login.php";
-    ?>  
+require_once "includes/bd.php";
+require_once "includes/funcao.php";
+require_once "includes/login.php";
+?>  
 		<div class="corpo">
 			
 		
@@ -43,7 +43,8 @@
 
 			<script type = "text/javascript">
 				let ctx, p1_y, p2_y, p1_points, p2_points
-				let ball_y_orientation, ball_x_orientation, ball_x, ball_y, ball_speed = 0, ball_tspeed = 5
+				let ball_y_orientation, ball_x_orientation,  ball_x, ball_y,  ball_tspeed = 5
+                let ball2_y_orientation, ball2_x_orientation, ball2_x, ball2_y
 				let p1_key, p2_key
 				const h=500, w=800, p_w=20, p_h=200, p1_x = 10, p2_x = w - p_w - 10
 				function setup(){
@@ -72,24 +73,43 @@
 					else if(ball_x >= p2_x && ball_x <= p2_x + 10 && ball_y >= p2_y && ball_y <= p2_y + p_h){
 						ball_x_orientation = -1
 					}
-
+                    if(ball2_x >= p1_x && ball2_x <= p1_x + 10 && ball2_y >= p1_y && ball2_y <= p1_y + p_h){
+						ball2_x_orientation = 1
+					}
+					//Verifica se a bola está colidindo com o barra do player 2
+					else if(ball2_x >= p2_x && ball2_x <= p2_x + 10 && ball2_y >= p2_y && ball2_y <= p2_y + p_h){
+						ball2_x_orientation = -1
+					}
+                    
 					// verifica se a bola passou bateu no chão ou no teto
 					if(ball_y + 10 >= h || ball_y <= 0) ball_y_orientation *= -1
+
+                    if(ball2_y + 10 >= h || ball2_y <= 0) ball2_y_orientation *= -1
 
 					//move a bola no eixo X e Y
 					ball_x += ball_tspeed * ball_x_orientation
 					ball_y += ball_tspeed * ball_y_orientation
+                    ball2_x += (ball_tspeed +1) * ball2_x_orientation
+					ball2_y += (ball_tspeed +1) * ball2_y_orientation
 
 					if(ball_x+10 > w) {
 						p1_points++
-						ball_speed++
-						initBall()
+									initBall()
 					}
 					else if(ball_x < 0){
 						p2_points ++
-						ball_speed++
-						initBall()
+									initBall()
 					}
+                    if(ball2_x+10 > w) {
+						p1_points++
+									initBall()
+					}
+					else if(ball2_x < 0){
+						p2_points ++
+									initBall()
+					}
+
+					
 
 					if(p1_key == 87 && p1_y > 0){
 						p1_y -= 10
@@ -102,6 +122,7 @@
 					}else if(p2_key == 40 && p2_y + p_h < h){
 						p2_y += 10
 					}
+
 					draw()
 				}
 
@@ -109,10 +130,12 @@
 					console.log(`${p1_points} VS ${p2_points}`)
 					ball_y_orientation = Math.pow(2, Math.floor( Math.random() * 2 )+1) - 3 
 					ball_x_orientation = Math.pow(2, Math.floor( Math.random() * 2 )+1) - 3 
-					ball_x = w / 2 -10
-					ball_y = h / 2 -10
-					ball_tspeed = ball_tspeed + ball_speed
-					
+					ball_x = w / 2 -20
+					ball_y = h / 2 -20
+                    ball2_y_orientation = Math.pow(2, Math.floor( Math.random() * 2 )+1) - 3
+					ball2_x_orientation = ball_x_orientation * - 1
+					ball2_x = w / 2 +20
+					ball2_y = h / 2 +20
 				}
 
 				function draw(){
@@ -125,7 +148,8 @@
 					// barra lateral
 					drawRect(w/2 -5,0,5,h)
 					// bola
-					drawRect(ball_x, ball_y, 20, 20)
+					drawRect(ball_x, ball_y, 20, 20, '#FF0000')
+                    drawRect(ball2_x, ball2_y, 20, 20)
 					writePoints()
 				}
 

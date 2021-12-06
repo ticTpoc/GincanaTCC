@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 
-<title></title>
+<title>Inventário</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,6 +27,13 @@ img.itens{
     position: fixed;
     right:0;
     bottom:0;
+}
+#porta{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100px;
+    height:150px;
 }
 </style>
 </head>
@@ -67,6 +74,7 @@ for( $i=0; $reg = $busca->fetch_object(); $i++){
 }
 echo "</table>";
     ?>
+<a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'
 <a href='cadernos.php'><img id='livro' src='imagens/sprites/livroloja.png'></a>
 </div>
  </div>

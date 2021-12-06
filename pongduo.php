@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <title>
-            Pong
+            Pong - 2P
         </title>
         <meta charset="UTF-8"> 
 		<link rel="stylesheet" href="css/estilo.css">

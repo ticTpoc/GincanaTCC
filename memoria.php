@@ -44,7 +44,7 @@
         width: 50%;
     }
     </style>
-<title></title>
+<title>Jogo da memória</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

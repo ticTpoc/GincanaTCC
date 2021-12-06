@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 
-<title></title>
+<title>Caderno</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -69,12 +69,14 @@ join usuarios on usuarios.rm=compras.usuarios_rm where usuarios.rm=$rm;"; */
 
 
 <div class="conteudo">
-    <h1> <?php echo "$jogo<br>";
+    <h1 style="position: fixed;"> <?php echo "$jogo<br>";
     $usuario = $_SESSION['rm'];
                 $u = "select * from usuarios where rm='$usuario'";
                 $buscau = $banco->query($u);
                 $regu = $buscau->fetch_object();
-              echo "moedas:$regu->coin"; ?></h1>
+              echo "moedas:$regu->coin"; ?>
+              <br><a href="cadernos.php"><button class="button">Loja</button></a>
+            </h1>
    
     <!-- img class="aberto" src="imagens/fundos/livroaberto.png" -->
 <div class="caderno"> 
