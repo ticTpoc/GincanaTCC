@@ -102,7 +102,7 @@ require_once "includes/login.php";
 
     
 </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
 function Aprovar(){
