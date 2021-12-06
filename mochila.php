@@ -74,7 +74,7 @@ for( $i=0; $reg = $busca->fetch_object(); $i++){
 }
 echo "</table>";
     ?>
-<a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'
+<a href='jogos.php'><img id='porta' src='imagens/sprites/portafuncionarioaberta.png'>
 <a href='cadernos.php'><img id='livro' src='imagens/sprites/livroloja.png'></a>
 </div>
  </div>

@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="css/estilo.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
+img.icone{
+    width:100px;
+    height:100px;
+}
 
 img{
     width:500px;
@@ -90,7 +94,10 @@ if($novocoin<0){
     ('$dia','$usuario','$id');
     ";
     $banco->query($k);
-    echo sucesso("Item Comprado com sucesso, cheque sua mochila<br><a href='caderno.php'><button class='button'>Loja</button></a><br><a href='mochila.php'><button class='button'>Mochila</button></a><br><a href='jogos.php'><button class='button'>Jogos</button></a>");
+    echo "<a href='mochila.php'><img class='icone'  src='imagens/sprites/mochila.png'></a>
+    <a href='index.php'><img  class='icone' src='imagens/sprites/portafuncionarioaberta.png'></a>
+    <a href='cadernos.php'><img  class='icone' src='imagens/sprites/livroloja.png'></a>";
+    echo sucesso("Item Comprado com sucesso");
 }  
 }
 
